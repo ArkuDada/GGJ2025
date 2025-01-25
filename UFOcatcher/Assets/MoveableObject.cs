@@ -26,7 +26,6 @@ public class MoveableObject : MonoBehaviour
     {
         var direction = _agent.destination;
         direction.y = transform.position.y;
-        transform.LookAt(direction);
         if((!_agent.pathPending && _agent.remainingDistance < 0.1f) || _agent.pathStatus == NavMeshPathStatus.PathInvalid)
         {
             _agent.SetDestination( _surface.GetRandomGrid().center);

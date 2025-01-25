@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8293115035563405007}
   - component: {fileID: 5020252747063546929}
-  - component: {fileID: 6976566797410848856}
   - component: {fileID: -3951440523580669217}
   - component: {fileID: 3271902003539458335}
   - component: {fileID: -2253940477907143926}
+  - component: {fileID: 7528321089155915501}
   m_Layer: 0
   m_Name: Cow
   m_TagString: Untagged
@@ -51,36 +51,15 @@ NavMeshAgent:
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 240
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 0
+  m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!65 &6976566797410848856
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2997598876189070964}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &-3951440523580669217
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -139,6 +118,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caa04bebdfa061c4dab9a2f8d45e0bb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!135 &7528321089155915501
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2997598876189070964}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1452167572036460110
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -165,7 +165,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 885705302892623522, guid: 2c970a4f606c8bf43add71d2613f5efa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.345
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 885705302892623522, guid: 2c970a4f606c8bf43add71d2613f5efa, type: 3}
       propertyPath: m_LocalPosition.z
@@ -244,7 +244,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 861aff8addaafa54185f8116876874b4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.35
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 861aff8addaafa54185f8116876874b4, type: 3}
       propertyPath: m_LocalPosition.z
