@@ -16,7 +16,6 @@ public class TimeManager : MonoBehaviour
         // Initialize elapsed time and countdown time
         elapsedTime = 0f;
         countdownTime = startingCountdownTime;
-        isTimerActive = false; // Initially, the countdown timer is not active
     }
 
     // Update is called once per frame
