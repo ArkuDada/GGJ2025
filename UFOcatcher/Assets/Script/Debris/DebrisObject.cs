@@ -1,5 +1,11 @@
 using UnityEngine;
 
+enum DebrisState
+{
+    Prepare,
+    Fall
+}
+
 [RequireComponent(typeof(LineRenderer))]
 public class DebrisObject : MonoBehaviour
 {
@@ -10,6 +16,11 @@ public class DebrisObject : MonoBehaviour
 
     [SerializeField] GameObject crosshair;
 
+    [SerializeField] DebrisState currentDebrisState;
+
+    // Countdown timer before falling
+    [SerializeField] float countdownToFall = 3f;
+
     // LineRenderer for the laser indicator
     private LineRenderer lineRenderer;
 
@@ -19,6 +30,15 @@ public class DebrisObject : MonoBehaviour
     // Max distance for the laser if no object is hit
     public float maxLaserLength = 100f;
 
+    // Laser size reduction rate
+    [SerializeField] float laserShrinkRate = 0.05f;
+
+    // Minimum line width before triggering the fall state
+    [SerializeField] float spawnLineWidth = 0.01f;
+
+    // Minimum line width before triggering the fall state
+    [SerializeField] float minLineWidth = 0.01f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,24 +46,36 @@ public class DebrisObject : MonoBehaviour
         lineRenderer = GetComponent<LineRenderer>();
 
         // Configure the LineRenderer's default properties
-        //lineRenderer.startColor = Color.red; // Laser color
-        //lineRenderer.endColor = Color.red;
         lineRenderer.positionCount = 2; // A line with 2 points: start and end
+        lineRenderer.startWidth = 0.2f; // Initial width of the laser
+        lineRenderer.endWidth = 0.2f;
+
+        currentDebrisState = DebrisState.Prepare;
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Move the AcidRain object downward
-        transform.position += Vector3.down * fallSpeed * Time.deltaTime;
+        switch (currentDebrisState)
+        {
+            case DebrisState.Prepare:
+                countdownToFall -= Time.deltaTime;
+                UpdateLaser();
+                UpdateToSpawnDebris();
+                break;
 
-        // Update the laser position
-        UpdateLaser();
+            case DebrisState.Fall:
+
+                transform.position += Vector3.down * fallSpeed * Time.deltaTime;
+                break;
+        }
+
+        ShrinkLaser();
     }
 
     void UpdateLaser()
     {
-        // Set the start position of the laser to the AcidRain's position
+        // Set the start position of the laser to the DebrisObject's position
         Vector3 startPosition = transform.position;
 
         // Cast a ray downward to detect where the laser should end
@@ -70,6 +102,31 @@ public class DebrisObject : MonoBehaviour
             {
                 crosshair.SetActive(false);
             }
+        }
+    }
+
+    void UpdateToSpawnDebris() 
+    {
+        if (lineRenderer.startWidth <= spawnLineWidth)
+        {
+            currentDebrisState = DebrisState.Fall;
+        }
+    }
+
+    void ShrinkLaser()
+    {
+        if (lineRenderer.startWidth > minLineWidth)
+        {
+            // Gradually shrink the line width
+            float newWidth = Mathf.Max(lineRenderer.startWidth - laserShrinkRate * Time.deltaTime, minLineWidth);
+            lineRenderer.startWidth = newWidth;
+            lineRenderer.endWidth = newWidth;
+        }
+        else
+        {
+            // When the laser width reaches the minimum, switch to the Fall state
+            lineRenderer.enabled = false;
+            currentDebrisState = DebrisState.Fall;
         }
     }
 

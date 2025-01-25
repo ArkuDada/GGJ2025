@@ -366,13 +366,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d19f33b7aaf0f21459466e83afe6449d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fallSpeed: 0.2
+  fallSpeed: 20
   decreaseScore: 10
   crosshair: {fileID: 2463113351042056654}
+  currentDebrisState: 0
+  countdownToFall: 3
   groundLayer:
     serializedVersion: 2
     m_Bits: 1
   maxLaserLength: 100
+  laserShrinkRate: 0.1
+  spawnLineWidth: 0.1
+  minLineWidth: 0.05
 --- !u!54 &6988910970565173001
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -395,7 +400,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
