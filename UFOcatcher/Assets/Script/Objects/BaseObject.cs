@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class PriceObject : MonoBehaviour
+public class BaseObject : MonoBehaviour
 {
     public enum ObjectState
     {
