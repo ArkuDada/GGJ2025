@@ -46,7 +46,7 @@ public class GridFloor : MonoBehaviour
                 
                 Debug.Log($"{i} {j} {_grid[i][j].center}");
                 
-                // Instantiate(box, _grid[i][j].center + Vector3.up, Quaternion.identity);
+                Instantiate(box, _grid[i][j].center + Vector3.up, Quaternion.identity);
             }
         }
     }
