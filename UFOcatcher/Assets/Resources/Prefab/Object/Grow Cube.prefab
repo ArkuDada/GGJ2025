@@ -84,7 +84,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   State: 0
   Type: 1
-  b: {fileID: 616203856976430369}
+  _bubble: {fileID: 6615372258182081209}
   floatSpeed: 1
   _BaseScore: 1
   _upMaterial: {fileID: 2100000, guid: c2bcc59676db7ea43a2e1254b0260188, type: 2}
@@ -117,3 +117,8 @@ MonoBehaviour:
     m_RotationOrder: 4
   _startScale: {x: 0.2, y: 0.2, z: 0.2}
   _endScale: {x: 1, y: 1, z: 1}
+--- !u!1 &6615372258182081209 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5683648070908338548, guid: fb557c56aa8f2c445b50dad80fa999ae, type: 3}
+  m_PrefabInstance: {fileID: 1526396786526768077}
+  m_PrefabAsset: {fileID: 0}

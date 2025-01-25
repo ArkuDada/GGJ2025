@@ -32,4 +32,14 @@ public class MoveableObject : MonoBehaviour
             _agent.SetDestination( _surface.GetRandomGrid().center);
         }
     }
+
+	private void OnEnable()
+	{
+		_agent.enabled = true;
+	}
+
+	private void OnDisable()
+	{
+		_agent.enabled = false;
+	}
 }
