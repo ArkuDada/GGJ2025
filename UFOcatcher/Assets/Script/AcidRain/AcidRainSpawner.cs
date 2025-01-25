@@ -3,20 +3,50 @@ using UnityEngine;
 public class AcidRainSpawner : MonoBehaviour
 {
     // Screen bounds for spawning AcidRain objects
-    public Vector2 _screenBoundsMin;
-    public Vector2 _screenBoundsMax;
+    [SerializeField] private Vector2 _screenBoundsMin;
+    [SerializeField] private Vector2 _screenBoundsMax;
 
     // Prefab for the AcidRain object
-    public GameObject acidRainPrefab;
+    [SerializeField] private GameObject acidRainPrefab;
 
     // Spawn rate (seconds between spawns)
-    public float spawnRate = 2f;
+    [SerializeField] private float spawnRate = 2f;
+
+    public float SpawnRate
+    {
+        get => spawnRate;
+        set
+        {
+            if (Mathf.Approximately(spawnRate, value)) return; // Ignore if the rate hasn't changed
+            spawnRate = Mathf.Max(value, 0.1f); // Prevent too low values
+            RestartSpawning(); // Restart the spawning process with the new rate
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         // Start spawning AcidRain objects repeatedly
         InvokeRepeating(nameof(SpawnAcidRain), 0f, spawnRate);
+    }
+
+    // Start the spawning process
+    private void StartSpawning()
+    {
+        InvokeRepeating(nameof(SpawnAcidRain), 0f, spawnRate);
+    }
+
+    // Stop the spawning process
+    private void StopSpawning()
+    {
+        CancelInvoke(nameof(SpawnAcidRain));
+    }
+
+    // Restart the spawning process with the new rate
+    private void RestartSpawning()
+    {
+        StopSpawning();
+        StartSpawning();
     }
 
     // Spawn an AcidRain object at a random position within bounds

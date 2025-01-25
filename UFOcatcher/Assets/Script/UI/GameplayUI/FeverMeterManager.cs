@@ -86,6 +86,7 @@ public class FeverMeterManager : MonoBehaviour
         }
         else if (feverPhase == FeverPhase.Max && currentFeverValue >= overlimitPercentage)
         {
+            GameManager.Instance.AcidRainSpawner.SpawnRate = 0.1f;
             feverPhase = FeverPhase.OverLimit;
         } 
         else if (feverPhase == FeverPhase.OverLimit && currentFeverValue <= 0.0f) 
@@ -93,7 +94,5 @@ public class FeverMeterManager : MonoBehaviour
             feverPhase = FeverPhase.Beginning;
             currentFeverValue = 0.0f;
         }
-
-        Debug.Log("FeverPhase: " + feverPhase);
     }
 }

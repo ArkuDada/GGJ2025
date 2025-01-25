@@ -27,6 +27,10 @@ public class GameManager : MonoSingleton<GameManager>
     FeverMeterManager feverMeterManager;
     public FeverMeterManager FeverMeterManager => feverMeterManager;
 
+    [SerializeField]
+    AcidRainSpawner acidRainSpawner;
+    public AcidRainSpawner AcidRainSpawner => acidRainSpawner;
+
     // Initialize the game manager
     protected override void Init()
     {
