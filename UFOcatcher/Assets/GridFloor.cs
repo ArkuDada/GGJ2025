@@ -23,8 +23,8 @@ public class GridFloor : MonoBehaviour
         maxBound = _meshFilter.mesh.bounds.max - new Vector3(padding, 0, padding);
         Debug.Log(this.maxBound);
         
-        // distanceBetweenGrids = (maxBound.x - minBound.x) / gridSize;
-        // GenerateGrid();
+        distanceBetweenGrids = maxBound.x / (float)((int)gridSize/2);
+        GenerateGrid();
         
     }
 
@@ -38,15 +38,15 @@ public class GridFloor : MonoBehaviour
             {
                 _grid[i][j] = new Grid();
                 _grid[i][j].center = new Vector3(
-                    minBound.x + ((maxBound.x - minBound.x) / gridSize) * i,
+                    minBound.x + distanceBetweenGrids * i,
                     0,
-                    minBound.z + ((maxBound.z - minBound.z) / gridSize) * j);
+                    minBound.z + distanceBetweenGrids * j);
                 _grid[i][j].row = i;
                 _grid[i][j].col = j;
                 
                 Debug.Log($"{i} {j} {_grid[i][j].center}");
                 
-                Instantiate(box, _grid[i][j].center + Vector3.up, Quaternion.identity);
+                // Instantiate(box, _grid[i][j].center + Vector3.up, Quaternion.identity);
             }
         }
     }

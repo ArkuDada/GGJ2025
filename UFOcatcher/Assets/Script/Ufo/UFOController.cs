@@ -11,10 +11,6 @@ public class UFOController : MonoBehaviour
     public Vector2 _screenBoundsMax;
 
     public GameObject _bubblePrefab;
-
-    public GameObject _HortBar;
-    public GameObject _VertBar;
-
     
     private int _score = 0;
 
@@ -37,8 +33,6 @@ public class UFOController : MonoBehaviour
             transform.position.y,
             Mathf.Clamp(transform.position.z, _screenBoundsMin.y, _screenBoundsMax.y));
 
-        _VertBar.transform.position = new Vector3(transform.position.x, transform.position.y, 0);
-        _HortBar.transform.position = new Vector3(0, transform.position.y, transform.position.z);
     }
     
     public void ActivateSkill(InputAction.CallbackContext context)
