@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 6569468407730672863}
   - component: {fileID: 6297312734126835778}
   m_Layer: 0
-  m_Name: AcidRainSpawner
+  m_Name: DebrisSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -88,8 +88,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59d5806c999939c48b013cb9e9d40500, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _screenBoundsMin: {x: -3.5, y: -3.5}
-  _screenBoundsMax: {x: 3.5, y: 3.5}
+  _spawnMesh: {fileID: 0}
+  minBound: {x: 0, y: 0, z: 0}
+  maxBound: {x: 0, y: 0, z: 0}
   acidRainPrefab: {fileID: 3753691219509968611, guid: c5f81ecfb9b49684f92cdaf79523678a, type: 3}
   spawnRate: 2
 --- !u!1 &6362501516946846125
@@ -144,7 +145,7 @@ MonoBehaviour:
   scoreManager: {fileID: 3509146834153804311}
   timeManager: {fileID: 912741156370863365}
   feverMeterManager: {fileID: 4834649255885270418}
-  acidRainSpawner: {fileID: 6297312734126835778}
+  debrisSpawner: {fileID: 6297312734126835778}
   questManager: {fileID: 5917444110621686011}
 --- !u!1 &6937048624102378129
 GameObject:
