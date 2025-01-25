@@ -1,5 +1,7 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
+
 namespace Juve 
 {
     public class GameplayUIManagerr : MonoBehaviour
@@ -9,6 +11,9 @@ namespace Juve
 
         [SerializeField]
         TextMeshProUGUI scoreUI;
+
+        [SerializeField]
+        Slider feverMeterUI;
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
@@ -26,6 +31,11 @@ namespace Juve
             if (scoreUI != null)
             {
                 scoreUI.text = "Score: " +  GameManager.Instance.ScoreManager.GetScore().ToString();
+            }
+
+            if (feverMeterUI != null) 
+            {
+                feverMeterUI.value = GameManager.Instance.FeverMeterManager.GetFeverPercentage();
             }
         }
     }

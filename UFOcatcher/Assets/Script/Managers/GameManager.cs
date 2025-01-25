@@ -23,6 +23,10 @@ public class GameManager : MonoSingleton<GameManager>
     TimeManager timeManager;
     public TimeManager TimeManager => timeManager;
 
+    [SerializeField]
+    FeverMeterManager feverMeterManager;
+    public FeverMeterManager FeverMeterManager => feverMeterManager;
+
     // Initialize the game manager
     protected override void Init()
     {
@@ -37,7 +41,6 @@ public class GameManager : MonoSingleton<GameManager>
 
         if (state == GameState.Play) 
         {
-            Debug.Log("fuck");
             timeManager.ResumeTimer();
         }
     }
