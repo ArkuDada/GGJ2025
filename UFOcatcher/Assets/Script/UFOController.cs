@@ -57,14 +57,14 @@ public class UFOController : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if(other.gameObject.TryGetComponent<PriceObject>(out var price))
+        if(other.gameObject.TryGetComponent<BaseObject>(out var price))
         {
             switch(price.State)
             {
-                case PriceObject.ObjectState.Up:
+                case BaseObject.ObjectState.Up:
                     _score++;
                     break;
-                case PriceObject.ObjectState.Down:
+                case BaseObject.ObjectState.Down:
                     _score--;
                     break;
             }
