@@ -65,7 +65,10 @@ public class DebrisObject : MonoBehaviour
                 break;
 
             case DebrisState.Fall:
-
+                if (crosshair != null)
+                {
+                    crosshair.SetActive(false);
+                }
                 transform.position += Vector3.down * fallSpeed * Time.deltaTime;
                 break;
         }
