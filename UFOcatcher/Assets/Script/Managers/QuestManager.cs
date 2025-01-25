@@ -67,6 +67,7 @@ public class QuestManager : MonoBehaviour
 				// Collected an uncollected object on our list
 				ObjectsCollected[i] = true;
 				--ObjectsLeftToCollect;
+				Debug.Log("collected");
 
 				if (ObjectsLeftToCollect <= 0)
 				{
@@ -78,9 +79,9 @@ public class QuestManager : MonoBehaviour
 				}
 
 				scoreManager.IncrementScore(points);
-			}
 
-			return;
+				return;
+			}
 		}
 
 		// Object wasn't on the quest list
