@@ -864,54 +864,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &932832390
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 932832392}
-  - component: {fileID: 932832391}
-  m_Layer: 0
-  m_Name: AcidRainSpawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &932832391
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 932832390}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59d5806c999939c48b013cb9e9d40500, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _screenBoundsMin: {x: -3.5, y: -3.5}
-  _screenBoundsMax: {x: 3.5, y: 3.5}
-  acidRainPrefab: {fileID: 3753691219509968611, guid: c5f81ecfb9b49684f92cdaf79523678a, type: 3}
-  spawnRate: 2
---- !u!4 &932832392
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 932832390}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1002297309
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1818,4 +1770,3 @@ SceneRoots:
   - {fileID: 1775339085}
   - {fileID: 1046340374}
   - {fileID: 1321034717897802120}
-  - {fileID: 932832392}
