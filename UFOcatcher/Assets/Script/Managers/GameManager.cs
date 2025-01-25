@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem.LowLevel;
+using UnityEngine.Serialization;
 using Utility;
 
 public enum GameState
@@ -27,9 +28,10 @@ public class GameManager : MonoSingleton<GameManager>
     FeverMeterManager feverMeterManager;
     public FeverMeterManager FeverMeterManager => feverMeterManager;
 
+    [FormerlySerializedAs("acidRainSpawner")]
     [SerializeField]
-    AcidRainSpawner acidRainSpawner;
-    public AcidRainSpawner AcidRainSpawner => acidRainSpawner;
+    DebrisSpawner debrisSpawner;
+    public DebrisSpawner DebrisSpawner => debrisSpawner;
 
 	[SerializeField]
 	QuestManager questManager;

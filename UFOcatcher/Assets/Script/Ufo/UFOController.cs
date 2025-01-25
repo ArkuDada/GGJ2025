@@ -7,14 +7,19 @@ public class UFOController : MonoBehaviour
 {
 	public Vector2 _inputVec = Vector2.zero;
 	public float _speed = 5.0f;
-	public Vector2 _screenBoundsMin;
-	public Vector2 _screenBoundsMax;
+	
+	public float _screenBounds = 5.0f;
+	
+	private Vector2 _screenBoundsMin;
+	private Vector2 _screenBoundsMax;
 
 	private bool _beamActive = false;
 	public GameObject _beam;
 
 	void Start()
 	{
+		_screenBoundsMin = new Vector2(-_screenBounds, -_screenBounds);
+		_screenBoundsMax = new Vector2(_screenBounds, _screenBounds);
 	}
 
 	void Update()

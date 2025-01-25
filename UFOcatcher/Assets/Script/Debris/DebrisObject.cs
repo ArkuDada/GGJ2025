@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(LineRenderer))]
-public class AcidRain : MonoBehaviour
+public class DebrisObject : MonoBehaviour
 {
     // Speed at which the object falls
     [SerializeField] float fallSpeed = 5f;

@@ -1,23 +1,31 @@
 using UnityEngine;
 
-public class AcidRainSpawner : MonoBehaviour
+public class DebrisSpawner : MonoBehaviour
 {
-    // Screen bounds for spawning AcidRain objects
-    [SerializeField] private Vector2 _screenBoundsMin;
-    [SerializeField] private Vector2 _screenBoundsMax;
+    [SerializeField]
+    MeshFilter _spawnMesh;
+
+    [SerializeField]
+    Vector3 minBound;
+
+    [SerializeField]
+    Vector3 maxBound;
 
     // Prefab for the AcidRain object
-    [SerializeField] private GameObject acidRainPrefab;
+    [SerializeField]
+    private GameObject acidRainPrefab;
 
     // Spawn rate (seconds between spawns)
-    [SerializeField] private float spawnRate = 2f;
+    [SerializeField]
+    private float spawnRate = 2f;
+
 
     public float SpawnRate
     {
         get => spawnRate;
         set
         {
-            if (Mathf.Approximately(spawnRate, value)) return; // Ignore if the rate hasn't changed
+            if(Mathf.Approximately(spawnRate, value)) return; // Ignore if the rate hasn't changed
             spawnRate = Mathf.Max(value, 0.1f); // Prevent too low values
             RestartSpawning(); // Restart the spawning process with the new rate
         }
@@ -28,6 +36,9 @@ public class AcidRainSpawner : MonoBehaviour
     {
         // Start spawning AcidRain objects repeatedly
         InvokeRepeating(nameof(SpawnAcidRain), 0f, spawnRate);
+
+        minBound = _spawnMesh.mesh.bounds.min;
+        maxBound = _spawnMesh.mesh.bounds.max;
     }
 
     // Start the spawning process
@@ -53,16 +64,16 @@ public class AcidRainSpawner : MonoBehaviour
     void SpawnAcidRain()
     {
         // Check if the prefab is assigned
-        if (acidRainPrefab == null)
+        if(acidRainPrefab == null)
         {
             Debug.LogWarning("AcidRain prefab is not assigned!");
             return;
         }
 
         // Randomly determine the spawn position within the bounds
-        float randomX = Random.Range(_screenBoundsMin.x, _screenBoundsMax.x);
-        float randomY = Random.Range(_screenBoundsMin.y, _screenBoundsMax.y);
-        Vector3 spawnPosition = new Vector3(randomX, 10, randomY);
+        float randomX = Random.Range(minBound.x, maxBound.x);
+        float randomY = Random.Range(minBound.y, maxBound.y);
+        Vector3 spawnPosition = new Vector3(randomX, _spawnMesh.transform.position.y, randomY);
 
         // Instantiate the AcidRain prefab at the spawn position
         Instantiate(acidRainPrefab, spawnPosition, Quaternion.identity);
