@@ -10,7 +10,7 @@ public class UFOController : MonoBehaviour
     public Vector2 _screenBoundsMin;
     public Vector2 _screenBoundsMax;
 
-    public GameObject _beam;
+    public GameObject _bubblePrefab;
 
     public GameObject _HortBar;
     public GameObject _VertBar;
@@ -23,7 +23,6 @@ public class UFOController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        _beam.SetActive(false);
     }
 
     // Update is called once per frame
@@ -45,16 +44,15 @@ public class UFOController : MonoBehaviour
     public void ActivateSkill(InputAction.CallbackContext context)
     {
         Debug.Log("ActivateSkill");
-        if (context.performed)
+        if(context.performed)
         {
-            _beam.SetActive(true);
-        }
-        else if (context.canceled)
-        {
-            _beam.SetActive(false);
+            var bubble = Instantiate(_bubblePrefab, transform.position + (Vector3.down * _bubbleSpawnOffset), Quaternion.identity).GetComponent<CaptureBubble>();
         }
     }
 
+    [SerializeField]
+    private float _bubbleSpeed = 1.0f;
+    private float _bubbleSpawnOffset = 1.0f;
     private void OnCollisionEnter(Collision other)
     {
         if(other.gameObject.TryGetComponent<BaseObject>(out var price))

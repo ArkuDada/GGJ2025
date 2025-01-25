@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3383936162792595995}
   - component: {fileID: 5289233343424259576}
   - component: {fileID: 6331483679017536262}
+  - component: {fileID: 4707681377607185738}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -151,10 +152,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   State: 0
+  Type: 0
   b: {fileID: 7734360617022858485}
   floatSpeed: 3
+  _BaseScore: 1
   _upMaterial: {fileID: 2100000, guid: c2bcc59676db7ea43a2e1254b0260188, type: 2}
   _downMaterial: {fileID: 2100000, guid: 3f5f2672f5fa77541986335e615261f7, type: 2}
+--- !u!208 &4707681377607185738
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2135810059554754284}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &7734360617022858485
 GameObject:
   m_ObjectHideFlags: 0

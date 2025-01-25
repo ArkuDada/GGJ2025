@@ -4,9 +4,9 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - Beam
   - FallPlane
   - FloorPlane
+  - Bubble
   layers:
   - Default
   - TransparentFX
