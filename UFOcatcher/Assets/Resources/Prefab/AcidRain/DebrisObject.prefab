@@ -309,7 +309,7 @@ GameObject:
   - component: {fileID: 6988910970565173001}
   - component: {fileID: 172531711122916155}
   m_Layer: 0
-  m_Name: AcidRain
+  m_Name: DebrisObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
