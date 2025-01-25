@@ -31,8 +31,12 @@ public class GameManager : MonoSingleton<GameManager>
     AcidRainSpawner acidRainSpawner;
     public AcidRainSpawner AcidRainSpawner => acidRainSpawner;
 
-    // Initialize the game manager
-    protected override void Init()
+	[SerializeField]
+	QuestManager questManager;
+	public QuestManager QuestManager => questManager;
+
+	// Initialize the game manager
+	protected override void Init()
     {
         // Set initial values for your game manager
         ChangeGameplayState(GameState.Play);
