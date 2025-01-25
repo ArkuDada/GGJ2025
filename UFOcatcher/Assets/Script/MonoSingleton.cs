@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace NCC.Utility
+namespace Utility
 {
     public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
     {
