@@ -60,7 +60,7 @@ MonoBehaviour:
   - name: Chicken Spawn
     clip: {fileID: 8300000, guid: cd917c038f6e95b46b439585a06a24e0, type: 3}
   - name: Cow Spawn
-    clip: {fileID: 8300000, guid: 0bedd5b314d836044911200d6b265c8a, type: 3}
+    clip: {fileID: 8300000, guid: 09900c59b772b284fa56285a99c9473b, type: 3}
   - name: Egg Spawn
     clip: {fileID: 8300000, guid: d3579d586b31ff24a946a3abbc031304, type: 3}
   - name: Shoot Start
