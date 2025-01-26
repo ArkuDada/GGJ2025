@@ -54,24 +54,35 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _1st2nd_Shades_Feather: 0.0001
+    - _1st_ShadeColor_Feather: 0.01
+    - _1st_ShadeColor_Step: 0.42
+    - _2nd_ShadeColor_Feather: 0.0001
+    - _2nd_ShadeColor_Step: 0.49
     - _Add_Antipodean_RimLight: 0
+    - _BaseColor_Step: 0.42
+    - _BaseShade_Feather: 0.01
     - _EMISSIVE: 0
+    - _HighColor_Power: 0
     - _Is_BakedNormal: 0
     - _Is_OutlineTex: 0
     - _LightDirection_MaskOn: 0
     - _OUTLINE: 0
-    - _Outline_Width: 31.22
-    - _RimLight: 0
+    - _Outline_Width: 41.2
+    - _RimLight: 1
     - _RimLight_FeatherOff: 0
-    - _RimLight_InsideMask: 0.38
+    - _RimLight_InsideMask: 0.33
     - _RimLight_Power: 1
+    - _ShadeColor_Step: 0.49
     - _Tweak_LightDirection_MaskLevel: 0
     - _Use_BaseAs1st: 1
     m_Colors:
-    - _1st_ShadeColor: {r: 0.6431373, g: 0.6, b: 0.8784314, a: 1}
+    - _1st_ShadeColor: {r: 0.3124113, g: 0.26072443, b: 0.5943396, a: 1}
+    - _2nd_ShadeColor: {r: 0.21568628, g: 0.95686275, b: 1, a: 1}
     - _BaseColor: {r: 0.6488056, g: 0.6000801, b: 0.8773585, a: 1}
     - _Color: {r: 0.6488056, g: 0.6000801, b: 0.8773585, a: 1}
     - _Emissive_Color: {r: 0, g: 0.89049053, b: 1, a: 1}
+    - _HighColor: {r: 1, g: 1, b: 1, a: 1}
     - _Outline_Color: {r: 0.07058824, g: 0.16078432, b: 0.7176471, a: 1}
     - _RimLightColor: {r: 0, g: 0.7945037, b: 1, a: 1}
   m_BuildTextureStacks: []
