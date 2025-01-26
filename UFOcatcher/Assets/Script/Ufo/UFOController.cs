@@ -58,13 +58,15 @@ public class UFOController : MonoBehaviour
 
 	void Start()
 	{
+		if (gameManager == null)
+			gameManager = GameManager.Instance;
+
+		if (confetti == null)
+			confetti = GameObject.FindGameObjectWithTag("FloorPlane").transform.Find("Confetti").gameObject;
+
 		_screenBoundsMin = new Vector2(-_screenBounds, -_screenBounds);
 		_screenBoundsMax = new Vector2(_screenBounds, _screenBounds);
 		UpdateEnergyBar();
-		if (gameManager == null)
-		{
-			gameManager = GameManager.Instance;
-		}
 	}
 
 	void Update()
