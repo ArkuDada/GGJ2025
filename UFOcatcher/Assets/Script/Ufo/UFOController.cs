@@ -232,7 +232,7 @@ public class UFOController : MonoBehaviour
 	void UpdateRotation(Vector2 _input)
 	{
 		Quaternion joystickWantAngle_Euler = Quaternion.Euler(new Vector3(_input.y, 0, -_input.x) * 10.0f) * initialUFORotation;
-		_ufoMesh.transform.localRotation = Quaternion.Lerp(_ufoMesh.transform.localRotation, joystickWantAngle_Euler, 0.2f);
+		_ufoMesh.transform.localRotation = Quaternion.Lerp(_ufoMesh.transform.localRotation, joystickWantAngle_Euler, Time.deltaTime * 5.0f);
 	}
 
 
