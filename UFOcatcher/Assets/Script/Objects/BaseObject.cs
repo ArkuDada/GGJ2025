@@ -119,7 +119,8 @@ public class BaseObject : MonoBehaviour
 		if (other.CompareTag("FallPlane"))
 		{
 			_bubble.SetActive(false);
-			_meshRenderer.material = _downMaterial;
+			// Temp: Disabled by Da
+			// _meshRenderer.material = _downMaterial;
 			_rigidbody.useGravity = true;
 			_rigidbody.linearVelocity = Vector3.zero;
 			State = ObjectState.Down;
