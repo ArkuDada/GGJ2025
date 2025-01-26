@@ -1,8 +1,13 @@
+using NUnit.Framework;
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class CreditUI : MonoBehaviour
 {
     [SerializeField] private GameObject pauseMenuUI;
+
+    [SerializeField] private List<GameObject> Objects = new List<GameObject>();
 
     GameState lastgameState;
 
@@ -26,6 +31,11 @@ public class CreditUI : MonoBehaviour
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f; // Freeze game time
 
+        foreach (var gameObj in Objects)
+        {
+            gameObj.SetActive(false);
+        }
+
 
         if (GameUtility.GameManagerExists())
         {
@@ -39,6 +49,11 @@ public class CreditUI : MonoBehaviour
         isPaused = false;
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f; // Resume game time
+        
+        foreach (var gameObj in Objects)
+        {
+            gameObj.SetActive(true);
+        }
 
         if (GameUtility.GameManagerExists())
         {

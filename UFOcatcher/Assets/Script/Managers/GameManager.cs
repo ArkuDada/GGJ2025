@@ -27,24 +27,29 @@ public class GameManager : MonoBehaviour
     // Add your game-related variables
     [SerializeField]
     ScoreManager scoreManager;
+
     public ScoreManager ScoreManager => scoreManager;
 
     [SerializeField]
     TimeManager timeManager;
+
     public TimeManager TimeManager => timeManager;
 
     [SerializeField]
     FeverMeterManager feverMeterManager;
+
     public FeverMeterManager FeverMeterManager => feverMeterManager;
 
     [FormerlySerializedAs("acidRainSpawner")]
     [SerializeField]
     DebrisSpawner debrisSpawner;
+
     public DebrisSpawner DebrisSpawner => debrisSpawner;
 
-	[SerializeField]
-	QuestManager questManager;
-	public QuestManager QuestManager => questManager;
+    [SerializeField]
+    QuestManager questManager;
+
+    public QuestManager QuestManager => questManager;
 
     [SerializeField]
     GameObject startUI;
@@ -57,7 +62,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null)
+        if(Instance == null)
         {
             Instance = this;
         }
@@ -79,7 +84,7 @@ public class GameManager : MonoBehaviour
     {
         state = newState;
 
-        if (state == GameState.Start)
+        if(state == GameState.Start)
         {
             startUI.SetActive(true);
             Time.timeScale = 0;
@@ -88,92 +93,82 @@ public class GameManager : MonoBehaviour
             timeManager.ResetTimer();
             scoreManager.ResetScore();
         }
-        else if (state == GameState.Tutorial) 
+        else if(state == GameState.Tutorial)
         {
             startUI.SetActive(false);
             tutorialUI.SetActive(true);
         }
-        else if (state == GameState.Prepare)
+        else if(state == GameState.Prepare)
         {
             tutorialUI.SetActive(false);
             startUI.SetActive(false);
             Time.timeScale = 1;
         }
-        else if (state == GameState.Play)
+        else if(state == GameState.Play)
         {
             debrisSpawner.StartSpawning();
             timeManager.ResumeTimer();
         }
-        else if (state == GameState.Pause)
+        else if(state == GameState.Pause)
         {
             timeManager.PauseTimer();
         }
-        else if (state == GameState.GameOver)
+        else if(state == GameState.GameOver)
         {
-
-            debrisSpawner.StopSpawning();
-            scoreManager.SaveHighScore();
-            Time.timeScale = 0;
-            endUI.SetActive(true);
+            StartCoroutine(EndSequence());
         }
-        else if (state == GameState.Pause)
-        {
-            timeManager.PauseTimer();
-        }
+       
     }
-    
+
     private IEnumerator EndSequence()
     {
         debrisSpawner.StopSpawning();
         scoreManager.SaveHighScore();
-
+        Time.timeScale = 0;
+        
         var ufo = GameObject.FindGameObjectWithTag("Player").GetComponent<UFOController>();
         ufo.IsGoAway = true;
-        
-        yield return new WaitForSeconds(3);
 
-        Time.timeScale = 0;
+        yield return new WaitForSecondsRealtime(3);
+
         endUI.SetActive(true);
     }
 
     private void Update()
     {
-        if (state == GameState.Start)
+        if(state == GameState.Start)
         {
-            if (Input.anyKeyDown)
+            if(Input.anyKeyDown)
             {
                 ChangeGameplayState(GameState.Tutorial);
             }
         }
-        else if (state == GameState.Tutorial) 
+        else if(state == GameState.Tutorial)
         {
-            if (Input.anyKeyDown)
+            if(Input.anyKeyDown)
             {
                 ChangeGameplayState(GameState.Prepare);
             }
         }
-        else if (state == GameState.Prepare)
+        else if(state == GameState.Prepare)
         {
             ChangeGameplayState(GameState.Play);
         }
         else
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if(Input.GetKeyDown(KeyCode.Escape))
             {
-                if (state == GameState.Play)
+                if(state == GameState.Play)
                 {
                     ChangeGameplayState(GameState.Pause);
                 }
-                else if (state == GameState.Pause)
+                else if(state == GameState.Pause)
                 {
                     ChangeGameplayState(GameState.Play);
                 }
             }
-
         }
     }
 
     // You can add more game logic and features as needed
-
-
 }

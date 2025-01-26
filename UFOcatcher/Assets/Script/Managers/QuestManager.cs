@@ -60,15 +60,14 @@ public class QuestManager : MonoBehaviour
 
 		for (int i = 0; i < 4; i++)
 		{
-			yield return new WaitForSeconds(plopTime);
 			arcade.UnsetButtonIcon(i);
-			arcade.SetBorderFill(i, 0);
 		}
 
 		for (int i = 0; i < ObjectsCollected.Count; i++)
 		{
 			yield return new WaitForSeconds(plopTime);
 			arcade.SetButtonIcon(i, CurrentQuest.objects[i]);
+			arcade.SetBorderFill(i, 0);
 		}
 
 		UpdateQuestUI();
@@ -87,7 +86,7 @@ public class QuestManager : MonoBehaviour
 	{
 		SoundManager.instance.PlaySFX("Quest Complete");
 		scoreManager.CompletedQuest();
-		StartCoroutine(GameObject.Find("mesh_arcade_03").GetComponent<ArcadeScreenMask>().AnimateProgress());
+		StartCoroutine(GameObject.Find("MainArcadeScreen").GetComponent<ArcadeScreenMask>().AnimateProgress());
 
 		yield return new WaitForSeconds(blinkTime);
 

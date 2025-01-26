@@ -310,6 +310,22 @@ PrefabInstance:
       propertyPath: pauseMenuUI
       value: 
       objectReference: {fileID: 1386889281}
+    - target: {fileID: 4726911544486159777, guid: 4762b48625c143145b6535442cc71860, type: 3}
+      propertyPath: Objects.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4726911544486159777, guid: 4762b48625c143145b6535442cc71860, type: 3}
+      propertyPath: 'Objects.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1387047165}
+    - target: {fileID: 4726911544486159777, guid: 4762b48625c143145b6535442cc71860, type: 3}
+      propertyPath: 'Objects.Array.data[1]'
+      value: 
+      objectReference: {fileID: 551008542}
+    - target: {fileID: 4726911544486159777, guid: 4762b48625c143145b6535442cc71860, type: 3}
+      propertyPath: 'Objects.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1889142967}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 5665127966077152263, guid: 4762b48625c143145b6535442cc71860, type: 3}
@@ -459,6 +475,7 @@ GameObject:
   - component: {fileID: 330585547}
   - component: {fileID: 330585548}
   - component: {fileID: 330585549}
+  - component: {fileID: 330585550}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -619,6 +636,21 @@ MonoBehaviour:
   maxFocusDistance: 5
   volumeProfile: {fileID: 11400000, guid: 5459f5b5b3ff4c1489b30a69cac1747a, type: 2}
   UFOPos: {fileID: 1357632547}
+--- !u!114 &330585550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330585543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 595720dd9ecd83a4abaaaaea245b5995, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakeDuration: 1
+  shakeMagnitude: 0.25
+  duration: 0.3
 --- !u!1001 &390989559
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -876,6 +908,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &551008542 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5254148148586725327, guid: 4762b48625c143145b6535442cc71860, type: 3}
+  m_PrefabInstance: {fileID: 108854233}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1351,6 +1388,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CreditsCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 5015168995110598341, guid: ebc37eb00057ba947824e57fc36c45af, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1360,6 +1401,11 @@ PrefabInstance:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5015168995110598341, guid: ebc37eb00057ba947824e57fc36c45af, type: 3}
   m_PrefabInstance: {fileID: 1386889280}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1387047165 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2500114943612386884, guid: 4762b48625c143145b6535442cc71860, type: 3}
+  m_PrefabInstance: {fileID: 108854233}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1441587710
 GameObject:
@@ -1679,6 +1725,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1873651062}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1889142967 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3244890636710115823, guid: 4762b48625c143145b6535442cc71860, type: 3}
+  m_PrefabInstance: {fileID: 108854233}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2024966172
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2162,7 +2213,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6344772624607999088, guid: 649acd1005fcd9b40bd200ca333fbdfd, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 1.19
       objectReference: {fileID: 0}
     - target: {fileID: 6344772624607999088, guid: 649acd1005fcd9b40bd200ca333fbdfd, type: 3}
       propertyPath: m_LocalRotation.w
