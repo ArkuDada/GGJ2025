@@ -60,15 +60,14 @@ public class QuestManager : MonoBehaviour
 
 		for (int i = 0; i < 4; i++)
 		{
-			yield return new WaitForSeconds(plopTime);
 			arcade.UnsetButtonIcon(i);
-			arcade.SetBorderFill(i, 0);
 		}
 
 		for (int i = 0; i < ObjectsCollected.Count; i++)
 		{
 			yield return new WaitForSeconds(plopTime);
 			arcade.SetButtonIcon(i, CurrentQuest.objects[i]);
+			arcade.SetBorderFill(i, 0);
 		}
 
 		UpdateQuestUI();

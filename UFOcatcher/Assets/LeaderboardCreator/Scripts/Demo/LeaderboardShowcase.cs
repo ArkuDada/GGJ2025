@@ -156,7 +156,10 @@ namespace Dan.Demo
 
         public void Submit()
         {
-            Leaderboards.DITGameJam2025Leaderboard.UploadNewEntry(_playerUsernameInput.text, _playerScore, Callback, ErrorCallback);
+            if (_playerUsernameInput.text != "") 
+            {
+                Leaderboards.DITGameJam2025Leaderboard.UploadNewEntry(_playerUsernameInput.text, _playerScore, Callback, ErrorCallback);
+            }
         }
         
         public void DeleteEntry()
