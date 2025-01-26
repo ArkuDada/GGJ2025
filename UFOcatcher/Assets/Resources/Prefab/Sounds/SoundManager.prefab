@@ -67,6 +67,16 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 45df7685450406146aa2a7ac00a6dfc2, type: 3}
   - name: Wood Crush
     clip: {fileID: 8300000, guid: 58df962796078344d9f5c0c592f4a5f1, type: 3}
+  - name: Bubble Pop
+    clip: {fileID: 8300000, guid: 3a51752612d21494b9366f4fb6074479, type: 3}
+  - name: Cow Eat
+    clip: {fileID: 8300000, guid: ed59f1ae50dca054ca89b402202b1b27, type: 3}
+  - name: Meteor Start
+    clip: {fileID: 8300000, guid: 0dfb72c666dd60b45af1aa0edf67ae4f, type: 3}
+  - name: Space Junk Explosion
+    clip: {fileID: 8300000, guid: e8af612ee7bf81946837d7e484937146, type: 3}
+  - name: Wheat Spawn
+    clip: {fileID: 8300000, guid: 9b74cddfa21b2d84bb044cd04401ba94, type: 3}
   backgroundMusic: {fileID: 0}
   backgroundGameplayMusic: {fileID: 0}
   backgroundMenu: {fileID: 0}
