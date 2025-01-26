@@ -58,6 +58,11 @@ public class QuestManager : MonoBehaviour
 			ObjectsCollected.Add(0);
 		}
 
+		for (int i = 0; i < 4; i++)
+		{
+			arcade.SetButtonIcon(i, CurrentQuest.objects[i]);
+		}
+
 		for (int i = 0; i < ObjectsCollected.Count; i++)
 		{
 			yield return new WaitForSeconds(plopTime);
@@ -115,8 +120,6 @@ public class QuestManager : MonoBehaviour
 	// Mark an object as collected if it's on the current quest's list.
 	public void CollectedObject(BaseObject objectCollected)
 	{
-		int points = objectCollected.GetScore();
-
 		for (int i = 0; i < CurrentQuest.objects.Count; ++i)
 		{
 			if (CurrentQuest.objects[i] == objectCollected.Type && ObjectsCollected[i] < CurrentQuest.quantities[i])
@@ -134,7 +137,7 @@ public class QuestManager : MonoBehaviour
 					UpdateQuestUI();
 				}
 				SoundManager.instance.PlaySFX("Collect Correct");
-				scoreManager.IncrementScore(points);
+				scoreManager.IncrementScore(4000);
 
 				GameObject newParticles = Instantiate(correctObjectParticles);
 				Vector3 worldToMainCameraPos = GameObject.FindWithTag("Player").transform.position - GameObject.Find("Main Camera").transform.position;
@@ -179,9 +182,9 @@ public class QuestManager : MonoBehaviour
 			}
 		}
 
-		// This object wasn't correct; Decrease score!
+		// This object wasn't correct
 		SoundManager.instance.PlaySFX("Collect Wrong");
-		scoreManager.DecrementScore(points);
+		scoreManager.IncrementScore(1000);
 		objectCollected.DespawnObject();
 	}
 }
