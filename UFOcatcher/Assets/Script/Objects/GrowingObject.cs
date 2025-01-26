@@ -23,6 +23,8 @@ public class GrowingObject : BaseObject
 
     protected override void Update()
     {
+        base.Update();
+        
         if(!doGrow) return;
 
         if(_growthTimer < _maxGrowth && State == ObjectState.Grounded)
@@ -44,7 +46,7 @@ public class GrowingObject : BaseObject
             {
                 transform.localScale = Vector3.Lerp(_startScale, _endScale, t);
 
-                if(t > 0.99f)
+                if(t > 0.99f && !ObjectSpawner.Instance.IsLimitReach(Objects.ObjectType.Chicken))
                 {
                     eggData.Hatch();
                 }

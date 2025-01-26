@@ -17,6 +17,8 @@ public class DebrisSpawner : MonoBehaviour
 
 	public const float DEFAULT_SPAWN_RATE = 2f;
 
+    public float spawnWaitTime = 3;
+
 	// Spawn rate (seconds between spawns)
 	[SerializeField]
     private float spawnRate = DEFAULT_SPAWN_RATE;
@@ -43,7 +45,7 @@ public class DebrisSpawner : MonoBehaviour
     // Start the spawning process
     public void StartSpawning()
     {
-        InvokeRepeating(nameof(SpawnAcidRain), 5f, spawnRate);
+        InvokeRepeating(nameof(SpawnAcidRain), spawnWaitTime, spawnRate);
     }
 
     // Stop the spawning process
