@@ -62,6 +62,9 @@ public class GameManager : MonoSingleton<GameManager>
             startUI.SetActive(true);
             Time.timeScale = 0;
             endUI.SetActive(false);
+            feverMeterManager.Init();
+            timeManager.ResetTimer();
+            scoreManager.ResetScore();
         }
         else if (state == GameState.Prepare)
         {
