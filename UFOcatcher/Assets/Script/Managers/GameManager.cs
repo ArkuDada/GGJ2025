@@ -97,6 +97,7 @@ public class GameManager : MonoBehaviour
         } 
         else if (state == GameState.GameOver) 
         {
+
             debrisSpawner.StopSpawning();
             scoreManager.SaveHighScore();
             Time.timeScale = 0;
