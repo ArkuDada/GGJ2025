@@ -72,8 +72,9 @@ public class DebrisSpawner : MonoBehaviour
 
         // Randomly determine the spawn position within the bounds
         float randomX = Random.Range(minBound.x, maxBound.x);
-        float randomY = Random.Range(minBound.y, maxBound.y);
-        Vector3 spawnPosition = new Vector3(randomX, _spawnMesh.transform.position.y, randomY);
+        float randomZ = Random.Range(minBound.z, maxBound.z);
+        // Debug.Log($"{randomX} {randomZ}");
+        Vector3 spawnPosition = new Vector3(randomX, _spawnMesh.transform.position.y, randomZ);
 
         // Instantiate the AcidRain prefab at the spawn position
         Instantiate(acidRainPrefab, spawnPosition, Quaternion.identity);
