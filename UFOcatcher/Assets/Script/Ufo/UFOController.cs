@@ -1,9 +1,8 @@
 using System;
 using System.Linq;
-using System.Xml.Linq;
-using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class UFOController : MonoBehaviour
 {
@@ -19,12 +18,34 @@ public class UFOController : MonoBehaviour
     public GameObject _beam;
 
     [SerializeField]
-    AudioSource _source;
+    private AudioSource _source;
+
+    [SerializeField]
+    private Image energyBar;
+
+    [SerializeField]
+    private float currentEnergy = 1.0f; // Initial energy set to 100%
+
+    [SerializeField]
+    private float energyDepletionRate = 0.1f; // Energy depletion per second when beam is active
+
+    [SerializeField]
+    private float energyRegenerationRate = 0.05f; // Energy regeneration per second when beam is inactive
+
+    [SerializeField]
+    private float energyThreshold = 0.1f; // Minimum energy required to activate the beam
+
+    [SerializeField]
+    private float cooldownDuration = 2.0f; // Cooldown duration after energy is depleted
+
+    private bool isCooldown = false;
+    private float cooldownTimer = 0.0f;
 
     void Start()
     {
         _screenBoundsMin = new Vector2(-_screenBounds, -_screenBounds);
         _screenBoundsMax = new Vector2(_screenBounds, _screenBounds);
+        UpdateEnergyBar();
     }
 
     void Update()
@@ -37,11 +58,14 @@ public class UFOController : MonoBehaviour
         transform.position = new Vector3(Mathf.Clamp(transform.position.x, _screenBoundsMin.x, _screenBoundsMax.x),
             transform.position.y,
             Mathf.Clamp(transform.position.z, _screenBoundsMin.y, _screenBoundsMax.y));
-        
-        if(_beamActive && Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 999,
+
+        // Handle energy depletion, regeneration, and cooldown
+        HandleEnergy();
+
+        if (_beamActive && Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 999,
                Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore))
         {
-            if(hit.transform.TryGetComponent<BaseObject>(out var objectHit) &&
+            if (hit.transform.TryGetComponent<BaseObject>(out var objectHit) &&
                objectHit.State == BaseObject.ObjectState.Grounded)
             {
                 objectHit.BubbleLift();
@@ -50,7 +74,7 @@ public class UFOController : MonoBehaviour
             {
                 var sphereHit = Physics.SphereCastAll(hit.point, 1f, Vector3.down, 999);
                 hit = sphereHit.OrderBy(o => Vector3.Distance(hit.point, o.transform.position)).First();
-                if(hit.transform.TryGetComponent<BaseObject>(out objectHit) &&
+                if (hit.transform.TryGetComponent<BaseObject>(out objectHit) &&
                    objectHit.State == BaseObject.ObjectState.Grounded)
                 {
                     objectHit.BubbleLift();
@@ -61,7 +85,7 @@ public class UFOController : MonoBehaviour
 
     public void ActivateSkill(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && currentEnergy > energyThreshold && !isCooldown)
         {
             _beamActive = true;
             _source.Play();
@@ -74,9 +98,61 @@ public class UFOController : MonoBehaviour
         _beam.SetActive(_beamActive);
     }
 
+    private void HandleEnergy()
+    {
+        if (isCooldown)
+        {
+            cooldownTimer -= Time.deltaTime;
+            if (cooldownTimer <= 0.0f)
+            {
+                isCooldown = false;
+            }
+        }
+        else if (_beamActive)
+        {
+            currentEnergy -= energyDepletionRate * Time.deltaTime;
+            currentEnergy = Mathf.Clamp01(currentEnergy);
+
+            // Trigger cooldown if energy is depleted
+            if (currentEnergy <= 0f)
+            {
+                _beamActive = false;
+                _beam.SetActive(false);
+                _source.Stop();
+                isCooldown = true;
+                cooldownTimer = cooldownDuration;
+            }
+        }
+        else
+        {
+            currentEnergy += energyRegenerationRate * Time.deltaTime;
+            currentEnergy = Mathf.Clamp01(currentEnergy);
+        }
+
+        UpdateEnergyBar();
+    }
+
+    private void UpdateEnergyBar()
+    {
+        if (energyBar != null)
+        {
+            if (isCooldown)
+            {
+                energyBar.color = Color.gray;
+                energyBar.fillAmount = Mathf.Clamp01(1 - (cooldownTimer / cooldownDuration));
+            }
+            else 
+            {
+                energyBar.color = Color.yellow;
+                energyBar.fillAmount = currentEnergy;
+            }
+
+        }
+    }
+
     private void OnCollisionEnter(Collision other)
     {
-        if(other.gameObject.TryGetComponent<BaseObject>(out var baseObject))
+        if (other.gameObject.TryGetComponent<BaseObject>(out var baseObject))
         {
             GameManager.Instance.QuestManager.CollectedObject(baseObject);
 
