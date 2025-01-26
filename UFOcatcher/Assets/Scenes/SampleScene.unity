@@ -1415,6 +1415,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4834649255885270418, guid: 2ecfe325524964a44aa225efcb59d6e4, type: 3}
+      propertyPath: earlierSpawnRate
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834649255885270418, guid: 2ecfe325524964a44aa225efcb59d6e4, type: 3}
+      propertyPath: apocalypseSpawnRate
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 5013343093440979512, guid: 2ecfe325524964a44aa225efcb59d6e4, type: 3}
       propertyPath: _gridFloor
       value: 
@@ -1453,7 +1461,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5013343093440979512, guid: 2ecfe325524964a44aa225efcb59d6e4, type: 3}
       propertyPath: spawnLimits.Array.data[0].limit
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5013343093440979512, guid: 2ecfe325524964a44aa225efcb59d6e4, type: 3}
       propertyPath: spawnLimits.Array.data[1].limit
