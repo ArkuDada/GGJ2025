@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Serialization;
@@ -33,10 +34,12 @@ public class BaseObject : MonoBehaviour
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
 	void Start()
 	{
-		if (_bubble == null) {
+		if (_bubble == null)
+		{
 			// Bubble hasn't been set, attempt to auto-find it
 			Transform bubbleTransform = transform.Find("Bubble");
-			if (bubbleTransform != null) {
+			if (bubbleTransform != null)
+			{
 				_bubble = bubbleTransform.gameObject;
 			}
 		}
@@ -82,12 +85,31 @@ public class BaseObject : MonoBehaviour
 	// Encapsulate in a bubble
 	public void BubbleLift()
 	{
+		Debug.Log(Type);
+		switch (Type)
+		{
+			case Objects.ObjectType.Wheat:
+				var wheatData = GetComponent<WheatData>();
+				if (wheatData.beingEaten)
+					wheatData.cowEating.StopEating();
+				break;
+			case Objects.ObjectType.Cow:
+				var cowData = GetComponent<CowData>();
+				Debug.Log(cowData.isEating);
+				if (cowData.isEating)
+					GetComponent<CowData>().StopEating();
+				break;
+			default:
+				break;
+		}
+
 		_bubble.SetActive(true);
 		_rigidbody.useGravity = false;
 		_rigidbody.linearVelocity = Vector3.up * floatSpeed;
 		State = ObjectState.Up;
 
-		if (TryGetComponent<MoveableObject>(out var moveableObject)) {
+		if (TryGetComponent<MoveableObject>(out var moveableObject))
+		{
 			moveableObject.enabled = false;
 		}
 	}
@@ -104,7 +126,26 @@ public class BaseObject : MonoBehaviour
 		}
 	}
 
-	public void DestroyObject() {
+	// Destroy object in a destructive manner (i.e.: Explosive), if this object supports it
+	public void DestroyObject()
+	{
+		switch (Type)
+		{
+			case Objects.ObjectType.Box:
+				GameObject boxParticles = Instantiate(GameObject.FindGameObjectWithTag("FloorPlane").transform.Find("BoxExplosionParticle").gameObject);
+				boxParticles.transform.position = transform.position;
+				boxParticles.SetActive(true);
+				Destroy(boxParticles, 5);
+				break;
+			default:
+				break;
+		}
+		DespawnObject();
+	}
+
+	// Destroy the object in a quiet manner (disappears)
+	public void DespawnObject()
+	{
 		Destroy(gameObject);
 	}
 }

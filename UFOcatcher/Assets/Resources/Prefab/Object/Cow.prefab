@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 3271902003539458335}
   - component: {fileID: -2253940477907143926}
   - component: {fileID: 7528321089155915501}
-  m_Layer: 0
+  - component: {fileID: 9090423626509758196}
+  m_Layer: 6
   m_Name: Cow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +55,7 @@ NavMeshAgent:
   m_AngularSpeed: 240
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
+  m_AutoBraking: 0
   m_AutoRepath: 1
   m_Height: 2
   m_BaseOffset: 0.5
@@ -68,7 +69,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2997598876189070964}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 99
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -83,7 +84,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -139,6 +140,19 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &9090423626509758196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2997598876189070964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b823193220c69fe4a9255962f5133826, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isEating: 0
 --- !u!1001 &1452167572036460110
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -202,6 +216,10 @@ PrefabInstance:
     - target: {fileID: 5413834431825017329, guid: 2c970a4f606c8bf43add71d2613f5efa, type: 3}
       propertyPath: m_Name
       value: Bubble
+      objectReference: {fileID: 0}
+    - target: {fileID: 5413834431825017329, guid: 2c970a4f606c8bf43add71d2613f5efa, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -285,6 +303,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 861aff8addaafa54185f8116876874b4, type: 3}
       propertyPath: m_Name
       value: Model
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 861aff8addaafa54185f8116876874b4, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
