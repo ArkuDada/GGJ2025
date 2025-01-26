@@ -572,42 +572,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1799217255018081537, guid: 9feed455639d0034a9fd71236a80e8db, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1799217255018081537, guid: 9feed455639d0034a9fd71236a80e8db, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 6.25
-      objectReference: {fileID: 0}
     - target: {fileID: 4043787970485634018, guid: 9feed455639d0034a9fd71236a80e8db, type: 3}
       propertyPath: m_Name
       value: Scene
       objectReference: {fileID: 0}
-    - target: {fileID: 4802971652170398158, guid: 9feed455639d0034a9fd71236a80e8db, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -12.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 4802971652170398158, guid: 9feed455639d0034a9fd71236a80e8db, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4853558663858630451, guid: 9feed455639d0034a9fd71236a80e8db, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5855501554632461447, guid: 9feed455639d0034a9fd71236a80e8db, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 5855501554632461447, guid: 9feed455639d0034a9fd71236a80e8db, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6374980230457394785, guid: 9feed455639d0034a9fd71236a80e8db, type: 3}
-      propertyPath: m_NavMeshData
-      value: 
-      objectReference: {fileID: 23800000, guid: 8c7893fdcbc21154894f12478f98334e, type: 2}
     - target: {fileID: 9106318690406811857, guid: 9feed455639d0034a9fd71236a80e8db, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6
@@ -910,6 +878,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5521825811582994737, guid: c02108206593a9347b5b78568bef5669, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 9.264843
+      objectReference: {fileID: 0}
+    - target: {fileID: 5521825811582994737, guid: c02108206593a9347b5b78568bef5669, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 8.998403e+15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5521825811582994737, guid: c02108206593a9347b5b78568bef5669, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: -173.31706
+      objectReference: {fileID: 0}
+    - target: {fileID: 5521825811582994737, guid: c02108206593a9347b5b78568bef5669, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 165.72
+      objectReference: {fileID: 0}
     - target: {fileID: 6051445141014579762, guid: c02108206593a9347b5b78568bef5669, type: 3}
       propertyPath: m_LocalPosition.x
       value: -202.17
