@@ -731,10 +731,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Scene
       objectReference: {fileID: 0}
-    - target: {fileID: 4277715472064804271, guid: 9feed455639d0034a9fd71236a80e8db, type: 3}
-      propertyPath: gameManager
-      value: 
-      objectReference: {fileID: 189588558}
     - target: {fileID: 9106318690406811857, guid: 9feed455639d0034a9fd71236a80e8db, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6
@@ -1029,6 +1025,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &857305697 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5834027325306647424, guid: 9feed455639d0034a9fd71236a80e8db, type: 3}
+  m_PrefabInstance: {fileID: 390989559}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ee2d3129f0abc5408592d6b8ca1c836, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &979994121
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1408,13 +1415,61 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 912741156370863365, guid: 2ecfe325524964a44aa225efcb59d6e4, type: 3}
-      propertyPath: startingCountdownTime
-      value: 90
+    - target: {fileID: 5013343093440979512, guid: 2ecfe325524964a44aa225efcb59d6e4, type: 3}
+      propertyPath: _gridFloor
+      value: 
+      objectReference: {fileID: 857305697}
+    - target: {fileID: 5013343093440979512, guid: 2ecfe325524964a44aa225efcb59d6e4, type: 3}
+      propertyPath: spawnLimits.Array.size
+      value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 4834649255885270418, guid: 2ecfe325524964a44aa225efcb59d6e4, type: 3}
-      propertyPath: feverDecreaseRate
-      value: 20
+    - target: {fileID: 5013343093440979512, guid: 2ecfe325524964a44aa225efcb59d6e4, type: 3}
+      propertyPath: _objectPrefabs.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5013343093440979512, guid: 2ecfe325524964a44aa225efcb59d6e4, type: 3}
+      propertyPath: '_objectPrefabs.Array.data[3]'
+      value: 
+      objectReference: {fileID: 2997598876189070964, guid: 778d18a17f93a774b817276d04a82e4e, type: 3}
+    - target: {fileID: 5013343093440979512, guid: 2ecfe325524964a44aa225efcb59d6e4, type: 3}
+      propertyPath: '_objectPrefabs.Array.data[4]'
+      value: 
+      objectReference: {fileID: 7340858882268929506, guid: eb051491eb4818247aa8ed75193521db, type: 3}
+    - target: {fileID: 5013343093440979512, guid: 2ecfe325524964a44aa225efcb59d6e4, type: 3}
+      propertyPath: spawnLimits.Array.data[1].type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5013343093440979512, guid: 2ecfe325524964a44aa225efcb59d6e4, type: 3}
+      propertyPath: spawnLimits.Array.data[2].type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5013343093440979512, guid: 2ecfe325524964a44aa225efcb59d6e4, type: 3}
+      propertyPath: spawnLimits.Array.data[3].type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5013343093440979512, guid: 2ecfe325524964a44aa225efcb59d6e4, type: 3}
+      propertyPath: spawnLimits.Array.data[4].type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5013343093440979512, guid: 2ecfe325524964a44aa225efcb59d6e4, type: 3}
+      propertyPath: spawnLimits.Array.data[0].limit
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5013343093440979512, guid: 2ecfe325524964a44aa225efcb59d6e4, type: 3}
+      propertyPath: spawnLimits.Array.data[1].limit
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5013343093440979512, guid: 2ecfe325524964a44aa225efcb59d6e4, type: 3}
+      propertyPath: spawnLimits.Array.data[2].limit
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5013343093440979512, guid: 2ecfe325524964a44aa225efcb59d6e4, type: 3}
+      propertyPath: spawnLimits.Array.data[3].limit
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5013343093440979512, guid: 2ecfe325524964a44aa225efcb59d6e4, type: 3}
+      propertyPath: spawnLimits.Array.data[4].limit
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5259536363909703010, guid: 2ecfe325524964a44aa225efcb59d6e4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1908,6 +1963,10 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 189588558}
+    - target: {fileID: 2674814957567462654, guid: 649acd1005fcd9b40bd200ca333fbdfd, type: 3}
+      propertyPath: _screenBounds
+      value: 5.25
+      objectReference: {fileID: 0}
     - target: {fileID: 3664813857998508710, guid: 649acd1005fcd9b40bd200ca333fbdfd, type: 3}
       propertyPath: m_Radius
       value: 1

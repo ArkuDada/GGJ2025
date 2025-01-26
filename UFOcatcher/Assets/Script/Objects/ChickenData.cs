@@ -20,13 +20,14 @@ public class ChickenData : MonoBehaviour
         if(timer >= layEggInterval)
         {
             timer = 0.0f;
-            if(!ObjectSpawner.Instance.IsReachedMaxObjectCount) LayEgg();
+            if(!ObjectSpawner.Instance.IsReachedMaxObjectCount && !ObjectSpawner.Instance.IsLimitReach(Objects.ObjectType.Egg)) LayEgg();
         }
     }
 
     public void LayEgg()
     {
         var egg = Instantiate(eggPrefab, transform.position, Quaternion.identity);
+        SoundManager.instance.PlaySFX("Egg Spawn");
 
         var rb = egg.GetComponent<Rigidbody>();
 
