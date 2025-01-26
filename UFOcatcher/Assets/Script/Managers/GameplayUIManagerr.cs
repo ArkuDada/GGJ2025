@@ -14,10 +14,13 @@ namespace Juve
 
         [SerializeField]
         Slider feverMeterUI;
+
+        [SerializeField]
+        ScoreFeedback scoreFeedbackPrefab;
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
-
+            GameManager.Instance.ScoreManager.OnScoreChanged += SpawnScoreFeedback;
         }
 
         // Update is called once per frame
@@ -39,7 +42,20 @@ namespace Juve
 
             if (scoreUI != null)
             {
-                scoreUI.text = GameManager.Instance.ScoreManager.GetScore().ToString("000000");
+                scoreUI.text = GameManager.Instance.ScoreManager.GetScore().ToString("00000");
+            }
+        }
+
+        void SpawnScoreFeedback(int scoreIncrease)
+        {
+            if (scoreFeedbackPrefab != null && scoreUI != null)
+            {
+                // Instantiate the score feedback prefab at the position of scoreUI
+                Vector3 spawnPosition = scoreUI.transform.position + new Vector3(5.0f,0.0f,0.0f);
+                ScoreFeedback feedbackInstance = Instantiate(scoreFeedbackPrefab, spawnPosition, Quaternion.identity, this.transform);
+
+                // Optionally, initialize the feedback with the score increase value
+                feedbackInstance.SetScore(scoreIncrease);
             }
         }
     }

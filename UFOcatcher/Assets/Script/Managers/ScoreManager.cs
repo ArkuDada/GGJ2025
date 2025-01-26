@@ -1,7 +1,10 @@
+using System;
 using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
+    public event Action<int> OnScoreChanged;
+
     // Variable to hold the current score
     private int score;
 
@@ -21,14 +24,27 @@ public class ScoreManager : MonoBehaviour
     // Function to increment the score
     public void IncrementScore(int points)
     {
+
+        if (points == 0) 
+        {
+            return;
+        }
+
         score += points;
+        OnScoreChanged?.Invoke(points);
         DisplayScore();
     }
 
     // Function to decrement the score
     public void DecrementScore(int points)
     {
+        Debug.Log("de points: " + points);
+        if (points == 0)
+        {
+            return;
+        }
         score -= points;
+        OnScoreChanged?.Invoke(-points);
         DisplayScore();
     }
 

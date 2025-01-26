@@ -131,12 +131,13 @@ public class QuestManager : MonoBehaviour
                 {
                     UpdateQuestUI();
                 }
-
+                SoundManager.instance.PlaySFX("CollectCorrect");
                 scoreManager.IncrementScore(points);
 
                 return;
             }
 
+            SoundManager.instance.PlaySFX("CollectWrong");
             // We didn't collect the correct object
             break;
         }

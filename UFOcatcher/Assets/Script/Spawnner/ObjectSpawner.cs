@@ -57,6 +57,12 @@ public class ObjectSpawner : MonoSingleton<ObjectSpawner>
             case Objects.ObjectType.Wheat:
                 SoundManager.instance.PlaySFX("Wheat Spawn");
                 break;
+            case Objects.ObjectType.Egg:
+                SoundManager.instance.PlaySFX("Egg Spawn");
+                break;
+            case Objects.ObjectType.Chicken:
+                SoundManager.instance.PlaySFX("Chicken Spawn");
+                break;
 
             default:
                 break;
