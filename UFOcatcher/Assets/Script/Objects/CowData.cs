@@ -31,14 +31,16 @@ public class CowData : MonoBehaviour
 		}
 
 		Destroy(wheatEatingParticle);
-		moveableObject.ChooseNewDestination();
-		targetWheat.cowEating = null;
 		wheatEatingParticle = null;
 		if (targetWheat != null) 
 		{
+			targetWheat.cowEating = null;
+
             if (targetWheat.TryGetComponent(out Rigidbody rig))
                 rig.isKinematic = false;
         }
+
+		moveableObject.ChooseNewDestination();
 
 	}
 
