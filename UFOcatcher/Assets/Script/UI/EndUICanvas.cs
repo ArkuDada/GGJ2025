@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
+
 public class EndUICanvas : MonoBehaviour
 {
     [Header("UI Screens")]
@@ -9,10 +11,13 @@ public class EndUICanvas : MonoBehaviour
     public GameObject leaderboardScreen;
     public GameObject congratsScreen;
 
-
     [Header("Navigation Buttons")]
     public Button nextButton;
 
+    [Header("Input Actions")]
+    public InputActionAsset inputActions; // Reference your InputActionAsset here
+
+    private InputAction submitAction;
 
     private enum ScreenState
     {
@@ -33,6 +38,12 @@ public class EndUICanvas : MonoBehaviour
         {
             HandleNextButtonPress();
         });
+
+        // Get the "Submit" action from the input action asset
+        var uiActionMap = inputActions.FindActionMap("UI"); // Ensure this matches your action map name
+        submitAction = uiActionMap.FindAction("Submit"); // Ensure this matches your action name
+        submitAction.performed += ctx => HandleNextButtonPress();
+        submitAction.Enable();
     }
 
     private void HandleNextButtonPress()
@@ -89,5 +100,13 @@ public class EndUICanvas : MonoBehaviour
         highscoreScreen.SetActive(false);
         leaderboardScreen.SetActive(false);
         congratsScreen.SetActive(false);
+    }
+
+    private void OnDestroy()
+    {
+        if (submitAction != null)
+        {
+            submitAction.Disable();
+        }
     }
 }
