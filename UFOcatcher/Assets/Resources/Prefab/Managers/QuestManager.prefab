@@ -45,9 +45,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f479d1bef8d2434089ecf424824601d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  availableQuests:
-  - {fileID: 11400000, guid: 6b66b33da027ec3438df267cb5288352, type: 2}
-  tempQuestText: {fileID: 6302279074280759112}
+  availableRecipes: []
+  arcade: {fileID: 0}
+  correctObjectParticles: {fileID: 1231737767803462873, guid: 1dbdd679714a8dc4181249800d0284b4, type: 3}
+  bubbleMaterial: {fileID: 2100000, guid: a4a3b81dbbacc994d86d13adccbdb52b, type: 2}
+  scoreManager: {fileID: 0}
+  blinkTime: 0.25
+  plopTime: 0.15
 --- !u!1001 &6409164240413858719
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -150,14 +154,3 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4646819150456936542, guid: 19c22437e7328f342ae2e5b70b8bbce5, type: 3}
   m_PrefabInstance: {fileID: 6409164240413858719}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6302279074280759112 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1119106600974468311, guid: 19c22437e7328f342ae2e5b70b8bbce5, type: 3}
-  m_PrefabInstance: {fileID: 6409164240413858719}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
