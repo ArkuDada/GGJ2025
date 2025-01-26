@@ -61,7 +61,7 @@ public class UFOController : MonoBehaviour
 		{
 			GameManager.Instance.QuestManager.CollectedObject(baseObject);
 
-			baseObject.DestroyObject();
+			baseObject.DespawnObject();
 		}
 	}
 }

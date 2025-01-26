@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 3271902003539458335}
   - component: {fileID: -2253940477907143926}
   - component: {fileID: 1736926804117946684}
-  m_Layer: 0
+  - component: {fileID: -4628242004800905878}
+  m_Layer: 6
   m_Name: Cow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,6 +107,8 @@ MonoBehaviour:
   _bubble: {fileID: 6847423122982201279}
   floatSpeed: 2
   _BaseScore: 4
+  _upMaterial: {fileID: 0}
+  _downMaterial: {fileID: 0}
 --- !u!114 &-2253940477907143926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118,6 +121,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caa04bebdfa061c4dab9a2f8d45e0bb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _surface: {fileID: 0}
+  _base: {fileID: 0}
 --- !u!136 &1736926804117946684
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -141,6 +146,20 @@ CapsuleCollider:
   m_Height: 0
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-4628242004800905878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2997598876189070964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b823193220c69fe4a9255962f5133826, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetWheat: {fileID: 0}
+  wheatEatingParticle: {fileID: 0}
 --- !u!1001 &1409787541146127623
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -196,6 +215,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 2c8e053937231b245a4f7820d142126c, type: 3}
       propertyPath: m_Name
       value: MooMoo_Box
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2c8e053937231b245a4f7820d142126c, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2c8e053937231b245a4f7820d142126c, type: 3}
       propertyPath: m_IsActive
@@ -276,6 +299,10 @@ PrefabInstance:
       value: Bubble
       objectReference: {fileID: 0}
     - target: {fileID: 5413834431825017329, guid: 2c970a4f606c8bf43add71d2613f5efa, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5413834431825017329, guid: 2c970a4f606c8bf43add71d2613f5efa, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -349,6 +376,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 522523d95c6fbe147b2ee1b6c679ee0a, type: 3}
       propertyPath: m_Name
       value: MooMoo_UV
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 522523d95c6fbe147b2ee1b6c679ee0a, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 522523d95c6fbe147b2ee1b6c679ee0a, type: 3}
       propertyPath: m_IsActive
@@ -431,6 +462,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 861aff8addaafa54185f8116876874b4, type: 3}
       propertyPath: m_Name
       value: Model
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 861aff8addaafa54185f8116876874b4, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 861aff8addaafa54185f8116876874b4, type: 3}
       propertyPath: m_IsActive
