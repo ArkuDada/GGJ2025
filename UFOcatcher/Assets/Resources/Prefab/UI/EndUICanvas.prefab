@@ -331,7 +331,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8967842158570712589}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 34821521860202373}
+        m_TargetAssemblyTypeName: Dan.Demo.LeaderboardShowcase, Danqzq.LeaderboardCreator
+        m_MethodName: Submit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &710177960214139181
 GameObject:
   m_ObjectHideFlags: 0
@@ -2068,7 +2080,7 @@ RectTransform:
   m_GameObject: {fileID: 2521790398134236753}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 8.6014, y: 8.6014, z: 8.6014}
+  m_LocalScale: {x: 15, y: 15, z: 15}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6746880155755325514}
@@ -3054,10 +3066,6 @@ MonoBehaviour:
   highscoreScreen: {fileID: 1649480827340014542}
   leaderboardScreen: {fileID: 9045728472590769182}
   congratsScreen: {fileID: 1278071625980748707}
-  playerNameInput: {fileID: 0}
-  highscoreText: {fileID: 0}
-  leaderboardText: {fileID: 0}
-  congratsText: {fileID: 0}
   nextButton: {fileID: 997978176228888644}
 --- !u!1 &3551172289289453828
 GameObject:
@@ -3426,7 +3434,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8686628149405306244
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3528,20 +3536,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4318577587674921874}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Dan.LeaderboardCreator.Demo.LeaderboardShowcase,
-          Dan.LeaderboardCreator
-        m_MethodName: Submit
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &4387639100402670838
 GameObject:
   m_ObjectHideFlags: 0
