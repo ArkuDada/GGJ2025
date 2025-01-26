@@ -26,12 +26,17 @@ public class DepthOfFieldController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        SetFocus();
+        if(depthOfField.active)
+            SetFocus();
     }
 
     void SetFocus()
     {
-        depthOfField.focusDistance.value = Vector3.Distance(transform.position, new Vector3(UFOPos.transform.position.x, 2.5f, UFOPos.transform.position.z));
-        Debug.Log(depthOfField.focusDistance.value);
+        depthOfField.focusDistance.value = Vector3.Distance(transform.position, 0.5f * (UFOPos.transform.position + new Vector3(UFOPos.transform.position.x, 0.0f, UFOPos.transform.position.z)));
+    }
+
+    public void ToggleDepthOfField(bool active)
+    {
+        depthOfField.active = active;
     }
 }

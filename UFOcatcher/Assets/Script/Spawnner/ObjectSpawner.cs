@@ -87,6 +87,6 @@ public class ObjectSpawner : MonoBehaviour
         }
 
 
-        return (Objects.ObjectType)Random.Range(0, (int)Objects.ObjectType.Amongus);
+        return (Objects.ObjectType)Random.Range(0, (int)Objects.ObjectType.End);
     }
 }
