@@ -47,7 +47,8 @@ public class UFOController : MonoBehaviour
 		if (context.performed)
 		{
 			_beamActive = true;
-		}
+            SoundManager.instance.PlaySFX("Shoot Sound");
+        }
 		else if (context.canceled)
 		{
 			_beamActive = false;

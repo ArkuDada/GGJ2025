@@ -146,6 +146,12 @@ public class DebrisObject : MonoBehaviour
         lineRenderer.endColor = currentColor;
     }
 
+    void OnExplode() 
+    {
+        SoundManager.instance.PlaySFX("Space Junk Explosion");
+        Destroy(this.gameObject);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.TryGetComponent<UFOController>(out var ufoController))
@@ -154,11 +160,11 @@ public class DebrisObject : MonoBehaviour
             {
                 GameManager.Instance.ScoreManager.DecrementScore(decreaseScore);
             }
-            Destroy(this.gameObject);
+            OnExplode();
         }
         else if (other.gameObject.CompareTag("FloorPlane"))
         {
-            Destroy(this.gameObject);
+            OnExplode();
         }
     }
 }
