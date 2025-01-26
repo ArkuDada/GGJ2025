@@ -523,6 +523,10 @@ PrefabInstance:
       value: mesh_UFO_01
       objectReference: {fileID: 0}
     - target: {fileID: 2400143401217904245, guid: 5748833e0f24543d68756e4c4b982fe7, type: 3}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2400143401217904245, guid: 5748833e0f24543d68756e4c4b982fe7, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 942cc95425aab4d27b580fe211012388, type: 2}

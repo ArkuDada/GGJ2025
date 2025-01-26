@@ -67,7 +67,7 @@ public class BaseObject : MonoBehaviour
 
 	private void OnCollisionEnter(Collision other)
 	{
-		if (State != ObjectState.Grounded && other.gameObject.CompareTag("FloorPlane"))
+		if (State == ObjectState.Down && other.gameObject.CompareTag("FloorPlane"))
 		{
 			State = ObjectState.Grounded;
 
