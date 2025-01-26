@@ -91,7 +91,7 @@ MonoBehaviour:
   _spawnMesh: {fileID: 0}
   minBound: {x: 0, y: 0, z: 0}
   maxBound: {x: 0, y: 0, z: 0}
-  acidRainPrefab: {fileID: 3753691219509968611, guid: c5f81ecfb9b49684f92cdaf79523678a, type: 3}
+  acidRainPrefab: {fileID: 1766102823358082189, guid: 23884100817eeeb4eb204296310de719, type: 3}
   spawnRate: 2
 --- !u!1 &6362501516946846125
 GameObject:
