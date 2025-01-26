@@ -8,6 +8,8 @@ public class ScoreManager : MonoBehaviour
     // Variable to hold the high score
     private int highScore;
 
+    public UFOController ufo;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,20 +18,37 @@ public class ScoreManager : MonoBehaviour
 
         // Load the high score from PlayerPrefs, defaulting to 0 if not found
         highScore = PlayerPrefs.GetInt("HighScore", 0);
+
+        if (ufo == null) {
+            GameObject ufoGameObject = GameObject.Find("UFO");
+            if (ufoGameObject == null)
+                Debug.LogError("Failed to find UFO GameObject");
+            
+            ufo = ufoGameObject.GetComponent<UFOController>();
+        }
     }
 
     // Function to increment the score
     public void IncrementScore(int points)
     {
+        ufo.TriggerHappy();
         score += points;
         DisplayScore();
     }
 
-    // Function to decrement the score
-    public void DecrementScore(int points)
+	// Function to increment the score
+	public void CompletedQuest()
+	{
+		ufo.TriggerCelebration();
+		IncrementScore(1000); // Magic number: I asked designers for this number, and they said 1000 :)
+	}
+
+	// Function to decrement the score
+	public void DecrementScore(int points)
     {
+        ufo.TriggerSad();
         score -= points;
-        DisplayScore();
+		DisplayScore();
     }
 
     // Function to reset the score to zero
