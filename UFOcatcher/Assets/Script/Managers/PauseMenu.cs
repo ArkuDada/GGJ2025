@@ -6,17 +6,11 @@ using UnityEngine.InputSystem.LowLevel;
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private GameObject pauseMenuUI;
-    [SerializeField] private Button resumeButton;
-    [SerializeField] private Button quitButton;
 
     private bool isPaused = false;
 
     void Start()
     {
-        // Set up button listeners
-        resumeButton.onClick.AddListener(ResumeGame);
-        quitButton.onClick.AddListener(QuitGame);
-
         // Ensure the pause menu is hidden at start
         pauseMenuUI.SetActive(false);
     }

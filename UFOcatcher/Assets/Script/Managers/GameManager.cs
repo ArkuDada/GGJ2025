@@ -73,7 +73,7 @@ public class GameManager : MonoSingleton<GameManager>
         }
         else if (state == GameState.Pause)
         {
-            timeManager.StopTimer();
+            timeManager.PauseTimer();
         } 
         else if (state == GameState.GameOver) 
         {
