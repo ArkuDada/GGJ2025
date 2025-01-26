@@ -13,7 +13,7 @@ public class DebrisObject : MonoBehaviour
     [SerializeField] float fallSpeed = 5f;
     [SerializeField] float rotateSpeed = 30.0f;
 
-    [SerializeField] int decreaseScore = 10;
+    const int DECREASE_SCORE = 10000;
 
     [SerializeField] GameObject crosshair;
     [SerializeField] GameObject debrisExplosion;
@@ -166,7 +166,7 @@ public class DebrisObject : MonoBehaviour
         {
             if (GameUtility.GameManagerExists())
             {
-                GameManager.Instance.ScoreManager.DecrementScore(decreaseScore);
+                GameManager.Instance.ScoreManager.DecrementScore(DECREASE_SCORE); 
             }
             SoundManager.instance.PlaySFX("UFO Hit");
             OnExplode();
