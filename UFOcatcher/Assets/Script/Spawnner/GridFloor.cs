@@ -46,11 +46,12 @@ public class GridFloor : MonoBehaviour
                 
                 Debug.Log($"{i} {j} {_grid[i][j].center}");
                 
-                // Instantiate(box, _grid[i][j].center + Vector3.up, Quaternion.identity);
+                if(doDebugBox)Instantiate(box, _grid[i][j].center + Vector3.up, Quaternion.identity);
             }
         }
     }
 
+    public bool doDebugBox = false;
     public Grid GetRandomGrid()
     {
         int row = UnityEngine.Random.Range(0, gridSize);

@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 4676195914334633307}
   - component: {fileID: 6821426584952993386}
   - component: {fileID: 4567573889462836248}
+  - component: {fileID: 4030037838825662969}
+  - component: {fileID: 6649087045217578966}
   m_Layer: 0
   m_Name: GroundPlane
   m_TagString: FloorPlane
@@ -32,9 +34,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 575589882523852464}
-  - {fileID: 6060973666301786667}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3133487600501398557
@@ -144,147 +144,74 @@ MonoBehaviour:
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 0}
   m_BuildHeightMesh: 0
---- !u!1001 &5469619168581676597
-PrefabInstance:
+--- !u!114 &4030037838825662969
+MonoBehaviour:
   m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 2612227548546151754}
-    m_Modifications:
-    - target: {fileID: 3851677157348649357, guid: f86f50627fad3e84bbd181e121bc9d7c, type: 3}
-      propertyPath: m_Name
-      value: EatingWheatParticles
-      objectReference: {fileID: 0}
-    - target: {fileID: 3851677157348649357, guid: f86f50627fad3e84bbd181e121bc9d7c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5484005925169590405, guid: f86f50627fad3e84bbd181e121bc9d7c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5484005925169590405, guid: f86f50627fad3e84bbd181e121bc9d7c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5484005925169590405, guid: f86f50627fad3e84bbd181e121bc9d7c, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5484005925169590405, guid: f86f50627fad3e84bbd181e121bc9d7c, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5484005925169590405, guid: f86f50627fad3e84bbd181e121bc9d7c, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5484005925169590405, guid: f86f50627fad3e84bbd181e121bc9d7c, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5484005925169590405, guid: f86f50627fad3e84bbd181e121bc9d7c, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5484005925169590405, guid: f86f50627fad3e84bbd181e121bc9d7c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5484005925169590405, guid: f86f50627fad3e84bbd181e121bc9d7c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5484005925169590405, guid: f86f50627fad3e84bbd181e121bc9d7c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8158526182212516669, guid: f86f50627fad3e84bbd181e121bc9d7c, type: 3}
-      propertyPath: 'CollisionModule.m_Planes.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2612227548546151754}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: f86f50627fad3e84bbd181e121bc9d7c, type: 3}
---- !u!4 &575589882523852464 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5484005925169590405, guid: f86f50627fad3e84bbd181e121bc9d7c, type: 3}
-  m_PrefabInstance: {fileID: 5469619168581676597}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &7181316741681539073
-PrefabInstance:
+  m_GameObject: {fileID: 8887287632678279453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ee2d3129f0abc5408592d6b8ca1c836, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minBound: {x: 0, y: 0, z: 0}
+  maxBound: {x: 0, y: 0, z: 0}
+  padding: 1
+  gridSize: 7
+  distanceBetweenGrids: 0
+  box: {fileID: 0}
+--- !u!114 &6649087045217578966
+MonoBehaviour:
   m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 2612227548546151754}
-    m_Modifications:
-    - target: {fileID: 3508242092174968581, guid: 91e933de07275a640a53c2b1c3e6d8e8, type: 3}
-      propertyPath: 'CollisionModule.m_Planes.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2612227548546151754}
-    - target: {fileID: 4014342142382330410, guid: 91e933de07275a640a53c2b1c3e6d8e8, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4014342142382330410, guid: 91e933de07275a640a53c2b1c3e6d8e8, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4014342142382330410, guid: 91e933de07275a640a53c2b1c3e6d8e8, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4014342142382330410, guid: 91e933de07275a640a53c2b1c3e6d8e8, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4014342142382330410, guid: 91e933de07275a640a53c2b1c3e6d8e8, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4014342142382330410, guid: 91e933de07275a640a53c2b1c3e6d8e8, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4014342142382330410, guid: 91e933de07275a640a53c2b1c3e6d8e8, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4014342142382330410, guid: 91e933de07275a640a53c2b1c3e6d8e8, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4014342142382330410, guid: 91e933de07275a640a53c2b1c3e6d8e8, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4014342142382330410, guid: 91e933de07275a640a53c2b1c3e6d8e8, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4984035394737282737, guid: 91e933de07275a640a53c2b1c3e6d8e8, type: 3}
-      propertyPath: m_Name
-      value: BoxExplosionParticle
-      objectReference: {fileID: 0}
-    - target: {fileID: 4984035394737282737, guid: 91e933de07275a640a53c2b1c3e6d8e8, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8698037860953832017, guid: 91e933de07275a640a53c2b1c3e6d8e8, type: 3}
-      propertyPath: 'CollisionModule.m_Planes.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2612227548546151754}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 91e933de07275a640a53c2b1c3e6d8e8, type: 3}
---- !u!4 &6060973666301786667 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4014342142382330410, guid: 91e933de07275a640a53c2b1c3e6d8e8, type: 3}
-  m_PrefabInstance: {fileID: 7181316741681539073}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8887287632678279453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2441abb21fd74d06bd08db4d56e9b2e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gridFloor: {fileID: 4030037838825662969}
+  _objectPrefabs:
+  - {fileID: 2997598876189070964, guid: 4718f40c117ca974a96f61c4f83486ff, type: 3}
+  - {fileID: 2135810059554754284, guid: fb557c56aa8f2c445b50dad80fa999ae, type: 3}
+  - {fileID: 616203856976430369, guid: 3ba7a4290ff3459439834ff7a6321e62, type: 3}
+  _spawnInterval: 1
+  _spawnRateCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.099975586
+      inSlope: 1.7500914
+      outSlope: 1.7500914
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.39999998
+      value: 0.8000121
+      inSlope: 0.3717596
+      outSlope: 0.3717596
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.20714739
+    - serializedVersion: 3
+      time: 1
+      value: 0.89998627
+      inSlope: 0.16662359
+      outSlope: 0.16662359
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  maxObjectCount: 25
+  explodeForce: 1000
