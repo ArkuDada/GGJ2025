@@ -119,6 +119,7 @@ MonoBehaviour:
   timeUI: {fileID: 2273687448085802866}
   scoreUI: {fileID: 2431455328887250556}
   feverMeterUI: {fileID: 0}
+  scoreFeedbackPrefab: {fileID: 7501166861354981115, guid: 68c98ad16e8164a4a9701482cde662d2, type: 3}
 --- !u!1 &2500114943612386884
 GameObject:
   m_ObjectHideFlags: 0
