@@ -1141,6 +1141,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 912741156370863365, guid: 2ecfe325524964a44aa225efcb59d6e4, type: 3}
+      propertyPath: startingCountdownTime
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 4834649255885270418, guid: 2ecfe325524964a44aa225efcb59d6e4, type: 3}
       propertyPath: feverDecreaseRate
       value: 20
