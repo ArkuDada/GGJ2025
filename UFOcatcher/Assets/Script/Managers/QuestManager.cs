@@ -39,6 +39,7 @@ public class QuestManager : MonoBehaviour
     // Choose a new random quest for the player to complete
     private IEnumerator InitQuest()
     {
+        SoundManager.instance.PlaySFX("Quest Ping");
         CurrentQuest = availableRecipes[Random.Range(0, availableRecipes.Count)];
 
         ObjectsLeftToCollect = 0;
@@ -70,6 +71,7 @@ public class QuestManager : MonoBehaviour
     // Handler for when currentQuest is completed
     private IEnumerator QuestCompleted()
     {
+        SoundManager.instance.PlaySFX("Quest Complete");
         ScoreManager scoreManager = GameManager.Instance.ScoreManager;
         scoreManager.IncrementScore(1000); // Magic number: I asked designers for this number, and they said 1000 :)
         
