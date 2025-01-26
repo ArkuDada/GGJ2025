@@ -660,11 +660,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5289233343424259576, guid: fb557c56aa8f2c445b50dad80fa999ae, type: 3}
       propertyPath: m_Mass
-      value: 100
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 5289233343424259576, guid: fb557c56aa8f2c445b50dad80fa999ae, type: 3}
       propertyPath: m_Constraints
-      value: 112
+      value: 122
       objectReference: {fileID: 0}
     - target: {fileID: 5683648070908338548, guid: fb557c56aa8f2c445b50dad80fa999ae, type: 3}
       propertyPath: m_Layer
@@ -736,8 +736,6 @@ MonoBehaviour:
   _bubble: {fileID: 0}
   floatSpeed: 1
   _BaseScore: 1
-  _upMaterial: {fileID: 2100000, guid: c2bcc59676db7ea43a2e1254b0260188, type: 2}
-  _downMaterial: {fileID: 2100000, guid: 3f5f2672f5fa77541986335e615261f7, type: 2}
   _growthTimer: 0
   _maxGrowth: 10
   ScoreMultCurve:
