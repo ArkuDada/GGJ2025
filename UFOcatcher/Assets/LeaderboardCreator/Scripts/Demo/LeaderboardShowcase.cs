@@ -64,6 +64,8 @@ namespace Dan.Demo
             
             Leaderboards.DITGameJam2025Leaderboard.GetEntries(searchQuery, OnLeaderboardLoaded, ErrorCallback);
             ToggleLoadingPanel(true);
+
+            AddPlayerScore();
         }
 
         public void ChangePageBy(int amount)
