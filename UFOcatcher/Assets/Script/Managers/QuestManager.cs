@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class QuestManager : MonoBehaviour
 {
-	public List<ObjectList> availableQuests; // Quests that could be chosen as currentQuest
-	public ObjectList CurrentQuest { get; private set; } // The current quest, containing a list of objects for the player to collect
-	public List<bool> ObjectsCollected { get; private set; } // Acts like a checklist for the current quest's items
+	public List<RecipeObject> availableRecipes; // Quests that could be chosen as currentQuest
+	public RecipeObject CurrentQuest { get; private set; } // The current quest, containing a list of objects for the player to collect
+	public List<int> ObjectsCollected { get; private set; } // Acts like a checklist for the current quest's items
 	public int ObjectsLeftToCollect { get; private set; } // Number of items left to collect
 	public TextMeshProUGUI tempQuestText; // temp for debug until UI is finalized
 
@@ -19,29 +19,29 @@ public class QuestManager : MonoBehaviour
 	// Choose a new random quest for the player to complete
 	private void InitQuest()
 	{
-		CurrentQuest = availableQuests[Random.Range(0, availableQuests.Count)];
+		CurrentQuest = availableRecipes[Random.Range(0, availableRecipes.Count)];
 
 		ObjectsCollected = new(CurrentQuest.objects.Count);
 		for (int i = 0; i < ObjectsCollected.Capacity; i++)
 		{
-			ObjectsCollected.Add(false);
+			ObjectsLeftToCollect = CurrentQuest.quantities[i];
+			ObjectsCollected.Add(0);
 		}
 
-		ObjectsLeftToCollect = ObjectsCollected.Count;
 
-		TempUpdateQuestUI();
+		UpdateQuestUI();
 	}
 
-	// Temp until UI is finalized
-	private void TempUpdateQuestUI()
+	private void UpdateQuestUI()
 	{
 		string text = CurrentQuest.questName + ':';
 		for (int i = 0; i < ObjectsCollected.Count; i++)
 		{
-			if (!ObjectsCollected[i])
-			{
-				text += '\n' + Utility.Objects.GetObjectName(CurrentQuest.objects[i]);
-			}
+			text += string.Format("\n {0}: {1}/{2}", 
+				Utility.Objects.GetObjectName(CurrentQuest.objects[i]),
+				ObjectsCollected[i],
+				CurrentQuest.quantities[i]
+				);
 		}
 		tempQuestText.text = text;
 	}
@@ -58,17 +58,25 @@ public class QuestManager : MonoBehaviour
 	// Mark an object as collected if it's on the current quest's list.
 	public void CollectedObject(BaseObject objectCollected)
 	{
+		Debug.Log($"Collected {objectCollected.Type}");
 		ScoreManager scoreManager = GameManager.Instance.ScoreManager;
 		int points = objectCollected.GetScore();
 
 		for (int i = 0; i < CurrentQuest.objects.Count; ++i)
 		{
-			if (CurrentQuest.objects[i] == objectCollected.Type && !ObjectsCollected[i])
+			Debug.Log(CurrentQuest.objects[i]);
+			Debug.Log(ObjectsCollected[i]);
+			Debug.Log(CurrentQuest.quantities[i]);
+			if (CurrentQuest.objects[i] == objectCollected.Type && ObjectsCollected[i] < CurrentQuest.quantities[i])
 			{
+				Debug.Log("Got!");
 				// Collected an uncollected object on our list
-				ObjectsCollected[i] = true;
+				Debug.Log(ObjectsCollected[i]);
+				Debug.Log(ObjectsLeftToCollect);
+				++ObjectsCollected[i];
 				--ObjectsLeftToCollect;
-				Debug.Log("collected");
+				Debug.Log(ObjectsCollected[i]);
+				Debug.Log(ObjectsLeftToCollect);
 
 				if (ObjectsLeftToCollect <= 0)
 				{
@@ -76,7 +84,7 @@ public class QuestManager : MonoBehaviour
 				}
 				else
 				{
-					TempUpdateQuestUI();
+					UpdateQuestUI();
 				}
 
 				scoreManager.IncrementScore(points);

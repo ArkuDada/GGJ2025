@@ -195,6 +195,8 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 6e8d0f46bc17eb546aa8e71d585c346f, type: 2}
   - {fileID: 2100000, guid: 8a336090df9468248aa6c49b90ad4e85, type: 2}
   - {fileID: 2100000, guid: f35a470b12ba8084f96055da69463374, type: 2}
+  feverIncreaseRate: 10
+  feverDecreaseRate: 10
   currentFeverValue: 0
   arcade: {fileID: 0}
 --- !u!1 &7818875838503858121
@@ -250,6 +252,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5259536363909703010}
     m_Modifications:
+    - target: {fileID: 5625650183337866660, guid: 0597cbbb9f5e0904e9f155bc25411fad, type: 3}
+      propertyPath: availableRecipes.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5625650183337866660, guid: 0597cbbb9f5e0904e9f155bc25411fad, type: 3}
+      propertyPath: 'availableRecipes.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 6b66b33da027ec3438df267cb5288352, type: 2}
     - target: {fileID: 6336022369656168196, guid: 0597cbbb9f5e0904e9f155bc25411fad, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
