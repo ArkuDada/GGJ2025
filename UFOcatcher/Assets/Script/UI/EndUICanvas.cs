@@ -49,6 +49,7 @@ public class EndUICanvas : MonoBehaviour
                 ShowCongratsScreen();
                 break;
             case ScreenState.Congrats:
+                Destroy(GameManager.Instance);
                 SceneManager.LoadScene("SampleScene");
                 break;
         }

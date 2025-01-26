@@ -101,17 +101,18 @@ public class FeverMeterManager : MonoBehaviour
 		}
 		else if (currentFeverPercentage >= 0.99f)
 		{
-			GameManager.Instance.DebrisSpawner.SpawnRate = apocalypseSpawnRate;
-		}
+            SoundManager.instance.PlaySFX("Meteor Start");
+            GameManager.Instance.DebrisSpawner.SpawnRate = apocalypseSpawnRate;
+            inFever = true;
+        }
         else if (currentFeverPercentage >= 2f / 3f)
         {
             GameManager.Instance.DebrisSpawner.SpawnRate = lateGameSpawnRate;
-            inFever = true;
+
         }
         else if (currentFeverPercentage >= 1f / 3f)
         {
             GameManager.Instance.DebrisSpawner.SpawnRate = earlierSpawnRate;
-            inFever = true;
         }
 
         // Update arcade visuals

@@ -136,6 +136,7 @@ public class DebrisObject : MonoBehaviour
         {
             // When the laser width reaches the minimum, switch to the Fall state
             lineRenderer.enabled = false;
+
             currentDebrisState = DebrisState.Fall;
         }
     }
@@ -162,6 +163,7 @@ public class DebrisObject : MonoBehaviour
             {
                 GameManager.Instance.ScoreManager.DecrementScore(decreaseScore);
             }
+            SoundManager.instance.PlaySFX("UFO Hit");
             OnExplode();
         }
         else if (other.gameObject.CompareTag("FloorPlane"))
