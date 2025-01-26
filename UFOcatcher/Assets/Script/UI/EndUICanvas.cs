@@ -51,7 +51,7 @@ public class EndUICanvas : MonoBehaviour
         switch (currentScreen)
         {
             case ScreenState.EnterName:
-                ShowHighscoreScreen();
+                ShowLeaderboardScreen();
                 break;
             case ScreenState.Highscore:
                 ShowLeaderboardScreen();
