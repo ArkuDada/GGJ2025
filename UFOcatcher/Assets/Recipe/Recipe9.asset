@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Recipe9
   m_EditorClassIdentifier: 
   questName: Oyakodon
-  objects: 00000000040000000500000005000000
-  quantities: 03000000010000000000000000000000
+  objects: 0000000004000000
+  quantities: 0300000001000000

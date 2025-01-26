@@ -132,7 +132,7 @@ public class UFOController : MonoBehaviour
 
 		if(IsGoAway)
 		{
-			_ufoMesh.transform.position += Vector3.up * GoAwaySpeed * Time.deltaTime;
+			transform.position += Vector3.up * GoAwaySpeed * Time.unscaledDeltaTime;
 		}
 	}
 

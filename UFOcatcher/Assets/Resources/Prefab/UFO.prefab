@@ -487,8 +487,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inputVec: {x: 0, y: 0}
-  _speed: 5
-  _screenBounds: 5
+  _speed: 7
+  _screenBounds: 6
   BeamRadius: 1
   _beam: {fileID: 2703883792179000713}
   _ufoMesh: {fileID: 5067544224362815180}
@@ -501,12 +501,14 @@ MonoBehaviour:
   _source: {fileID: 8470406953091021293}
   energyBar: {fileID: 2840008575801993512}
   currentEnergy: 1
-  energyDepletionRate: 0.1
-  energyRegenerationRate: 0.05
+  energyDepletionRate: 0.5
+  energyRegenerationRate: 0.3
   energyThreshold: 0.1
-  cooldownDuration: 2
+  cooldownDuration: 1.15
   gameManager: {fileID: 0}
-  shakeMagnitude: 1
+  shakeMagnitude: 0.75
+  IsGoAway: 0
+  GoAwaySpeed: 3
 --- !u!114 &7745365906999166378
 MonoBehaviour:
   m_ObjectHideFlags: 0
