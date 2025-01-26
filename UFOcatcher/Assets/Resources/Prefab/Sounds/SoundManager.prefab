@@ -90,7 +90,7 @@ MonoBehaviour:
   - name: CollectWrong
     clip: {fileID: 8300000, guid: 65d3309e908d1df49857f7dabc32b24b, type: 3}
   backgroundMusic: {fileID: 8300000, guid: 9e993f4ba6e73c14d82682d704217bdf, type: 3}
-  backgroundGameplayMusic: {fileID: 0}
+  backgroundGameplayMusic: {fileID: 8300000, guid: 9e993f4ba6e73c14d82682d704217bdf, type: 3}
   backgroundMenu: {fileID: 0}
 --- !u!82 &7865003671529669970
 AudioSource:
@@ -105,7 +105,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.75
   m_Pitch: 1
   Loop: 1
   Mute: 0
