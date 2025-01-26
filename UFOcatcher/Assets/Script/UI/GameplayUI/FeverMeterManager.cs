@@ -1,98 +1,94 @@
 using UnityEngine;
-
-public enum FeverPhase 
-{
-    Beginning,
-    EarlyFever,
-    AlmostMaxFever,
-    Max,
-    OverLimit
-}
+using static UnityEditor.Rendering.ShadowCascadeGUI;
 
 public class FeverMeterManager : MonoBehaviour
 {
-    private FeverPhase feverPhase = FeverPhase.Beginning;
+	// From indices 0-1, it's FeverPhase.Beginning. From 1-2, it's FeverPhase.Almost. From 2-3, it's FeverPhase.Max
+	private readonly float[] feverPercentages = { 0f, 1f / 3f, 2f / 3f, 1f };
+	private bool inFever = false;
+	public Material[] feverMaterials;
 
-    [SerializeField]
-    float maxFever = 120.0f;
+	const float MAX_FEVER = 120.0f;
+	const float FEVER_INCREASE_RATE = 10.0f;
+	const float FEVER_DECREASE_RATE = 10.0f;
 
-    [SerializeField]
-    [Range(0.0f, 120.0f)]
-    float currentFeverValue;
-    public float CurrentFeverValue => currentFeverValue;
+	[SerializeField]
+	[Range(0.0f, MAX_FEVER)]
+	private float currentFeverValue;
+	public float CurrentFeverValue => currentFeverValue;
 
-    [SerializeField]
-    float earlyFeverPercentage = 33.33f;
+	public Arcade arcade;
+	private Vector3 localBarStartingPosition;
+	private MeshRenderer feverBarMeshRenderer;
 
-    [SerializeField]
-    float almostMaxPercentage = 66.66f;
+	// Start is called once before the first execution of Update after the MonoBehaviour is created
+	void Start()
+	{
+		currentFeverValue = 0;
+		if (arcade == null)
+			arcade = GameObject.Find("Arcade").GetComponent<Arcade>();
+		localBarStartingPosition = arcade.FeverMeter.transform.localPosition;
+		feverBarMeshRenderer = arcade.FeverMeter.GetComponent<MeshRenderer>();
+	}
 
-    [SerializeField]
-    float maxPercentage = 100.0f;
+	// Update is called once per frame
+	void Update()
+	{
+		UpdateFeverPercentage(Time.deltaTime);
+	}
 
-    [SerializeField]
-    float overlimitPercentage = 101.0f;
+	public void IncreaseFever(float increaseAmount)
+	{
+		currentFeverValue += increaseAmount;
+	}
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        currentFeverValue = 0;
-    }
+	public float GetFeverPercentage()
+	{
+		return currentFeverValue / MAX_FEVER;
+	}
 
-    // Update is called once per frame
-    void Update()
-    {
-        UpdateFeverPercentage(Time.deltaTime);
-    }
+	private void UpdateFeverPercentage(float dt)
+	{
+		if (inFever)
+		{
+			dt *= -FEVER_DECREASE_RATE;
+		}
+		else
+		{
+			dt *= FEVER_INCREASE_RATE;
+		}
 
-    public void IncreaseFever(float increaseAmount)
-    {
-        currentFeverValue += increaseAmount;
-    }
+		currentFeverValue = Mathf.Clamp(currentFeverValue + dt, 0, MAX_FEVER);
+		OnFeverChanged();
+	}
 
-    public float GetFeverPercentage() 
-    {
-        return currentFeverValue / maxFever;
-    }
+	private void OnFeverChanged()
+	{
+		float currentFeverPercentage = GetFeverPercentage();
+		for (int i = 0; i < feverPercentages.Length - 1; i++)
+		{
+			// If it's within this fever range
+			if (feverPercentages[i] < currentFeverPercentage && currentFeverPercentage < feverPercentages[i + 1])
+			{
+				feverBarMeshRenderer.material = feverMaterials[i];
+			}
+		}
 
-    private void UpdateFeverPercentage(float updateAmount)
-    {
-        if (feverPhase == FeverPhase.Beginning || feverPhase == FeverPhase.EarlyFever 
-            || feverPhase == FeverPhase.AlmostMaxFever || feverPhase == FeverPhase.Max)
-        {
-            currentFeverValue += updateAmount;
-        }
-        else if (feverPhase == FeverPhase.OverLimit) 
-        {
-            currentFeverValue -= updateAmount;
-        }
-        
-        OnFeverChanged();
-    }
+		if (inFever)
+		{
+			if (currentFeverPercentage <= 0)
+			{
+				GameManager.Instance.DebrisSpawner.SpawnRate = 0;
+				inFever = false;
+			}
+		}
+		else if (currentFeverPercentage >= 0.99f)
+		{
+			GameManager.Instance.DebrisSpawner.SpawnRate = 0.1f;
+			inFever = true;
+		}
 
-    private void OnFeverChanged() 
-    {
-        if (feverPhase == FeverPhase.Beginning && currentFeverValue >= earlyFeverPercentage)
-        {
-            feverPhase = FeverPhase.EarlyFever;
-        }
-        else if (feverPhase == FeverPhase.EarlyFever && currentFeverValue >= almostMaxPercentage)
-        {
-            feverPhase = FeverPhase.AlmostMaxFever;
-        }
-        else if (feverPhase == FeverPhase.AlmostMaxFever && currentFeverValue >= maxPercentage)
-        {
-            feverPhase = FeverPhase.Max;
-        }
-        else if (feverPhase == FeverPhase.Max && currentFeverValue >= overlimitPercentage)
-        {
-            GameManager.Instance.DebrisSpawner.SpawnRate = 0.1f;
-            feverPhase = FeverPhase.OverLimit;
-        } 
-        else if (feverPhase == FeverPhase.OverLimit && currentFeverValue <= 0.0f) 
-        {
-            feverPhase = FeverPhase.Beginning;
-            currentFeverValue = 0.0f;
-        }
-    }
+		// Update arcade visuals
+		arcade.FeverMeter.localScale = new Vector3(1, currentFeverPercentage, 1);
+	}
 }

@@ -191,12 +191,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 839b9fcf7d341d34da03a1fd44f0dd4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  feverMaterials:
+  - {fileID: 2100000, guid: 6e8d0f46bc17eb546aa8e71d585c346f, type: 2}
+  - {fileID: 2100000, guid: 8a336090df9468248aa6c49b90ad4e85, type: 2}
+  - {fileID: 2100000, guid: f35a470b12ba8084f96055da69463374, type: 2}
   maxFever: 120
   currentFeverValue: 0
-  earlyFeverPercentage: 33.33
-  almostMaxPercentage: 66.66
-  maxPercentage: 100
-  overlimitPercentage: 101
+  arcade: {fileID: 0}
 --- !u!1 &7818875838503858121
 GameObject:
   m_ObjectHideFlags: 0
