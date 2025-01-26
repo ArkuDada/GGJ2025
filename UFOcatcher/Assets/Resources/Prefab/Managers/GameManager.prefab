@@ -93,6 +93,7 @@ MonoBehaviour:
   minBound: {x: 0, y: 0, z: 0}
   maxBound: {x: 0, y: 0, z: 0}
   acidRainPrefab: {fileID: 1766102823358082189, guid: 23884100817eeeb4eb204296310de719, type: 3}
+  spawnWaitTime: 3
   spawnRate: 2
 --- !u!1 &6362501516946846125
 GameObject:
@@ -201,9 +202,14 @@ MonoBehaviour:
   - {fileID: 2100000, guid: f35a470b12ba8084f96055da69463374, type: 2}
   feverIncreaseRate: 2
   feverDecreaseRate: 20
-  earlierSpawnRate: 2
+  defaultSpawnRate: 2
+  defaultWaitTime: 3
+  earlierSpawnRate: 3
+  earlierWaitTime: 3
   lateGameSpawnRate: 2
-  apocalypseSpawnRate: 0.1
+  lateGameWaitTime: 3
+  apocalypseSpawnRate: 0.5
+  apocalypseWaitTime: 1
   currentFeverValue: 0
   arcade: {fileID: 0}
 --- !u!1 &7818875838503858121
@@ -265,17 +271,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3509146834153804311}
     - target: {fileID: 5625650183337866660, guid: 0597cbbb9f5e0904e9f155bc25411fad, type: 3}
-      propertyPath: availableRecipes.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5625650183337866660, guid: 0597cbbb9f5e0904e9f155bc25411fad, type: 3}
       propertyPath: 'availableRecipes.Array.data[0]'
       value: 
       objectReference: {fileID: 11400000, guid: 6b66b33da027ec3438df267cb5288352, type: 2}
-    - target: {fileID: 5625650183337866660, guid: 0597cbbb9f5e0904e9f155bc25411fad, type: 3}
-      propertyPath: 'availableRecipes.Array.data[1]'
-      value: 
-      objectReference: {fileID: 11400000, guid: 510125e88d4a5794ead204d44efd87c4, type: 2}
     - target: {fileID: 6336022369656168196, guid: 0597cbbb9f5e0904e9f155bc25411fad, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -337,7 +335,8 @@ PrefabInstance:
       value: 720
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5039670386481199910, guid: 0597cbbb9f5e0904e9f155bc25411fad, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0597cbbb9f5e0904e9f155bc25411fad, type: 3}
@@ -445,6 +444,7 @@ MonoBehaviour:
   - {fileID: 2135810059554754284, guid: fb557c56aa8f2c445b50dad80fa999ae, type: 3}
   - {fileID: 616203856976430369, guid: 3ba7a4290ff3459439834ff7a6321e62, type: 3}
   - {fileID: 2997598876189070964, guid: 778d18a17f93a774b817276d04a82e4e, type: 3}
+  - {fileID: 7340858882268929506, guid: eb051491eb4818247aa8ed75193521db, type: 3}
   _spawnInterval: 1
   _spawnRateCurve:
     serializedVersion: 2
@@ -482,3 +482,14 @@ MonoBehaviour:
   maxObjectCount: 25
   gameManager: {fileID: 6325414211114777787}
   explodeForce: 1000
+  spawnLimits:
+  - type: 0
+    limit: 5
+  - type: 1
+    limit: 5
+  - type: 2
+    limit: 4
+  - type: 3
+    limit: 4
+  - type: 4
+    limit: 3
