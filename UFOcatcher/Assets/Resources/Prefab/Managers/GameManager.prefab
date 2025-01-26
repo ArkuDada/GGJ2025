@@ -259,6 +259,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 5259536363909703010}
     m_Modifications:
     - target: {fileID: 5625650183337866660, guid: 0597cbbb9f5e0904e9f155bc25411fad, type: 3}
+      propertyPath: scoreManager
+      value: 
+      objectReference: {fileID: 3509146834153804311}
+    - target: {fileID: 5625650183337866660, guid: 0597cbbb9f5e0904e9f155bc25411fad, type: 3}
       propertyPath: availableRecipes.Array.size
       value: 1
       objectReference: {fileID: 0}

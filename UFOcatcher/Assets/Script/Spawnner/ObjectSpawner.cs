@@ -5,8 +5,10 @@ using UnityEngine;
 using Utility;
 using Random = UnityEngine.Random;
 
-public class ObjectSpawner : MonoSingleton<ObjectSpawner>
+public class ObjectSpawner : MonoBehaviour
 {
+    public static ObjectSpawner Instance;
+
     [SerializeField]
     private GridFloor _gridFloor;
 
@@ -24,11 +26,34 @@ public class ObjectSpawner : MonoSingleton<ObjectSpawner>
     [SerializeField]
     private int maxObjectCount = 25;
 
+    [SerializeField]
+    private GameManager gameManager;
 
     public float explodeForce = 1000.0f;
     public int ObjectCount => GameObject.FindObjectsByType<BaseObject>(FindObjectsSortMode.InstanceID).Length;
 
     public bool IsReachedMaxObjectCount => (ObjectCount >= maxObjectCount);
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void Start()
+    {
+        if (gameManager == null) 
+        {
+            gameManager = GameManager.Instance;
+        }
+
+    }
 
     private void Update()
     {
@@ -92,7 +117,7 @@ public class ObjectSpawner : MonoSingleton<ObjectSpawner>
     {
         if(Random.Range(0.0f, 1.0f) < 0.5f)
         {
-            var questObj = GameManager.Instance.QuestManager.CurrentQuest.objects;
+            var questObj = gameManager.QuestManager.CurrentQuest.objects;
             return questObj[Random.Range(0, questObj.Count)];
         }
 
@@ -100,7 +125,4 @@ public class ObjectSpawner : MonoSingleton<ObjectSpawner>
         return (Objects.ObjectType)Random.Range(0, (int)Objects.ObjectType.Egg);
     }
 
-    protected override void Init()
-    {
-    }
 }
