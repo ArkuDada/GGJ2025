@@ -19,6 +19,9 @@ public class QuestManager : MonoBehaviour
 
     public Arcade arcade;
 
+    [SerializeField]
+    ScoreManager scoreManager;
+
     public void Start()
     {
         if(arcade == null)
@@ -72,7 +75,6 @@ public class QuestManager : MonoBehaviour
     private IEnumerator QuestCompleted()
     {
         SoundManager.instance.PlaySFX("Quest Complete");
-        ScoreManager scoreManager = GameManager.Instance.ScoreManager;
         scoreManager.IncrementScore(1000); // Magic number: I asked designers for this number, and they said 1000 :)
         
         yield return new WaitForSeconds(blinkTime);
@@ -108,7 +110,6 @@ public class QuestManager : MonoBehaviour
     // Mark an object as collected if it's on the current quest's list.
     public void CollectedObject(BaseObject objectCollected)
     {
-        ScoreManager scoreManager = GameManager.Instance.ScoreManager;
         int points = objectCollected.GetScore();
 
         for(int i = 0; i < CurrentQuest.objects.Count; ++i)

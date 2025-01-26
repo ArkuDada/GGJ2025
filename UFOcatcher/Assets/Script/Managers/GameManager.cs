@@ -14,8 +14,10 @@ public enum GameState
     GameOver
 }
 
-public class GameManager : MonoSingleton<GameManager>
+public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance;
+
     private GameState state;
 
     // Add your game-related variables
@@ -46,8 +48,20 @@ public class GameManager : MonoSingleton<GameManager>
     [SerializeField]
     GameObject endUI;
 
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     // Initialize the game manager
-    protected override void Init()
+    void Start()
     {
         // Set initial values for your game manager
         ChangeGameplayState(GameState.Start);

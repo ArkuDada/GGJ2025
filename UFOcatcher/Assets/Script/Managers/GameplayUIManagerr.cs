@@ -2,8 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-namespace Juve 
-{
+
     public class GameplayUIManagerr : MonoBehaviour
     {
         [SerializeField]
@@ -13,22 +12,28 @@ namespace Juve
         TextMeshProUGUI scoreUI;
 
         [SerializeField]
-        Slider feverMeterUI;
+        GameManager gameManager;
 
         [SerializeField]
         ScoreFeedback scoreFeedbackPrefab;
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
-            GameManager.Instance.ScoreManager.OnScoreChanged += SpawnScoreFeedback;
+        if (gameManager == null) 
+        {
+            gameManager = GameManager.Instance;
+            gameManager.ScoreManager.OnScoreChanged += SpawnScoreFeedback;
+        }
+
         }
 
         // Update is called once per frame
         void Update()
         {
-            float timeInSeconds = GameManager.Instance.TimeManager.GetRemainingTime();
-            // Get the minutes and seconds
-            int second = Mathf.FloorToInt(timeInSeconds);
+        float timeInSeconds =  gameManager.TimeManager.GetRemainingTime();
+
+        // Get the minutes and seconds
+        int second = Mathf.FloorToInt(timeInSeconds);
             int Milisec = Mathf.FloorToInt((timeInSeconds - (int)(timeInSeconds)) * 100f);
             
 
@@ -42,7 +47,7 @@ namespace Juve
 
             if (scoreUI != null)
             {
-                scoreUI.text = GameManager.Instance.ScoreManager.GetScore().ToString("00000");
+                scoreUI.text = gameManager.ScoreManager.GetScore().ToString("00000");
             }
         }
 
@@ -59,6 +64,6 @@ namespace Juve
             }
         }
     }
-}
+
 
 
