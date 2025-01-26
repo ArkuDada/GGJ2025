@@ -25,7 +25,9 @@ public class ScoreManager : MonoBehaviour
                 Debug.LogError("Failed to find UFO GameObject");
             
             ufo = ufoGameObject.GetComponent<UFOController>();
-        }
+			if (ufo == null)
+				Debug.LogError("Failed to find UFO component");
+		}
     }
 
     // Function to increment the score

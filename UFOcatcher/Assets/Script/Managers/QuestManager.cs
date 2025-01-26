@@ -61,9 +61,7 @@ public class QuestManager : MonoBehaviour
 	// Handler for when currentQuest is completed
 	private void QuestCompleted()
 	{
-		ScoreManager scoreManager = GameManager.Instance.ScoreManager;
-		scoreManager.IncrementScore(1000); // Magic number: I asked designers for this number, and they said 1000 :)
-
+		GameManager.Instance.ScoreManager.CompletedQuest();
 		InitQuest();
 	}
 
@@ -75,13 +73,9 @@ public class QuestManager : MonoBehaviour
 
 		for (int i = 0; i < CurrentQuest.objects.Count; ++i)
 		{
-			// Find the object we're supposed to be collecting (order matters in recipes)
-			if (ObjectsCollected[i] >= CurrentQuest.quantities[i])
-				continue;
-
-			if (CurrentQuest.objects[i] == objectCollected.Type)
+			if (CurrentQuest.objects[i] == objectCollected.Type && ObjectsCollected[i] < CurrentQuest.quantities[i])
 			{
-				// Collected the correct object
+				// Collected a correct object
 				++ObjectsCollected[i];
 				--ObjectsLeftToCollect;
 
@@ -98,12 +92,9 @@ public class QuestManager : MonoBehaviour
 
 				return;
 			}
-
-			// We didn't collect the correct object
-			break;
 		}
 
-		// Wrong object; Decrease score!
+		// This object wasn't correct; Decrease score!
 		scoreManager.DecrementScore(points);
 	}
 }

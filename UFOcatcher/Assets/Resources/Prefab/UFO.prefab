@@ -5161,6 +5161,7 @@ MonoBehaviour:
   _speed: 5
   _screenBounds: 5
   _beam: {fileID: 2703883792179000713}
+  alienSpriteRenderer: {fileID: 1986254592893338995}
   neutralSprite: {fileID: 423639440, guid: 14b262a92596241808faa1d5986f4c1e, type: 3}
   sadSprite: {fileID: -239537771, guid: 14b262a92596241808faa1d5986f4c1e, type: 3}
   happySprite: {fileID: -504660554, guid: 14b262a92596241808faa1d5986f4c1e, type: 3}

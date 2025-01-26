@@ -33,7 +33,6 @@ public class UFOController : MonoBehaviour
 	{
 		_screenBoundsMin = new Vector2(-_screenBounds, -_screenBounds);
 		_screenBoundsMax = new Vector2(_screenBounds, _screenBounds);
-		alienSpriteRenderer = GetComponent<SpriteRenderer>();
 	}
 
 	void Update()
