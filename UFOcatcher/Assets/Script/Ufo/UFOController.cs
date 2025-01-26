@@ -17,6 +17,8 @@ public class UFOController : MonoBehaviour
 	private bool _beamActive = false;
 	public GameObject _beam;
 
+	public Arcade _arcade;
+
 	public SpriteRenderer alienSpriteRenderer;
 	public Sprite neutralSprite;
 	public Sprite sadSprite;
@@ -58,6 +60,9 @@ public class UFOController : MonoBehaviour
 
 	void Start()
 	{
+		if (_arcade == null)
+			_arcade = GameObject.Find("Arcade").GetComponent<Arcade>();
+
 		if (gameManager == null)
 			gameManager = GameManager.Instance;
 
@@ -74,6 +79,8 @@ public class UFOController : MonoBehaviour
 		float y = Input.GetAxisRaw("Vertical");
 		float x = Input.GetAxisRaw("Horizontal");
 		_inputVec = new Vector2(x, y);
+		_arcade.SetVisualJoystickInputs(_inputVec);
+		_arcade.SetVisualButtonInputs(_beamActive);
 
 		transform.position += new Vector3(_inputVec.x, 0, _inputVec.y) * Time.deltaTime * _speed;
 		transform.position = new Vector3(Mathf.Clamp(transform.position.x, _screenBoundsMin.x, _screenBoundsMax.x),

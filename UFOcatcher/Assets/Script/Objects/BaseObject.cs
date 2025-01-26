@@ -92,7 +92,6 @@ public class BaseObject : MonoBehaviour
 				break;
 			case Objects.ObjectType.Cow:
 				var cowData = GetComponent<CowData>();
-				Debug.Log(cowData.isEating);
 				if (cowData.isEating)
 					GetComponent<CowData>().StopEating();
 				break;

@@ -437,6 +437,7 @@ MonoBehaviour:
   rotateSpeed: 15
   decreaseScore: 10
   crosshair: {fileID: 8520719378558520726}
+  debrisExplosion: {fileID: 3719303143629149823, guid: 9ee3c85c37c6a04448e143b95db71812, type: 3}
   currentDebrisState: 0
   groundLayer:
     serializedVersion: 2

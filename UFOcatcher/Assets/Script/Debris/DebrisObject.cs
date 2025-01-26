@@ -16,8 +16,9 @@ public class DebrisObject : MonoBehaviour
     [SerializeField] int decreaseScore = 10;
 
     [SerializeField] GameObject crosshair;
+    [SerializeField] GameObject debrisExplosion;
 
-    [SerializeField] DebrisState currentDebrisState;
+	[SerializeField] DebrisState currentDebrisState;
 
     // LineRenderer for the laser indicator
     private LineRenderer lineRenderer;
@@ -152,6 +153,10 @@ public class DebrisObject : MonoBehaviour
     void OnExplode() 
     {
         SoundManager.instance.PlaySFX("Space Junk Explosion");
+        GameObject newExplosion = Instantiate(debrisExplosion);
+        newExplosion.transform.position = transform.position;
+        newExplosion.SetActive(true);
+        Destroy(newExplosion, 5);
         Destroy(this.gameObject);
     }
 
