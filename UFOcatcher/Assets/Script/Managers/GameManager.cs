@@ -73,6 +73,7 @@ public class GameManager : MonoSingleton<GameManager>
         }
         else if (state == GameState.Play)
         {
+            debrisSpawner.StartSpawning();
             timeManager.ResumeTimer();
         }
         else if (state == GameState.Pause)
@@ -81,6 +82,7 @@ public class GameManager : MonoSingleton<GameManager>
         } 
         else if (state == GameState.GameOver) 
         {
+            debrisSpawner.StopSpawning();
             scoreManager.SaveHighScore();
             Time.timeScale = 0;
             endUI.SetActive(true);
