@@ -85,6 +85,7 @@ public class TimeManager : MonoBehaviour
     private void TimerEnd()
     {
         Debug.Log("Countdown Timer Ended");
+        GameManager.Instance.ChangeGameplayState(GameState.GameOver);
         // Additional logic when the countdown ends (e.g., game over, restart level, etc.)
     }
 

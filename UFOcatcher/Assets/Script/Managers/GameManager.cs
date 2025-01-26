@@ -42,6 +42,9 @@ public class GameManager : MonoSingleton<GameManager>
     [SerializeField]
     GameObject startUI;
 
+    [SerializeField]
+    GameObject endUI;
+
     // Initialize the game manager
     protected override void Init()
     {
@@ -59,18 +62,23 @@ public class GameManager : MonoSingleton<GameManager>
             startUI.SetActive(true);
             Time.timeScale = 0;
         }
-        else if(state == GameState.Prepare)
+        else if (state == GameState.Prepare)
         {
             startUI.SetActive(false);
             Time.timeScale = 1;
         }
-        else if(state == GameState.Play) 
+        else if (state == GameState.Play)
         {
             timeManager.ResumeTimer();
         }
         else if (state == GameState.Pause)
         {
             timeManager.StopTimer();
+        } 
+        else if (state == GameState.GameOver) 
+        {
+            scoreManager.SaveHighScore();
+            endUI.SetActive(true);
         }
     }
 
