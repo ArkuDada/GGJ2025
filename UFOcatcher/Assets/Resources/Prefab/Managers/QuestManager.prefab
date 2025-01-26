@@ -45,9 +45,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f479d1bef8d2434089ecf424824601d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  availableQuests:
-  - {fileID: 11400000, guid: 6b66b33da027ec3438df267cb5288352, type: 2}
-  tempQuestText: {fileID: 6302279074280759112}
+  availableRecipes:
+  - {fileID: 0}
+  - {fileID: 11400000, guid: ccef577bdfbd8324a9c8f50b3557b8bc, type: 2}
+  - {fileID: 11400000, guid: 0e3358b32045b364aaa086e53865616d, type: 2}
+  - {fileID: 11400000, guid: a866332fd072bf44eb4b14d2d9feebb5, type: 2}
+  - {fileID: 11400000, guid: 510125e88d4a5794ead204d44efd87c4, type: 2}
+  - {fileID: 11400000, guid: 0d705fe2bff9a0144971f87300ff5d73, type: 2}
+  - {fileID: 11400000, guid: 7343eadb92e3c32489694d75430f9b25, type: 2}
+  - {fileID: 11400000, guid: 2315dccdb6f429d4b8f6c1709aca8fdb, type: 2}
+  - {fileID: 11400000, guid: 2e61cd80d08ac714494681bd82d82297, type: 2}
+  - {fileID: 11400000, guid: 2df21482228f495408ce3d5a13f57921, type: 2}
+  - {fileID: 11400000, guid: c4ef125f83d929647bad30ed6ccc2fbf, type: 2}
+  - {fileID: 11400000, guid: df66f52aaa1b65d47b6dbc35b2548489, type: 2}
+  arcade: {fileID: 0}
+  scoreManager: {fileID: 0}
+  blinkTime: 0.25
+  plopTime: 0.15
 --- !u!1001 &6409164240413858719
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -150,14 +164,3 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4646819150456936542, guid: 19c22437e7328f342ae2e5b70b8bbce5, type: 3}
   m_PrefabInstance: {fileID: 6409164240413858719}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6302279074280759112 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1119106600974468311, guid: 19c22437e7328f342ae2e5b70b8bbce5, type: 3}
-  m_PrefabInstance: {fileID: 6409164240413858719}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
