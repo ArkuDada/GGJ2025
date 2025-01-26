@@ -124,6 +124,7 @@ public class FeverMeterManager : MonoBehaviour
             SoundManager.instance.PlaySFX("Meteor Start");
 			GameManager.Instance.DebrisSpawner.spawnWaitTime = apocalypseWaitTime;
             GameManager.Instance.DebrisSpawner.SpawnRate = apocalypseSpawnRate;
+            CameraShaker.Instance.DoScreenShake();
             inFever = true;
         }
         else if (currentFeverPercentage >= 2f / 3f)

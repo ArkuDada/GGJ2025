@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem.LowLevel;
@@ -12,7 +13,8 @@ public enum GameState
     Prepare,
     Play,
     Pause,
-    GameOver
+    GameOver,
+    Credits,
 }
 
 public class GameManager : MonoBehaviour
@@ -20,6 +22,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     private GameState state;
+    public GameState State => state;
 
     // Add your game-related variables
     [SerializeField]
@@ -112,8 +115,25 @@ public class GameManager : MonoBehaviour
             scoreManager.SaveHighScore();
             Time.timeScale = 0;
             endUI.SetActive(true);
-
         }
+        else if (state == GameState.Pause)
+        {
+            timeManager.PauseTimer();
+        }
+    }
+    
+    private IEnumerator EndSequence()
+    {
+        debrisSpawner.StopSpawning();
+        scoreManager.SaveHighScore();
+
+        var ufo = GameObject.FindGameObjectWithTag("Player").GetComponent<UFOController>();
+        ufo.IsGoAway = true;
+        
+        yield return new WaitForSeconds(3);
+
+        Time.timeScale = 0;
+        endUI.SetActive(true);
     }
 
     private void Update()
