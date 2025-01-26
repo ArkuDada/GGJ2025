@@ -101,6 +101,7 @@ public class BaseObject : MonoBehaviour
 
 		SoundManager.instance.PlaySFX("Bubble Sound");
 		_bubble.SetActive(true);
+		_rigidbody.isKinematic = false;
 		_rigidbody.useGravity = false;
 		_rigidbody.linearVelocity = Vector3.up * floatSpeed;
 		State = ObjectState.Up;
