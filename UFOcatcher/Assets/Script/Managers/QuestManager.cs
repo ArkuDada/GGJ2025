@@ -136,7 +136,7 @@ public class QuestManager : MonoBehaviour
 				{
 					UpdateQuestUI();
 				}
-				SoundManager.instance.PlaySFX("CollectCorrect");
+				SoundManager.instance.PlaySFX("Collect Correct");
 				scoreManager.IncrementScore(4000);
 
 				GameObject newParticles = Instantiate(correctObjectParticles);
@@ -183,7 +183,7 @@ public class QuestManager : MonoBehaviour
 		}
 
 		// This object wasn't correct
-		SoundManager.instance.PlaySFX("CollectWrong");
+		SoundManager.instance.PlaySFX("Collect Wrong");
 		scoreManager.IncrementScore(1000);
 		objectCollected.DespawnObject();
 	}

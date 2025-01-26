@@ -71,7 +71,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: fa1d3e32cc783f647b2f56dc882f38e6, type: 3}
   - name: Meteor Start
     clip: {fileID: 8300000, guid: 87ef8118ff4a7e54394318285c1aaba2, type: 3}
-  - name: MeteorLaunch
+  - name: Meteor Launch
     clip: {fileID: 8300000, guid: 6c7004fda12f1df49b5ee5a8f8643a42, type: 3}
   - name: Wheat Spawn
     clip: {fileID: 8300000, guid: c89b64cdc15ff5c4c8c3ac1384e2e23c, type: 3}
@@ -85,11 +85,11 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: d026df714d2aa574e9173e0fd2f953f2, type: 3}
   - name: Cow Eat Wheat
     clip: {fileID: 8300000, guid: 9b74cddfa21b2d84bb044cd04401ba94, type: 3}
-  - name: CollectCorrect
+  - name: Collect Correct
     clip: {fileID: 8300000, guid: c8bddbcbf0708ca4881f8dcbad4e0bdf, type: 3}
-  - name: CollectWrong
+  - name: Collect Wrong
     clip: {fileID: 8300000, guid: 65d3309e908d1df49857f7dabc32b24b, type: 3}
-  - name: CarteSpawn
+  - name: Crate Spawn
     clip: {fileID: 8300000, guid: 9b711da2b4b09054ba244cca37ac89da, type: 3}
   backgroundMusic: {fileID: 8300000, guid: 9e993f4ba6e73c14d82682d704217bdf, type: 3}
   backgroundGameplayMusic: {fileID: 8300000, guid: 9e993f4ba6e73c14d82682d704217bdf, type: 3}
