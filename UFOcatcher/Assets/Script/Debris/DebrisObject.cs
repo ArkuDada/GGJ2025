@@ -152,7 +152,7 @@ public class DebrisObject : MonoBehaviour
 
     void OnExplode() 
     {
-        SoundManager.instance.PlaySFX("MeteorLaunch");
+        SoundManager.instance.PlaySFX("Meteor Launch");
         GameObject newExplosion = Instantiate(debrisExplosion);
         newExplosion.transform.position = transform.position;
         newExplosion.SetActive(true);
