@@ -1,68 +1,81 @@
 using System;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class UFOController : MonoBehaviour
 {
-	public Vector2 _inputVec = Vector2.zero;
-	public float _speed = 5.0f;
-	
-	public float _screenBounds = 5.0f;
-	
-	private Vector2 _screenBoundsMin;
-	private Vector2 _screenBoundsMax;
+    public Vector2 _inputVec = Vector2.zero;
+    public float _speed = 5.0f;
 
-	private bool _beamActive = false;
-	public GameObject _beam;
+    public float _screenBounds = 5.0f;
 
-	void Start()
-	{
-		_screenBoundsMin = new Vector2(-_screenBounds, -_screenBounds);
-		_screenBoundsMax = new Vector2(_screenBounds, _screenBounds);
-	}
+    private Vector2 _screenBoundsMin;
+    private Vector2 _screenBoundsMax;
 
-	void Update()
-	{
-		float y = Input.GetAxis("Vertical");
-		float x = Input.GetAxis("Horizontal");
-		_inputVec = new Vector2(x, y);
+    private bool _beamActive = false;
+    public GameObject _beam;
 
-		transform.position += new Vector3(_inputVec.x, 0, _inputVec.y) * Time.deltaTime * _speed;
-		transform.position = new Vector3(Mathf.Clamp(transform.position.x, _screenBoundsMin.x, _screenBoundsMax.x),
-			transform.position.y,
-			Mathf.Clamp(transform.position.z, _screenBoundsMin.y, _screenBoundsMax.y));
+    void Start()
+    {
+        _screenBoundsMin = new Vector2(-_screenBounds, -_screenBounds);
+        _screenBoundsMax = new Vector2(_screenBounds, _screenBounds);
+    }
 
-		if (_beamActive && Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 999, Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore))
-		{
-			if (hit.transform.TryGetComponent<BaseObject>(out var objectHit) && objectHit.State == BaseObject.ObjectState.Grounded)
-			{
-				objectHit.BubbleLift();
-			}
-		}
-	}
+    void Update()
+    {
+        float y = Input.GetAxis("Vertical");
+        float x = Input.GetAxis("Horizontal");
+        _inputVec = new Vector2(x, y);
 
-	public void ActivateSkill(InputAction.CallbackContext context)
-	{
-		if (context.performed)
-		{
-			_beamActive = true;
+        transform.position += new Vector3(_inputVec.x, 0, _inputVec.y) * Time.deltaTime * _speed;
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, _screenBoundsMin.x, _screenBoundsMax.x),
+            transform.position.y,
+            Mathf.Clamp(transform.position.z, _screenBoundsMin.y, _screenBoundsMax.y));
+        
+        if(_beamActive && Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 999,
+               Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore))
+        {
+            if(hit.transform.TryGetComponent<BaseObject>(out var objectHit) &&
+               objectHit.State == BaseObject.ObjectState.Grounded)
+            {
+                objectHit.BubbleLift();
+            }
+            else
+            {
+                var sphereHit = Physics.SphereCastAll(hit.point, 1f, Vector3.down, 999);
+                hit = sphereHit.OrderBy(o => Vector3.Distance(hit.point, o.transform.position)).First();
+                if(hit.transform.TryGetComponent<BaseObject>(out objectHit) &&
+                   objectHit.State == BaseObject.ObjectState.Grounded)
+                {
+                    objectHit.BubbleLift();
+                }
+            }
+        }
+    }
+
+    public void ActivateSkill(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            _beamActive = true;
             SoundManager.instance.PlaySFX("Shoot Sound");
         }
-		else if (context.canceled)
-		{
-			_beamActive = false;
-		}
-		_beam.SetActive(_beamActive);
-	}
+        else if (context.canceled)
+        {
+            _beamActive = false;
+        }
+        _beam.SetActive(_beamActive);
+    }
 
-	private void OnCollisionEnter(Collision other)
-	{
-		if (other.gameObject.TryGetComponent<BaseObject>(out var baseObject))
-		{
-			GameManager.Instance.QuestManager.CollectedObject(baseObject);
+    private void OnCollisionEnter(Collision other)
+    {
+        if(other.gameObject.TryGetComponent<BaseObject>(out var baseObject))
+        {
+            GameManager.Instance.QuestManager.CollectedObject(baseObject);
 
-			baseObject.DespawnObject();
-		}
-	}
+            baseObject.DespawnObject();
+        }
+    }
 }

@@ -11,6 +11,7 @@ public class DebrisObject : MonoBehaviour
 {
     // Speed at which the object falls
     [SerializeField] float fallSpeed = 5f;
+    [SerializeField] float rotateSpeed = 30.0f;
 
     [SerializeField] int decreaseScore = 10;
 
@@ -61,6 +62,7 @@ public class DebrisObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        transform.RotateAround(Vector3.up, rotateSpeed * Time.deltaTime);
         switch (currentDebrisState)
         {
             case DebrisState.Prepare:

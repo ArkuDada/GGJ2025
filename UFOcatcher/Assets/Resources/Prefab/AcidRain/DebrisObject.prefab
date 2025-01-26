@@ -114,7 +114,7 @@ Transform:
   m_GameObject: {fileID: 2463113351042056654}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -11.410483, z: 10.306243}
+  m_LocalPosition: {x: -14.483456, y: -8.429034, z: -0.73739254}
   m_LocalScale: {x: 2.1191845, y: 2.1191845, z: 2.1191845}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -367,10 +367,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fallSpeed: 20
+  rotateSpeed: 30
   decreaseScore: 10
   crosshair: {fileID: 2463113351042056654}
   currentDebrisState: 0
-  countdownToFall: 3
   groundLayer:
     serializedVersion: 2
     m_Bits: 1
@@ -378,6 +378,7 @@ MonoBehaviour:
   laserShrinkRate: 0.1
   spawnLineWidth: 0.1
   minLineWidth: 0.05
+  colorChangeSpeed: 1
 --- !u!54 &6988910970565173001
 Rigidbody:
   m_ObjectHideFlags: 0

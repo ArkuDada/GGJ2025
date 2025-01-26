@@ -405,6 +405,7 @@ GameObject:
   - component: {fileID: 330585544}
   - component: {fileID: 330585547}
   - component: {fileID: 330585548}
+  - component: {fileID: 330585549}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -509,7 +510,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -547,6 +548,22 @@ MonoBehaviour:
   blendDistance: 0
   weight: 1
   sharedProfile: {fileID: 11400000, guid: 5459f5b5b3ff4c1489b30a69cac1747a, type: 2}
+--- !u!114 &330585549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330585543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c215aea38ba0f0243bb2e21d33fcee2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  focusSpeed: 1
+  maxFocusDistance: 5
+  volumeProfile: {fileID: 11400000, guid: 5459f5b5b3ff4c1489b30a69cac1747a, type: 2}
+  UFOPos: {fileID: 1357632547}
 --- !u!1001 &390989559
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -587,6 +604,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6374980230457394785, guid: 9feed455639d0034a9fd71236a80e8db, type: 3}
+      propertyPath: m_NavMeshData
+      value: 
+      objectReference: {fileID: 23800000, guid: 8c7893fdcbc21154894f12478f98334e, type: 2}
     - target: {fileID: 9106318690406811857, guid: 9feed455639d0034a9fd71236a80e8db, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6
@@ -929,6 +950,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6848819516007646911, guid: c02108206593a9347b5b78568bef5669, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9181779858726290829, guid: c02108206593a9347b5b78568bef5669, type: 3}
       propertyPath: m_Name
       value: Arcade
@@ -1119,6 +1144,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1265862936}
   m_CullTransparentMesh: 1
+--- !u!1 &1357632547 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8315280387686906062, guid: 649acd1005fcd9b40bd200ca333fbdfd, type: 3}
+  m_PrefabInstance: {fileID: 5528429089436920851}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1720157712
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1383,6 +1413,10 @@ PrefabInstance:
     - target: {fileID: 8315280387686906062, guid: 649acd1005fcd9b40bd200ca333fbdfd, type: 3}
       propertyPath: m_Name
       value: UFO
+      objectReference: {fileID: 0}
+    - target: {fileID: 8315280387686906062, guid: 649acd1005fcd9b40bd200ca333fbdfd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

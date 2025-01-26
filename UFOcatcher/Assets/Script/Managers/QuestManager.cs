@@ -10,7 +10,9 @@ public class QuestManager : MonoBehaviour
 	public List<bool> ObjectsCollected { get; private set; } // Acts like a checklist for the current quest's items
 	public int ObjectsLeftToCollect { get; private set; } // Number of items left to collect
 	public TextMeshProUGUI tempQuestText; // temp for debug until UI is finalized
-
+	
+	public Arcade arcade;
+	
 	public void Start()
 	{
 		InitQuest();
