@@ -59,6 +59,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c4ef125f83d929647bad30ed6ccc2fbf, type: 2}
   - {fileID: 11400000, guid: df66f52aaa1b65d47b6dbc35b2548489, type: 2}
   arcade: {fileID: 0}
+  correctObjectParticles: {fileID: 1231737767803462873, guid: 1dbdd679714a8dc4181249800d0284b4, type: 3}
+  bubbleMaterial: {fileID: 2100000, guid: a4a3b81dbbacc994d86d13adccbdb52b, type: 2}
   scoreManager: {fileID: 0}
   blinkTime: 0.25
   plopTime: 0.15

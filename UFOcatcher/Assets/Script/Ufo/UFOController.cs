@@ -62,11 +62,10 @@ public class UFOController : MonoBehaviour
 	GameManager gameManager;
 
 
-	public float shakeDuration = 1.0f;
-	public float shakeMagnitude = 3f;
-
+	public float shakeMagnitude = 1f;
+	private bool _isShaking = false;
 	private Quaternion initialUFORotation;
-	private float elapsedTime = 0.0f;
+	private Quaternion IHateRotation;
 
 	void Start()
 	{
@@ -83,7 +82,6 @@ public class UFOController : MonoBehaviour
 		_screenBoundsMax = new Vector2(_screenBounds, _screenBounds);
 		UpdateEnergyBar();
 
-		//**
 		initialUFORotation = _ufoMesh.transform.localRotation;
 	}
 
@@ -138,11 +136,13 @@ public class UFOController : MonoBehaviour
 		if (context.performed && currentEnergy > energyThreshold && !isCooldown)
 		{
 			_beamActive = true;
+			_isShaking = true;
 			_source.Play();
 		}
 		else if (context.canceled)
 		{
 			_beamActive = false;
+			_isShaking = false;
 			_source.Stop();
 		}
 		_beam.SetActive(_beamActive);
@@ -183,6 +183,7 @@ public class UFOController : MonoBehaviour
 
 		UpdateEnergyBar();
 		UpdateRotation(_inputVec);
+		UpdateShake(_inputVec);
 	}
 
 	private void UpdateEnergyBar()
@@ -203,33 +204,22 @@ public class UFOController : MonoBehaviour
 		}
 	}
 
-	// TODO: UpdateShake in Update Loop
-	public void Shake(InputAction.CallbackContext context)
-	{
-		elapsedTime = 0.0f;
-	}
-	private void UpdateShake()
+	private void UpdateShake(Vector2 _input)
     {
-		//**
-		if (elapsedTime < shakeDuration)
+		if (_isShaking)
 		{
-			elapsedTime += Time.deltaTime;
-
-			float percentComplete = elapsedTime / shakeDuration;
-			float damper = 1f - Mathf.Clamp01(percentComplete);
-
 			// Generate random offsets for each axis (rotation in degrees)
-			float xx = UnityEngine.Random.Range(-shakeMagnitude, shakeMagnitude) * damper;
-			float yy = UnityEngine.Random.Range(-shakeMagnitude, shakeMagnitude) * damper;
-			float zz = UnityEngine.Random.Range(-shakeMagnitude, shakeMagnitude) * damper;
+			float xx = UnityEngine.Random.Range(-shakeMagnitude, shakeMagnitude);
+			float yy = UnityEngine.Random.Range(-shakeMagnitude, shakeMagnitude);
+			float zz = UnityEngine.Random.Range(-shakeMagnitude, shakeMagnitude);
 
 			// Apply the shake effect
-			_ufoMesh.transform.localEulerAngles = initialUFORotation.eulerAngles + new Vector3(xx, yy, zz);
+			_ufoMesh.transform.localRotation = Quaternion.Euler(new Vector3(xx, yy, zz)) * IHateRotation;
 		}
-		else
+		else if (_input.magnitude < 0.05f)
 		{
 			// Reset rotation after shaking
-			_ufoMesh.transform.localEulerAngles = initialUFORotation.eulerAngles;
+			_ufoMesh.transform.localRotation = initialUFORotation;
 		}
 	}
 
@@ -237,6 +227,7 @@ public class UFOController : MonoBehaviour
 	{
 		Quaternion joystickWantAngle_Euler = Quaternion.Euler(new Vector3(_input.y, 0, -_input.x) * 10.0f) * initialUFORotation;
 		_ufoMesh.transform.localRotation = Quaternion.Lerp(_ufoMesh.transform.localRotation, joystickWantAngle_Euler, Time.deltaTime * 5.0f);
+		IHateRotation = _ufoMesh.transform.localRotation;
 	}
 
 
