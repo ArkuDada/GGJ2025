@@ -245,8 +245,6 @@ public class UFOController : MonoBehaviour
 		if (other.gameObject.TryGetComponent<BaseObject>(out var baseObject))
 		{
 			gameManager.QuestManager.CollectedObject(baseObject);
-
-			baseObject.DespawnObject();
 		}
 	}
 
