@@ -50,7 +50,23 @@ MonoBehaviour:
   sfxSource: {fileID: 2835618846328463637}
   musicVolume: 1
   sfxVolume: 1
-  soundEffectsList: []
+  soundEffectsList:
+  - name: Bubble Sound
+    clip: {fileID: 8300000, guid: d55ced85dcaef23479e9187b29e8fd4e, type: 3}
+  - name: Button Select
+    clip: {fileID: 8300000, guid: 203f10dc933665a45a680e4974f582f4, type: 3}
+  - name: Button Press
+    clip: {fileID: 8300000, guid: 6df521d3fa2b8f64f8e1da5f3fdcbd16, type: 3}
+  - name: Chicken Ambiance
+    clip: {fileID: 8300000, guid: 78237ee07ed7cb04ca4acd71b0a1382b, type: 3}
+  - name: Cow Spawn
+    clip: {fileID: 8300000, guid: 0bedd5b314d836044911200d6b265c8a, type: 3}
+  - name: Egg Spawn
+    clip: {fileID: 8300000, guid: d3579d586b31ff24a946a3abbc031304, type: 3}
+  - name: Shoot Sound
+    clip: {fileID: 8300000, guid: 45df7685450406146aa2a7ac00a6dfc2, type: 3}
+  - name: Wood Crush
+    clip: {fileID: 8300000, guid: 58df962796078344d9f5c0c592f4a5f1, type: 3}
   backgroundMusic: {fileID: 0}
   backgroundGameplayMusic: {fileID: 0}
   backgroundMenu: {fileID: 0}
