@@ -16,6 +16,7 @@ public class UFOController : MonoBehaviour
 
 	private bool _beamActive = false;
 	public GameObject _beam;
+	public GameObject _ufoMesh;
 
 	public Arcade _arcade;
 
@@ -58,6 +59,13 @@ public class UFOController : MonoBehaviour
 	[SerializeField]
 	GameManager gameManager;
 
+
+	public float shakeDuration = 1.0f;
+	public float shakeMagnitude = 3f;
+
+	private Quaternion initialUFORotation;
+	private float elapsedTime = 0.0f;
+
 	void Start()
 	{
 		if (_arcade == null)
@@ -72,6 +80,9 @@ public class UFOController : MonoBehaviour
 		_screenBoundsMin = new Vector2(-_screenBounds, -_screenBounds);
 		_screenBoundsMax = new Vector2(_screenBounds, _screenBounds);
 		UpdateEnergyBar();
+
+		//**
+		initialUFORotation = _ufoMesh.transform.localRotation;
 	}
 
 	void Update()
@@ -167,6 +178,7 @@ public class UFOController : MonoBehaviour
 		}
 
 		UpdateEnergyBar();
+		UpdateRotation(_inputVec);
 	}
 
 	private void UpdateEnergyBar()
@@ -186,6 +198,43 @@ public class UFOController : MonoBehaviour
 
 		}
 	}
+
+	// TODO: UpdateShake in Update Loop
+	public void Shake(InputAction.CallbackContext context)
+	{
+		elapsedTime = 0.0f;
+	}
+	private void UpdateShake()
+    {
+		//**
+		if (elapsedTime < shakeDuration)
+		{
+			elapsedTime += Time.deltaTime;
+
+			float percentComplete = elapsedTime / shakeDuration;
+			float damper = 1f - Mathf.Clamp01(percentComplete);
+
+			// Generate random offsets for each axis (rotation in degrees)
+			float xx = UnityEngine.Random.Range(-shakeMagnitude, shakeMagnitude) * damper;
+			float yy = UnityEngine.Random.Range(-shakeMagnitude, shakeMagnitude) * damper;
+			float zz = UnityEngine.Random.Range(-shakeMagnitude, shakeMagnitude) * damper;
+
+			// Apply the shake effect
+			_ufoMesh.transform.localEulerAngles = initialUFORotation.eulerAngles + new Vector3(xx, yy, zz);
+		}
+		else
+		{
+			// Reset rotation after shaking
+			_ufoMesh.transform.localEulerAngles = initialUFORotation.eulerAngles;
+		}
+	}
+
+	void UpdateRotation(Vector2 _input)
+	{
+		Quaternion joystickWantAngle_Euler = Quaternion.Euler(new Vector3(_input.y, 0, -_input.x) * 10.0f) * initialUFORotation;
+		_ufoMesh.transform.localRotation = Quaternion.Lerp(_ufoMesh.transform.localRotation, joystickWantAngle_Euler, 0.2f);
+	}
+
 
 	private void OnCollisionEnter(Collision other)
 	{

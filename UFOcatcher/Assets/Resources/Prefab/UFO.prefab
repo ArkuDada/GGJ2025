@@ -297,12 +297,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7553613925448177428}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0.00000022351736}
   m_LocalPosition: {x: 0, y: 1.2139997, z: 0}
   m_LocalScale: {x: 0.22999999, y: 0.22999999, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6344772624607999088}
+  m_Father: {fileID: 5555287116864947318}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7672887954014279773
 SpriteRenderer:
@@ -396,7 +396,6 @@ Transform:
   m_Children:
   - {fileID: 3582346913295181824}
   - {fileID: 5555287116864947318}
-  - {fileID: 1549153274886672306}
   - {fileID: 5207382101412056205}
   - {fileID: 1761053963868916032}
   m_Father: {fileID: 0}
@@ -491,6 +490,8 @@ MonoBehaviour:
   _speed: 5
   _screenBounds: 5
   _beam: {fileID: 2703883792179000713}
+  _ufoMesh: {fileID: 5067544224362815180}
+  _arcade: {fileID: 0}
   alienSpriteRenderer: {fileID: 7672887954014279773}
   neutralSprite: {fileID: 423639440, guid: 14b262a92596241808faa1d5986f4c1e, type: 3}
   sadSprite: {fileID: -239537771, guid: 14b262a92596241808faa1d5986f4c1e, type: 3}
@@ -504,6 +505,9 @@ MonoBehaviour:
   energyThreshold: 0.1
   cooldownDuration: 2
   gameManager: {fileID: 0}
+  shakeDuration: 0.25
+  shakeMagnitude: 100
+  decreaseFactor: 1
 --- !u!114 &7745365906999166378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -887,9 +891,17 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 942cc95425aab4d27b580fe211012388, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5748833e0f24543d68756e4c4b982fe7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1549153274886672306}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5748833e0f24543d68756e4c4b982fe7, type: 3}
+--- !u!1 &5067544224362815180 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 5748833e0f24543d68756e4c4b982fe7, type: 3}
+  m_PrefabInstance: {fileID: 5373605032219861917}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5555287116864947318 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5748833e0f24543d68756e4c4b982fe7, type: 3}
