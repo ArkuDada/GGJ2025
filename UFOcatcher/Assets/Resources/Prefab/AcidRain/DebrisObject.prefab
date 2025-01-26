@@ -114,7 +114,7 @@ Transform:
   m_GameObject: {fileID: 2463113351042056654}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -4.611618, y: -11.373674, z: 16.718594}
+  m_LocalPosition: {x: 1.2229675, y: -11.373675, z: 2.1982453}
   m_LocalScale: {x: 2.1191845, y: 2.1191845, z: 2.1191845}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -376,7 +376,7 @@ MonoBehaviour:
     m_Bits: 1
   maxLaserLength: 100
   laserShrinkRate: 0.1
-  spawnLineWidth: 1.5
+  spawnLineWidth: 0.1
   minLineWidth: 0.05
   colorChangeSpeed: 1
 --- !u!54 &6988910970565173001

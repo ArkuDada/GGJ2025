@@ -532,6 +532,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6810492819628189782, guid: 35c6656fd74b74483abb4dac053d7ba3, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 06088eccc46fc47dcbcf7fdd9e064088, type: 2}
+    - target: {fileID: -6326568378401398211, guid: 35c6656fd74b74483abb4dac053d7ba3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -4892636496999325329, guid: 35c6656fd74b74483abb4dac053d7ba3, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -560,10 +568,22 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 0d71808189e4e5e4db31e4e9bc642b52, type: 2}
+    - target: {fileID: 5474277856603793832, guid: 35c6656fd74b74483abb4dac053d7ba3, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a1c0756db408d4bf5a721e2e6784a544, type: 2}
     - target: {fileID: 6713022602827988968, guid: 35c6656fd74b74483abb4dac053d7ba3, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 0d71808189e4e5e4db31e4e9bc642b52, type: 2}
+    - target: {fileID: 7504149974254578979, guid: 35c6656fd74b74483abb4dac053d7ba3, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 06088eccc46fc47dcbcf7fdd9e064088, type: 2}
+    - target: {fileID: 7853340385167068919, guid: 35c6656fd74b74483abb4dac053d7ba3, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 06088eccc46fc47dcbcf7fdd9e064088, type: 2}
     - target: {fileID: 8620745260079937581, guid: 35c6656fd74b74483abb4dac053d7ba3, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 

@@ -35,21 +35,19 @@ public class DebrisSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Start spawning AcidRain objects repeatedly
-        InvokeRepeating(nameof(SpawnAcidRain), 0f, spawnRate);
 
         minBound = _spawnMesh.mesh.bounds.min;
         maxBound = _spawnMesh.mesh.bounds.max;
     }
 
     // Start the spawning process
-    private void StartSpawning()
+    public void StartSpawning()
     {
         InvokeRepeating(nameof(SpawnAcidRain), 0f, spawnRate);
     }
 
     // Stop the spawning process
-    private void StopSpawning()
+    public void StopSpawning()
     {
         CancelInvoke(nameof(SpawnAcidRain));
     }

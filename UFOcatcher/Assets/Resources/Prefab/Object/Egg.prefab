@@ -55,7 +55,7 @@ MonoBehaviour:
   floatSpeed: 5
   _BaseScore: 1
   _growthTimer: 0
-  _maxGrowth: 3
+  _maxGrowth: 6.9
   ScoreMultCurve:
     serializedVersion: 2
     m_Curve: []

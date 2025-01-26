@@ -149,7 +149,8 @@ PrefabInstance:
     - {fileID: 4707681377607185738, guid: fb557c56aa8f2c445b50dad80fa999ae, type: 3}
     - {fileID: 6879664464928411560, guid: fb557c56aa8f2c445b50dad80fa999ae, type: 3}
     - {fileID: 4115528054477075412, guid: fb557c56aa8f2c445b50dad80fa999ae, type: 3}
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 7209383340972183714, guid: fb557c56aa8f2c445b50dad80fa999ae, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 4989856079516220156, guid: fb557c56aa8f2c445b50dad80fa999ae, type: 3}
       insertIndex: -1
@@ -229,6 +230,7 @@ MonoBehaviour:
   - {fileID: 1670719219996521918}
   - {fileID: 4555159974131895976}
   - {fileID: 1849615733297736529}
+  CurrentStage: 0
 --- !u!4 &5769496368290394417 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4989856079516220156, guid: fb557c56aa8f2c445b50dad80fa999ae, type: 3}

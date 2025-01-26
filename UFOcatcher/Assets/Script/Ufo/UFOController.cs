@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using System.Xml.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -16,6 +17,9 @@ public class UFOController : MonoBehaviour
 
     private bool _beamActive = false;
     public GameObject _beam;
+
+    [SerializeField]
+    AudioSource _source;
 
     void Start()
     {
@@ -60,11 +64,12 @@ public class UFOController : MonoBehaviour
         if (context.performed)
         {
             _beamActive = true;
-            SoundManager.instance.PlaySFX("Shoot Sound");
+            _source.Play();
         }
         else if (context.canceled)
         {
             _beamActive = false;
+            _source.Stop();
         }
         _beam.SetActive(_beamActive);
     }
