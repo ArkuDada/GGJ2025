@@ -309,8 +309,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 1
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!114 &2674814957567462654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -327,7 +327,6 @@ MonoBehaviour:
   _speed: 5
   _screenBounds: 5
   _beam: {fileID: 2703883792179000713}
-  _crossHair: {fileID: 2982871629668372389}
 --- !u!114 &7745365906999166378
 MonoBehaviour:
   m_ObjectHideFlags: 0
