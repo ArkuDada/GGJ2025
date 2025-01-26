@@ -49,7 +49,8 @@ public class QuestManager : MonoBehaviour
 	// Handler for when currentQuest is completed
 	private void QuestCompleted()
 	{
-		// TODO: Talk to game manager?
+		ScoreManager scoreManager = GameManager.Instance.ScoreManager;
+		scoreManager.IncrementScore(1000); // Magic number: I asked designers for this number, and they said 1000 :)
 
 		InitQuest();
 	}
