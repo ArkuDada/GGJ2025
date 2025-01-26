@@ -79,21 +79,24 @@ public class ObjectSpawner : MonoBehaviour
 
     private IEnumerator SpawnObject()
     {
-        var grid = _gridFloor.GetRandomGrid().center;
-        var halfGrid = _gridFloor.distanceBetweenGrids / 2.0f;
-        grid.y = halfGrid;
-
-        var spawnType = GetRandomObjectType();
-
-        if(IsLimitReach(spawnType))
+        while (true) // Retry logic without recursion
         {
-            StartCoroutine(SpawnObject());
-            yield break;
-        }
+            var grid = _gridFloor.GetRandomGrid().center;
+            var halfGrid = _gridFloor.distanceBetweenGrids / 2.0f;
+            grid.y = halfGrid;
 
-        var obj = _objectPrefabs.Find(x => x.GetComponent<BaseObject>()?.Type == spawnType);
+            var spawnType = GetRandomObjectType();
 
-            switch(spawnType)
+            if (IsLimitReach(spawnType))
+            {
+                // Wait for a short time before retrying, preventing recursive overflow
+                yield return new WaitForSeconds(0.1f);
+                continue;
+            }
+
+            var obj = _objectPrefabs.Find(x => x.GetComponent<BaseObject>()?.Type == spawnType);
+
+            switch (spawnType)
             {
                 case Objects.ObjectType.Cow:
                     SoundManager.instance.PlaySFX("Cow Spawn");
@@ -113,13 +116,12 @@ public class ObjectSpawner : MonoBehaviour
             }
 
             var hits = Physics.BoxCastAll(grid, Vector3.one * halfGrid, Vector3.up, Quaternion.identity, 0.1f);
-
             var baseObjects = hits.Select(x => x.collider.GetComponent<BaseObject>()).Where(x => x != null).ToList();
 
             bool containWheat = baseObjects.Any(o => o.Type == Objects.ObjectType.Wheat);
-            if(hits.Length > 0 && !containWheat)
+            if (hits.Length > 0 && !containWheat)
             {
-                foreach(var o in baseObjects)
+                foreach (var o in baseObjects)
                 {
                     o.gameObject.GetComponent<Rigidbody>().AddExplosionForce(explodeForce, grid, 1.5f);
                 }
@@ -127,10 +129,16 @@ public class ObjectSpawner : MonoBehaviour
 
             yield return new WaitForEndOfFrame();
 
-            if(!containWheat) Instantiate(obj, grid, Quaternion.identity);
+            if (!containWheat) Instantiate(obj, grid, Quaternion.identity);
 
-        _spawnInterval = _spawnRateCurve.Evaluate(time: ObjectCount / (float)maxObjectCount);
+            // Adjust spawn interval dynamically
+            _spawnInterval = _spawnRateCurve.Evaluate(time: ObjectCount / (float)maxObjectCount);
+
+            // End the coroutine
+            yield break;
+        }
     }
+
 
     private Objects.ObjectType GetRandomObjectType()
     {
