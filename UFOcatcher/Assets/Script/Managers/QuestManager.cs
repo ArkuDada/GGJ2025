@@ -9,12 +9,22 @@ public class QuestManager : MonoBehaviour
 	public RecipeObject CurrentQuest { get; private set; } // The current quest, containing a list of objects for the player to collect
 	public List<int> ObjectsCollected { get; private set; } // Acts like a checklist for the current quest's items
 	public int ObjectsLeftToCollect { get; private set; } // Number of items left to collect
-	public TextMeshProUGUI tempQuestText; // temp for debug until UI is finalized
-	
+
 	public Arcade arcade;
-	
+
 	public void Start()
 	{
+		if (arcade == null)
+		{
+			GameObject arcadeGameObject = GameObject.Find("Arcade");
+			if (!arcadeGameObject)
+				Debug.LogError("Arcade not found!");
+
+			arcade = arcadeGameObject.GetComponent<Arcade>();
+			if (!arcade)
+				Debug.Log("Arcade has no Arcade script!");
+		}
+
 		InitQuest();
 	}
 
@@ -23,29 +33,29 @@ public class QuestManager : MonoBehaviour
 	{
 		CurrentQuest = availableRecipes[Random.Range(0, availableRecipes.Count)];
 
+		ObjectsLeftToCollect = 0;
 		ObjectsCollected = new(CurrentQuest.objects.Count);
 		for (int i = 0; i < ObjectsCollected.Capacity; i++)
 		{
-			ObjectsLeftToCollect = CurrentQuest.quantities[i];
+			ObjectsLeftToCollect += CurrentQuest.quantities[i];
 			ObjectsCollected.Add(0);
 		}
 
+		for (int i = 0; i < ObjectsCollected.Count; i++)
+		{
+			arcade.SetButtonIcon(i, CurrentQuest.objects[i]);
+			arcade.SetBorderFill(i, 0);
+		}
 
 		UpdateQuestUI();
 	}
 
 	private void UpdateQuestUI()
 	{
-		string text = CurrentQuest.questName + ':';
 		for (int i = 0; i < ObjectsCollected.Count; i++)
 		{
-			text += string.Format("\n {0}: {1}/{2}", 
-				Utility.Objects.GetObjectName(CurrentQuest.objects[i]),
-				ObjectsCollected[i],
-				CurrentQuest.quantities[i]
-				);
+			arcade.SetBorderFill(i, (float)ObjectsCollected[i] / (float)CurrentQuest.quantities[i]);
 		}
-		tempQuestText.text = text;
 	}
 
 	// Handler for when currentQuest is completed
@@ -60,25 +70,20 @@ public class QuestManager : MonoBehaviour
 	// Mark an object as collected if it's on the current quest's list.
 	public void CollectedObject(BaseObject objectCollected)
 	{
-		Debug.Log($"Collected {objectCollected.Type}");
 		ScoreManager scoreManager = GameManager.Instance.ScoreManager;
 		int points = objectCollected.GetScore();
 
 		for (int i = 0; i < CurrentQuest.objects.Count; ++i)
 		{
-			Debug.Log(CurrentQuest.objects[i]);
-			Debug.Log(ObjectsCollected[i]);
-			Debug.Log(CurrentQuest.quantities[i]);
-			if (CurrentQuest.objects[i] == objectCollected.Type && ObjectsCollected[i] < CurrentQuest.quantities[i])
+			// Find the object we're supposed to be collecting (order matters in recipes)
+			if (ObjectsCollected[i] >= CurrentQuest.quantities[i])
+				continue;
+
+			if (CurrentQuest.objects[i] == objectCollected.Type)
 			{
-				Debug.Log("Got!");
-				// Collected an uncollected object on our list
-				Debug.Log(ObjectsCollected[i]);
-				Debug.Log(ObjectsLeftToCollect);
+				// Collected the correct object
 				++ObjectsCollected[i];
 				--ObjectsLeftToCollect;
-				Debug.Log(ObjectsCollected[i]);
-				Debug.Log(ObjectsLeftToCollect);
 
 				if (ObjectsLeftToCollect <= 0)
 				{
@@ -93,9 +98,12 @@ public class QuestManager : MonoBehaviour
 
 				return;
 			}
+
+			// We didn't collect the correct object
+			break;
 		}
 
-		// Object wasn't on the quest list
+		// Wrong object; Decrease score!
 		scoreManager.DecrementScore(points);
 	}
 }
