@@ -5,7 +5,7 @@ using UnityEngine;
 using Utility;
 using Random = UnityEngine.Random;
 
-public class ObjectSpawner : MonoBehaviour
+public class ObjectSpawner : MonoSingleton<ObjectSpawner>
 {
     [SerializeField]
     private GridFloor _gridFloor;
@@ -26,8 +26,9 @@ public class ObjectSpawner : MonoBehaviour
 
 
     public float explodeForce = 1000.0f;
-    int ObjectCount => GameObject.FindObjectsByType<BaseObject>(FindObjectsSortMode.InstanceID).Length;
+    public int ObjectCount => GameObject.FindObjectsByType<BaseObject>(FindObjectsSortMode.InstanceID).Length;
 
+    public bool IsReachedMaxObjectCount => (ObjectCount >= maxObjectCount);
 
     private void Update()
     {
@@ -90,6 +91,10 @@ public class ObjectSpawner : MonoBehaviour
         }
 
 
-        return (Objects.ObjectType)Random.Range(0, (int)Objects.ObjectType.End);
+        return (Objects.ObjectType)Random.Range(0, (int)Objects.ObjectType.Egg);
+    }
+
+    protected override void Init()
+    {
     }
 }

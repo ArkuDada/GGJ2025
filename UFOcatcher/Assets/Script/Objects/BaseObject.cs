@@ -81,7 +81,7 @@ public class BaseObject : MonoBehaviour
 	}
 
 	// Encapsulate in a bubble
-	public void BubbleLift()
+	public virtual void BubbleLift()
 	{
 		Debug.Log(Type);
 		switch (Type)

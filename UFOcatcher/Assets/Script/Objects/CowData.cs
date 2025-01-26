@@ -1,4 +1,3 @@
-using NCC.Utility.Objects;
 using System.Collections;
 using UnityEngine;
 
@@ -82,7 +81,7 @@ public class CowData : MonoBehaviour
 		{
 			WheatData wheatData = growingObject.GetComponent<WheatData>();
 			// Collided with wheat, not currently eating
-			if (growingObject.Type == Utility.Objects.ObjectType.Wheat && wheatData == targetWheat)
+			if (growingObject.Type == Objects.ObjectType.Wheat && wheatData == targetWheat)
 			{
 				StartEating(growingObject);
 			}
