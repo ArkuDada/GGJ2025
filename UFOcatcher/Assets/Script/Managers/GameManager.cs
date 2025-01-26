@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public enum GameState
 {
     Start,
+    Tutorial,
     Prepare,
     Play,
     Pause,
@@ -48,6 +49,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     GameObject endUI;
 
+    [SerializeField]
+    GameObject tutorialUI;
+
     private void Awake()
     {
         if (Instance == null)
@@ -81,8 +85,14 @@ public class GameManager : MonoBehaviour
             timeManager.ResetTimer();
             scoreManager.ResetScore();
         }
+        else if (state == GameState.Tutorial) 
+        {
+            startUI.SetActive(false);
+            tutorialUI.SetActive(true);
+        }
         else if (state == GameState.Prepare)
         {
+            tutorialUI.SetActive(false);
             startUI.SetActive(false);
             Time.timeScale = 1;
         }
@@ -94,8 +104,8 @@ public class GameManager : MonoBehaviour
         else if (state == GameState.Pause)
         {
             timeManager.PauseTimer();
-        } 
-        else if (state == GameState.GameOver) 
+        }
+        else if (state == GameState.GameOver)
         {
 
             debrisSpawner.StopSpawning();
@@ -112,10 +122,17 @@ public class GameManager : MonoBehaviour
         {
             if (Input.anyKeyDown)
             {
+                ChangeGameplayState(GameState.Tutorial);
+            }
+        }
+        else if (state == GameState.Tutorial) 
+        {
+            if (Input.anyKeyDown)
+            {
                 ChangeGameplayState(GameState.Prepare);
             }
-        } 
-        else if (state == GameState.Prepare) 
+        }
+        else if (state == GameState.Prepare)
         {
             ChangeGameplayState(GameState.Play);
         }

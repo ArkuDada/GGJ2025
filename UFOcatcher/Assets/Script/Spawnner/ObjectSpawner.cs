@@ -115,7 +115,9 @@ public class ObjectSpawner : MonoBehaviour
                 case Objects.ObjectType.Chicken:
                     SoundManager.instance.PlaySFX("Chicken Spawn");
                     break;
-
+                case Objects.ObjectType.Box:
+                    SoundManager.instance.PlaySFX("Crate Spawn");
+                    break;
                 default:
                     break;
             }
