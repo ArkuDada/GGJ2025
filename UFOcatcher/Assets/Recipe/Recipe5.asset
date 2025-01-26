@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe78f953f66079f44a69d0258d0fbd05, type: 3}
-  m_Name: Recipe_Test
+  m_Name: Recipe5
   m_EditorClassIdentifier: 
-  questName: Test Recipe
-  objects: 0000000002000000
-  quantities: 0200000001000000
+  questName: Oyakodon
+  objects: 00000000010000000200000003000000
+  quantities: 01000000010000000100000001000000
