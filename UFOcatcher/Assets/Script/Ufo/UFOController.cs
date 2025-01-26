@@ -154,7 +154,9 @@ public class UFOController : MonoBehaviour
 			if (cooldownTimer <= 0.0f)
 			{
 				isCooldown = false;
-			}
+				currentEnergy = 1.0f;
+
+            }
 		}
 		else if (_beamActive)
 		{
