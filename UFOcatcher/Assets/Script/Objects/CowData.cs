@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI.Table;
 
 [RequireComponent(typeof(MoveableObject))]
 public class CowData : MonoBehaviour
@@ -45,8 +46,9 @@ public class CowData : MonoBehaviour
 	public void StartEating(GrowingObject wheat)
 	{
 		if (isEating || moveableObject._base.State != BaseObject.ObjectState.Grounded || wheat.State != BaseObject.ObjectState.Grounded)
-			return;
+            return;
 
+		SoundManager.instance.PlaySFX("Cow Eat Wheat");
 		wheatEatingCoroutine = CowEat(wheat);
 		StartCoroutine(wheatEatingCoroutine);
 	}

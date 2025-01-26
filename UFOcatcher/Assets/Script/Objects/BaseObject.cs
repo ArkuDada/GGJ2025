@@ -132,7 +132,7 @@ public class BaseObject : MonoBehaviour
 		switch (Type)
 		{
 			case Objects.ObjectType.Box:
-                SoundManager.instance.PlaySFX("Wood Crush");
+                SoundManager.instance.PlaySFX("Crate Destroy");
                 GameObject boxParticles = Instantiate(GameObject.FindGameObjectWithTag("FloorPlane").transform.Find("BoxExplosionParticle").gameObject);
 				boxParticles.transform.position = transform.position;
 				boxParticles.SetActive(true);
