@@ -34,7 +34,8 @@ public class CowData : MonoBehaviour
 		moveableObject.ChooseNewDestination();
 		targetWheat.cowEating = null;
 		wheatEatingParticle = null;
-		targetWheat.GetComponent<Rigidbody>().isKinematic = false;
+		if (targetWheat.TryGetComponent(out Rigidbody rig))
+			rig.isKinematic = false;
 	}
 
 	private void OnDestroy()

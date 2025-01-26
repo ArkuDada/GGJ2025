@@ -33,7 +33,7 @@ public class UFOController : MonoBehaviour
         transform.position = new Vector3(Mathf.Clamp(transform.position.x, _screenBoundsMin.x, _screenBoundsMax.x),
             transform.position.y,
             Mathf.Clamp(transform.position.z, _screenBoundsMin.y, _screenBoundsMax.y));
-
+        
         if(_beamActive && Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 999,
                Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore))
         {
@@ -57,15 +57,15 @@ public class UFOController : MonoBehaviour
 
     public void ActivateSkill(InputAction.CallbackContext context)
     {
-        if(context.performed)
+        if (context.performed)
         {
             _beamActive = true;
+            SoundManager.instance.PlaySFX("Shoot Sound");
         }
-        else if(context.canceled)
+        else if (context.canceled)
         {
             _beamActive = false;
         }
-
         _beam.SetActive(_beamActive);
     }
 

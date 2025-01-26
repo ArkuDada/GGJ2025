@@ -15,10 +15,11 @@ public class DebrisSpawner : MonoBehaviour
     [SerializeField]
     private GameObject acidRainPrefab;
 
-    // Spawn rate (seconds between spawns)
-    [SerializeField]
-    private float spawnRate = 2f;
+	public const float DEFAULT_SPAWN_RATE = 2f;
 
+	// Spawn rate (seconds between spawns)
+	[SerializeField]
+    private float spawnRate = DEFAULT_SPAWN_RATE;
 
     public float SpawnRate
     {
