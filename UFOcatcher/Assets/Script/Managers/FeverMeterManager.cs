@@ -8,7 +8,8 @@ public class FeverMeterManager : MonoBehaviour
 	private bool inFever = false;
 	public Material[] feverMaterials;
 
-	const float MAX_FEVER = 120.0f;
+	
+	const float MAX_FEVER = 90.0f;
 	public float feverIncreaseRate = 10.0f;
 	public float feverDecreaseRate = 10.0f;
 
