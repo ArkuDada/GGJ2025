@@ -89,6 +89,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: c8bddbcbf0708ca4881f8dcbad4e0bdf, type: 3}
   - name: CollectWrong
     clip: {fileID: 8300000, guid: 65d3309e908d1df49857f7dabc32b24b, type: 3}
+  - name: CarteSpawn
+    clip: {fileID: 8300000, guid: 9b711da2b4b09054ba244cca37ac89da, type: 3}
   backgroundMusic: {fileID: 8300000, guid: 9e993f4ba6e73c14d82682d704217bdf, type: 3}
   backgroundGameplayMusic: {fileID: 8300000, guid: 9e993f4ba6e73c14d82682d704217bdf, type: 3}
   backgroundMenu: {fileID: 0}
