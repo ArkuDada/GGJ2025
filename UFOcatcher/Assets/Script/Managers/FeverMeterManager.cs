@@ -12,16 +12,36 @@ public class FeverMeterManager : MonoBehaviour
 	public float feverIncreaseRate = 10.0f;
 	public float feverDecreaseRate = 10.0f;
 
+    [Header("0-33 Settings")]
+    [Tooltip("Spawn Rate between 33 -> 66 Percent")]
+    [SerializeField]
+    float defaultSpawnRate = 2.0f;
+    [SerializeField]
+    float defaultWaitTime = 3f;
+
+    [Header("33-66 Settings")]
+    [Tooltip("Spawn Rate between 33 -> 66 Percent")]
     [SerializeField]
     float earlierSpawnRate = 2.0f;
+    [SerializeField]
+    float earlierWaitTime = 3f;
 
+    [Header("66-99 Settings")]
+    [Tooltip("Spawn Rate between 66 -> 99 Percent.")]
     [SerializeField]
     float lateGameSpawnRate = 2.0f;
+    [SerializeField]
+    float lateGameWaitTime = 3f;
 
+    [Header("Apocalypse Settings")]
+    [Tooltip("Spawn Rate between >100 Percent.")]
     [SerializeField]
 	float apocalypseSpawnRate = 0.1f;
+    [SerializeField]
+    float apocalypseWaitTime = 1f;
 
-	[SerializeField]
+
+    [SerializeField]
 	[Range(0.0f, MAX_FEVER)]
 	private float currentFeverValue;
 	public float CurrentFeverValue => currentFeverValue;
@@ -94,23 +114,27 @@ public class FeverMeterManager : MonoBehaviour
 		{
 			if (currentFeverPercentage <= 0)
 			{
-				GameManager.Instance.DebrisSpawner.SpawnRate = DebrisSpawner.DEFAULT_SPAWN_RATE;
+                GameManager.Instance.DebrisSpawner.spawnWaitTime = defaultWaitTime;
+                GameManager.Instance.DebrisSpawner.SpawnRate = defaultSpawnRate;
 				inFever = false;
 			}
 		}
 		else if (currentFeverPercentage >= 0.99f)
 		{
             SoundManager.instance.PlaySFX("Meteor Start");
+			GameManager.Instance.DebrisSpawner.spawnWaitTime = apocalypseWaitTime;
             GameManager.Instance.DebrisSpawner.SpawnRate = apocalypseSpawnRate;
             inFever = true;
         }
         else if (currentFeverPercentage >= 2f / 3f)
         {
+            GameManager.Instance.DebrisSpawner.spawnWaitTime = lateGameWaitTime;
             GameManager.Instance.DebrisSpawner.SpawnRate = lateGameSpawnRate;
 
         }
         else if (currentFeverPercentage >= 1f / 3f)
         {
+            GameManager.Instance.DebrisSpawner.spawnWaitTime = earlierWaitTime;
             GameManager.Instance.DebrisSpawner.SpawnRate = earlierSpawnRate;
         }
 
