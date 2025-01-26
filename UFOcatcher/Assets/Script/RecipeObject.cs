@@ -5,6 +5,6 @@ using UnityEngine;
 public class RecipeObject : ScriptableObject
 {
     public string questName;
-	public List<Utility.Objects.ObjectType> objects;
+	public List<Objects.ObjectType> objects;
 	public List<int> quantities;
 }
