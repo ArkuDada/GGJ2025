@@ -86,7 +86,7 @@ public class QuestManager : MonoBehaviour
 	{
 		SoundManager.instance.PlaySFX("Quest Complete");
 		scoreManager.CompletedQuest();
-		StartCoroutine(GameObject.Find("mesh_arcade_03").GetComponent<ArcadeScreenMask>().AnimateProgress());
+		StartCoroutine(GameObject.Find("MainArcadeScreen").GetComponent<ArcadeScreenMask>().AnimateProgress());
 
 		yield return new WaitForSeconds(blinkTime);
 
