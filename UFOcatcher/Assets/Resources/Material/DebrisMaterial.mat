@@ -10,21 +10,21 @@ Material:
   m_Name: DebrisMaterial
   m_Shader: {fileID: 4800000, guid: be891319084e9d147b09d89e80ce60e0, type: 3}
   m_Parent: {fileID: 2100000, guid: 677147bac78e1224993b6ebbe394cad2, type: 2}
-  m_ModifiedSerializedProperties: 0
+  m_ModifiedSerializedProperties: 16
   m_ValidKeywords:
   - _EMISSIVE_SIMPLE
   - _IS_ANGELRING_OFF
-  - _IS_CLIPPING_OFF
-  - _IS_OUTLINE_CLIPPING_NO
+  - _IS_CLIPPING_TRANSMODE
+  - _IS_OUTLINE_CLIPPING_YES
   - _OUTLINE_NML
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 3000
   stringTagMap:
-    IgnoreProjection: False
-    RenderType: Opaque
+    IgnoreProjection: true
+    RenderType: Transparent
   disabledShaderPasses:
   - MOTIONVECTORS
   m_LockedProperties: 
@@ -36,8 +36,38 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
-    m_Floats: []
+    m_Floats:
+    - _1st_ShadeColor_Step: 0
+    - _AutoRenderQueue: 1
+    - _BaseColor_Step: 0
+    - _BumpScale: 1
+    - _ClippingMode: 2
+    - _CullMode: 2
+    - _EMISSIVE: 0
+    - _HighColor_Power: 0
+    - _Inverse_Clipping: 0
+    - _Is_BlendAddToHiColor: 0
+    - _Is_NormalMapToHighColor: 0
+    - _Is_SpecularToHighColor: 0
+    - _OUTLINE: 0
+    - _Outline_Width: 1
+    - _RimLight: 0
+    - _RimLight_FeatherOff: 1
+    - _SPRDefaultUnlitColorMask: 0
+    - _SRPDefaultUnlitColMode: 2
+    - _Set_SystemShadowsToBase: 0
+    - _TransparentEnabled: 1
+    - _Tweak_transparency: 0
+    - _Use_1stAs2nd: 0
+    - _Use_BaseAs1st: 0
+    - _ZOverDrawMode: 1
+    - _ZWriteMode: 0
     m_Colors:
-    - _Emissive_Color: {r: 16, g: 0, b: 0, a: 1}
+    - _1st_ShadeColor: {r: 1, g: 1, b: 1, a: 1}
+    - _2nd_ShadeColor: {r: 1, g: 1, b: 1, a: 1}
+    - _BaseColor: {r: 0.7924528, g: 0.4739153, b: 0.13082945, a: 1}
+    - _Color: {r: 0.7924528, g: 0.47391522, b: 0.13082942, a: 1}
+    - _Emissive_Color: {r: 1.6142807, g: 0, b: 0, a: 1}
+    - _HighColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

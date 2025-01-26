@@ -249,12 +249,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Debris
       objectReference: {fileID: 0}
+    - target: {fileID: 1158455590509580219, guid: 10d40ddf6a86bc24ba450311170c2dd5, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 72c17ca3f280aec4a8a401f11c349a49, type: 2}
     - target: {fileID: 5826586916025588246, guid: 10d40ddf6a86bc24ba450311170c2dd5, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: -7074681897062545621, guid: 10d40ddf6a86bc24ba450311170c2dd5, type: 3}
+    - {fileID: -966204126061902051, guid: 10d40ddf6a86bc24ba450311170c2dd5, type: 3}
+    - {fileID: -3386553121241536846, guid: 10d40ddf6a86bc24ba450311170c2dd5, type: 3}
+    - {fileID: -6588137646990983289, guid: 10d40ddf6a86bc24ba450311170c2dd5, type: 3}
+    - {fileID: 5722919998248869405, guid: 10d40ddf6a86bc24ba450311170c2dd5, type: 3}
+    - {fileID: -9038585923029775698, guid: 10d40ddf6a86bc24ba450311170c2dd5, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 10d40ddf6a86bc24ba450311170c2dd5, type: 3}
       insertIndex: -1
@@ -424,7 +434,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fallSpeed: 5
-  rotateSpeed: 30
+  rotateSpeed: 15
   decreaseScore: 10
   crosshair: {fileID: 8520719378558520726}
   currentDebrisState: 0
