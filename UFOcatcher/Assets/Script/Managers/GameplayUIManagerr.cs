@@ -22,9 +22,9 @@ using UnityEngine.UI;
         if (gameManager == null) 
         {
             gameManager = GameManager.Instance;
-            gameManager.ScoreManager.OnScoreChanged += SpawnScoreFeedback;
-        }
 
+        }
+                    gameManager.ScoreManager.OnScoreChanged += SpawnScoreFeedback;
         }
 
         // Update is called once per frame
