@@ -87,11 +87,16 @@ public class ObjectSpawner : MonoBehaviour
 
             var spawnType = GetRandomObjectType();
 
-            if (IsLimitReach(spawnType))
+            int retryCount = 0;
+            while(IsLimitReach(spawnType) && retryCount < 10)
             {
-                // Wait for a short time before retrying, preventing recursive overflow
-                yield return new WaitForSeconds(0.1f);
-                continue;
+                spawnType = GetRandomObjectType();
+                retryCount++;
+            }
+
+            if(retryCount >= 10)
+            {
+                yield break;
             }
 
             var obj = _objectPrefabs.Find(x => x.GetComponent<BaseObject>()?.Type == spawnType);
