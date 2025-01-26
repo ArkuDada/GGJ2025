@@ -32,11 +32,6 @@ namespace Juve
             {
                 scoreUI.text = "Score: " +  GameManager.Instance.ScoreManager.GetScore().ToString();
             }
-
-            if (feverMeterUI != null) 
-            {
-                feverMeterUI.value = GameManager.Instance.FeverMeterManager.GetFeverPercentage();
-            }
         }
     }
 }
