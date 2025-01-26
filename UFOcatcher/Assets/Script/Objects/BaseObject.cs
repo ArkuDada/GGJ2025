@@ -48,7 +48,10 @@ public class BaseObject : MonoBehaviour
 	// Update is called once per frame
 	protected virtual void Update()
 	{
-
+		if(transform.position. y < -20)
+		{
+			DespawnObject();
+		}
 	}
 
 	private void FixedUpdate()
