@@ -57,27 +57,39 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 203f10dc933665a45a680e4974f582f4, type: 3}
   - name: Button Press
     clip: {fileID: 8300000, guid: 6df521d3fa2b8f64f8e1da5f3fdcbd16, type: 3}
-  - name: Chicken Ambiance
-    clip: {fileID: 8300000, guid: 78237ee07ed7cb04ca4acd71b0a1382b, type: 3}
+  - name: Chicken Spawn
+    clip: {fileID: 8300000, guid: cd917c038f6e95b46b439585a06a24e0, type: 3}
   - name: Cow Spawn
-    clip: {fileID: 8300000, guid: 0bedd5b314d836044911200d6b265c8a, type: 3}
+    clip: {fileID: 8300000, guid: 09900c59b772b284fa56285a99c9473b, type: 3}
   - name: Egg Spawn
     clip: {fileID: 8300000, guid: d3579d586b31ff24a946a3abbc031304, type: 3}
-  - name: Shoot Sound
-    clip: {fileID: 8300000, guid: 45df7685450406146aa2a7ac00a6dfc2, type: 3}
-  - name: Wood Crush
-    clip: {fileID: 8300000, guid: 58df962796078344d9f5c0c592f4a5f1, type: 3}
+  - name: Shoot Start
+    clip: {fileID: 8300000, guid: e5778d47e294f2740842e470050b18ca, type: 3}
+  - name: Crate Destroy
+    clip: {fileID: 8300000, guid: 6cb07384ec7659a418f379694ae52a36, type: 3}
   - name: Bubble Pop
-    clip: {fileID: 8300000, guid: 3a51752612d21494b9366f4fb6074479, type: 3}
-  - name: Cow Eat
-    clip: {fileID: 8300000, guid: ed59f1ae50dca054ca89b402202b1b27, type: 3}
+    clip: {fileID: 8300000, guid: fa1d3e32cc783f647b2f56dc882f38e6, type: 3}
   - name: Meteor Start
-    clip: {fileID: 8300000, guid: 0dfb72c666dd60b45af1aa0edf67ae4f, type: 3}
-  - name: Space Junk Explosion
-    clip: {fileID: 8300000, guid: e8af612ee7bf81946837d7e484937146, type: 3}
+    clip: {fileID: 8300000, guid: 87ef8118ff4a7e54394318285c1aaba2, type: 3}
+  - name: MeteorLaunch
+    clip: {fileID: 8300000, guid: 6c7004fda12f1df49b5ee5a8f8643a42, type: 3}
   - name: Wheat Spawn
+    clip: {fileID: 8300000, guid: c89b64cdc15ff5c4c8c3ac1384e2e23c, type: 3}
+  - name: UFO Hit
+    clip: {fileID: 8300000, guid: 110b303f62c793d448fe60ce53b44a80, type: 3}
+  - name: Shoot Loop
+    clip: {fileID: 8300000, guid: 3a679dd30541b1242b412292da820993, type: 3}
+  - name: Quest Ping
+    clip: {fileID: 8300000, guid: 0c6b22a4f407d104c9680dc5db061285, type: 3}
+  - name: Quest Complete
+    clip: {fileID: 8300000, guid: d026df714d2aa574e9173e0fd2f953f2, type: 3}
+  - name: Cow Eat Wheat
     clip: {fileID: 8300000, guid: 9b74cddfa21b2d84bb044cd04401ba94, type: 3}
-  backgroundMusic: {fileID: 0}
+  - name: CollectCorrect
+    clip: {fileID: 8300000, guid: c8bddbcbf0708ca4881f8dcbad4e0bdf, type: 3}
+  - name: CollectWrong
+    clip: {fileID: 8300000, guid: 65d3309e908d1df49857f7dabc32b24b, type: 3}
+  backgroundMusic: {fileID: 8300000, guid: 9e993f4ba6e73c14d82682d704217bdf, type: 3}
   backgroundGameplayMusic: {fileID: 0}
   backgroundMenu: {fileID: 0}
 --- !u!82 &7865003671529669970

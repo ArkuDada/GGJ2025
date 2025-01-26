@@ -7,6 +7,8 @@ using Random = UnityEngine.Random;
 
 public class ObjectSpawner : MonoBehaviour
 {
+    public static ObjectSpawner Instance;
+
     [SerializeField]
     private GridFloor _gridFloor;
 
@@ -21,7 +23,37 @@ public class ObjectSpawner : MonoBehaviour
 
     private float _timer = 0.0f;
 
-    [SerializeField] private int maxObjectCount = 50;
+    [SerializeField]
+    private int maxObjectCount = 25;
+
+    [SerializeField]
+    private GameManager gameManager;
+
+    public float explodeForce = 1000.0f;
+    public int ObjectCount => GameObject.FindObjectsByType<BaseObject>(FindObjectsSortMode.InstanceID).Length;
+
+    public bool IsReachedMaxObjectCount => (ObjectCount >= maxObjectCount);
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void Start()
+    {
+        if (gameManager == null) 
+        {
+            gameManager = GameManager.Instance;
+        }
+
+    }
 
     private void Update()
     {
@@ -29,11 +61,9 @@ public class ObjectSpawner : MonoBehaviour
         if(_timer >= _spawnInterval)
         {
             _timer = 0.0f;
-            StartCoroutine(SpawnObject());
+            if(ObjectCount < maxObjectCount) StartCoroutine(SpawnObject());
         }
     }
-
-    public float explodeForce = 1000.0f;
 
     private IEnumerator SpawnObject()
     {
@@ -44,13 +74,19 @@ public class ObjectSpawner : MonoBehaviour
         var spawnType = GetRandomObjectType();
         var obj = _objectPrefabs.Find(x => x.GetComponent<BaseObject>()?.Type == spawnType);
 
-        switch (spawnType) 
+        switch(spawnType)
         {
             case Objects.ObjectType.Cow:
                 SoundManager.instance.PlaySFX("Cow Spawn");
                 break;
             case Objects.ObjectType.Wheat:
                 SoundManager.instance.PlaySFX("Wheat Spawn");
+                break;
+            case Objects.ObjectType.Egg:
+                SoundManager.instance.PlaySFX("Egg Spawn");
+                break;
+            case Objects.ObjectType.Chicken:
+                SoundManager.instance.PlaySFX("Chicken Spawn");
                 break;
 
             default:
@@ -74,19 +110,19 @@ public class ObjectSpawner : MonoBehaviour
 
         if(!containWheat) Instantiate(obj, grid, Quaternion.identity);
 
-        int objectCount = GameObject.FindObjectsByType<BaseObject>(FindObjectsSortMode.InstanceID).Length;
-        _spawnInterval = _spawnRateCurve.Evaluate(time: objectCount / (float)maxObjectCount);
+        _spawnInterval = _spawnRateCurve.Evaluate(time: ObjectCount / (float)maxObjectCount);
     }
 
     private Objects.ObjectType GetRandomObjectType()
     {
         if(Random.Range(0.0f, 1.0f) < 0.5f)
         {
-            var questObj = GameManager.Instance.QuestManager.CurrentQuest.objects;
+            var questObj = gameManager.QuestManager.CurrentQuest.objects;
             return questObj[Random.Range(0, questObj.Count)];
         }
 
 
-        return (Objects.ObjectType)Random.Range(0, (int)Objects.ObjectType.End);
+        return (Objects.ObjectType)Random.Range(0, (int)Objects.ObjectType.Egg);
     }
+
 }

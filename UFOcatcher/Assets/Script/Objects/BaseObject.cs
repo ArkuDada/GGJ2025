@@ -75,11 +75,13 @@ public class BaseObject : MonoBehaviour
 			{
 				moveableObject.enabled = true;
 			}
+
+			
 		}
 	}
 
 	// Encapsulate in a bubble
-	public void BubbleLift()
+	public virtual void BubbleLift()
 	{
 		Debug.Log(Type);
 		switch (Type)
@@ -115,10 +117,13 @@ public class BaseObject : MonoBehaviour
 	{
 		if (other.CompareTag("FallPlane"))
 		{
+			GameManager.Instance.FeverMeterManager.IncreaseFever(3.0f);
 			_bubble.SetActive(false);
 			_rigidbody.useGravity = true;
 			_rigidbody.linearVelocity = Vector3.zero;
 			State = ObjectState.Down;
+			
+			DespawnObject();
 		}
 	}
 

@@ -37,12 +37,25 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Outline_Width: 62.63
+    - _HighColor_Power: 0
+    - _Is_BlendAddToHiColor: 1
+    - _Is_SpecularToHighColor: 1
+    - _Is_UseTweakHighColorOnShadow: 0
+    - _LightDirection_MaskOn: 0
+    - _Outline_Width: 33
+    - _RimLight: 0
+    - _RimLight_FeatherOff: 1
+    - _RimLight_InsideMask: 0.13
+    - _RimLight_Power: 0.14
+    - _TweakHighColorOnShadow: 1
+    - _Tweak_LightDirection_MaskLevel: 0.042
     - _Use_1stAs2nd: 0
     m_Colors:
     - _1st_ShadeColor: {r: 0.41037738, g: 0.52545935, b: 1, a: 1}
     - _2nd_ShadeColor: {r: 1, g: 1, b: 1, a: 1}
+    - _HighColor: {r: 0, g: 0, b: 0, a: 1}
     - _Outline_Color: {r: 0.07102172, g: 0.16115564, b: 0.7169812, a: 1}
+    - _RimLightColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &2910620063780196585

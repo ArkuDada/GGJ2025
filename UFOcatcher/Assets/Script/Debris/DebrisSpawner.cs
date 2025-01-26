@@ -35,21 +35,19 @@ public class DebrisSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Start spawning AcidRain objects repeatedly
-        InvokeRepeating(nameof(SpawnAcidRain), 0f, spawnRate);
 
         minBound = _spawnMesh.mesh.bounds.min;
         maxBound = _spawnMesh.mesh.bounds.max;
     }
 
     // Start the spawning process
-    private void StartSpawning()
+    public void StartSpawning()
     {
-        InvokeRepeating(nameof(SpawnAcidRain), 0f, spawnRate);
+        InvokeRepeating(nameof(SpawnAcidRain), 5f, spawnRate);
     }
 
     // Stop the spawning process
-    private void StopSpawning()
+    public void StopSpawning()
     {
         CancelInvoke(nameof(SpawnAcidRain));
     }
@@ -76,7 +74,7 @@ public class DebrisSpawner : MonoBehaviour
         float randomZ = Random.Range(minBound.z, maxBound.z);
         // Debug.Log($"{randomX} {randomZ}");
         Vector3 spawnPosition = new Vector3(randomX, _spawnMesh.transform.position.y, randomZ);
-
+        SoundManager.instance.PlaySFX("MeteorLaunch");
         // Instantiate the AcidRain prefab at the spawn position
         Instantiate(acidRainPrefab, spawnPosition, Quaternion.identity);
     }

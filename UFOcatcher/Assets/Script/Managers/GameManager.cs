@@ -3,6 +3,7 @@ using UnityEngine.Events;
 using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.Serialization;
 using Utility;
+using UnityEngine.SceneManagement;
 
 public enum GameState
 {
@@ -13,8 +14,10 @@ public enum GameState
     GameOver
 }
 
-public class GameManager : MonoSingleton<GameManager>
+public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance;
+
     private GameState state;
 
     // Add your game-related variables
@@ -42,8 +45,23 @@ public class GameManager : MonoSingleton<GameManager>
     [SerializeField]
     GameObject startUI;
 
+    [SerializeField]
+    GameObject endUI;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     // Initialize the game manager
-    protected override void Init()
+    void Start()
     {
         // Set initial values for your game manager
         ChangeGameplayState(GameState.Start);
@@ -58,19 +76,32 @@ public class GameManager : MonoSingleton<GameManager>
         {
             startUI.SetActive(true);
             Time.timeScale = 0;
+            endUI.SetActive(false);
+            feverMeterManager.Init();
+            timeManager.ResetTimer();
+            scoreManager.ResetScore();
         }
-        else if(state == GameState.Prepare)
+        else if (state == GameState.Prepare)
         {
             startUI.SetActive(false);
             Time.timeScale = 1;
         }
-        else if(state == GameState.Play) 
+        else if (state == GameState.Play)
         {
+            debrisSpawner.StartSpawning();
             timeManager.ResumeTimer();
         }
         else if (state == GameState.Pause)
         {
-            timeManager.StopTimer();
+            timeManager.PauseTimer();
+        } 
+        else if (state == GameState.GameOver) 
+        {
+            debrisSpawner.StopSpawning();
+            scoreManager.SaveHighScore();
+            Time.timeScale = 0;
+            endUI.SetActive(true);
+
         }
     }
 
