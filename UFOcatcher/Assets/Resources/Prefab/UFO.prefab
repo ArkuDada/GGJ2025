@@ -507,6 +507,8 @@ MonoBehaviour:
   cooldownDuration: 2
   gameManager: {fileID: 0}
   shakeMagnitude: 1
+  IsGoAway: 0
+  GoAwaySpeed: 3
 --- !u!114 &7745365906999166378
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Recipe3
   m_EditorClassIdentifier: 
   questName: Test Recipe
-  objects: 00000000010000000200000005000000
-  quantities: 01000000010000000100000000000000
+  objects: 000000000100000002000000
+  quantities: 010000000100000001000000
