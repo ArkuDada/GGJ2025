@@ -12,7 +12,8 @@ public enum GameState
     Prepare,
     Play,
     Pause,
-    GameOver
+    GameOver,
+    Credits,
 }
 
 public class GameManager : MonoBehaviour
@@ -20,6 +21,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     private GameState state;
+    public GameState State => state;
 
     // Add your game-related variables
     [SerializeField]
@@ -112,7 +114,10 @@ public class GameManager : MonoBehaviour
             scoreManager.SaveHighScore();
             Time.timeScale = 0;
             endUI.SetActive(true);
-
+        }
+        else if (state == GameState.Pause)
+        {
+            timeManager.PauseTimer();
         }
     }
 
