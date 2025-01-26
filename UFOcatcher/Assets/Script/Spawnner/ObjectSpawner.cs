@@ -44,6 +44,19 @@ public class ObjectSpawner : MonoBehaviour
         var spawnType = GetRandomObjectType();
         var obj = _objectPrefabs.Find(x => x.GetComponent<BaseObject>()?.Type == spawnType);
 
+        switch (spawnType) 
+        {
+            case Objects.ObjectType.Cow:
+                SoundManager.instance.PlaySFX("Cow Spawn");
+                break;
+            case Objects.ObjectType.Wheat:
+                SoundManager.instance.PlaySFX("Wheat Spawn");
+                break;
+
+            default:
+                break;
+        }
+
         var hits = Physics.BoxCastAll(grid, Vector3.one * halfGrid, Vector3.up, Quaternion.identity, 0.1f);
 
         var baseObjects = hits.Select(x => x.collider.GetComponent<BaseObject>()).Where(x => x != null).ToList();
@@ -72,6 +85,7 @@ public class ObjectSpawner : MonoBehaviour
             var questObj = GameManager.Instance.QuestManager.CurrentQuest.objects;
             return questObj[Random.Range(0, questObj.Count)];
         }
+
 
         return (Objects.ObjectType)Random.Range(0, (int)Objects.ObjectType.Amongus);
     }

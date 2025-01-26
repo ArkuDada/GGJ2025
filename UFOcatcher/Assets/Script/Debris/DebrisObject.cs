@@ -18,9 +18,6 @@ public class DebrisObject : MonoBehaviour
 
     [SerializeField] DebrisState currentDebrisState;
 
-    // Countdown timer before falling
-    [SerializeField] float countdownToFall = 3f;
-
     // LineRenderer for the laser indicator
     private LineRenderer lineRenderer;
 
@@ -39,6 +36,12 @@ public class DebrisObject : MonoBehaviour
     // Minimum line width before triggering the fall state
     [SerializeField] float minLineWidth = 0.01f;
 
+    // Color change speed
+    [SerializeField] float colorChangeSpeed = 1f;
+
+    private Color startColor = Color.yellow;
+    private Color endColor = Color.red;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,6 +52,8 @@ public class DebrisObject : MonoBehaviour
         lineRenderer.positionCount = 2; // A line with 2 points: start and end
         lineRenderer.startWidth = 0.2f; // Initial width of the laser
         lineRenderer.endWidth = 0.2f;
+        lineRenderer.startColor = startColor;
+        lineRenderer.endColor = startColor;
 
         currentDebrisState = DebrisState.Prepare;
     }
@@ -59,9 +64,9 @@ public class DebrisObject : MonoBehaviour
         switch (currentDebrisState)
         {
             case DebrisState.Prepare:
-                countdownToFall -= Time.deltaTime;
                 UpdateLaser();
                 UpdateToSpawnDebris();
+                ChangeLaserColor();
                 break;
 
             case DebrisState.Fall:
@@ -108,7 +113,7 @@ public class DebrisObject : MonoBehaviour
         }
     }
 
-    void UpdateToSpawnDebris() 
+    void UpdateToSpawnDebris()
     {
         if (lineRenderer.startWidth <= spawnLineWidth)
         {
@@ -133,6 +138,20 @@ public class DebrisObject : MonoBehaviour
         }
     }
 
+    void ChangeLaserColor()
+    {
+        float t = Mathf.PingPong(Time.time * colorChangeSpeed, 1f);
+        Color currentColor = Color.Lerp(startColor, endColor, t);
+        lineRenderer.startColor = currentColor;
+        lineRenderer.endColor = currentColor;
+    }
+
+    void OnExplode() 
+    {
+        SoundManager.instance.PlaySFX("Space Junk Explosion");
+        Destroy(this.gameObject);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.TryGetComponent<UFOController>(out var ufoController))
@@ -141,11 +160,11 @@ public class DebrisObject : MonoBehaviour
             {
                 GameManager.Instance.ScoreManager.DecrementScore(decreaseScore);
             }
-            Destroy(this.gameObject);
+            OnExplode();
         }
         else if (other.gameObject.CompareTag("FloorPlane"))
         {
-            Destroy(this.gameObject);
+            OnExplode();
         }
     }
 }

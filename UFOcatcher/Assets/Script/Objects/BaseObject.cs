@@ -99,6 +99,7 @@ public class BaseObject : MonoBehaviour
 				break;
 		}
 
+		SoundManager.instance.PlaySFX("Bubble Sound");
 		_bubble.SetActive(true);
 		_rigidbody.useGravity = false;
 		_rigidbody.linearVelocity = Vector3.up * floatSpeed;
@@ -127,7 +128,8 @@ public class BaseObject : MonoBehaviour
 		switch (Type)
 		{
 			case Objects.ObjectType.Box:
-				GameObject boxParticles = Instantiate(GameObject.FindGameObjectWithTag("FloorPlane").transform.Find("BoxExplosionParticle").gameObject);
+                SoundManager.instance.PlaySFX("Wood Crush");
+                GameObject boxParticles = Instantiate(GameObject.FindGameObjectWithTag("FloorPlane").transform.Find("BoxExplosionParticle").gameObject);
 				boxParticles.transform.position = transform.position;
 				boxParticles.SetActive(true);
 				Destroy(boxParticles, 5);
