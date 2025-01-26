@@ -4,6 +4,7 @@ public class TimeManager : MonoBehaviour
 {
     // Timer variables
     private float elapsedTime;
+    [SerializeField]
     private float countdownTime;
     private bool isTimerActive;
 
