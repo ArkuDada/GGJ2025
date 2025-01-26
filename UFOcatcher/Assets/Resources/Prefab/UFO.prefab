@@ -489,6 +489,7 @@ MonoBehaviour:
   _inputVec: {x: 0, y: 0}
   _speed: 5
   _screenBounds: 5
+  BeamRadius: 1
   _beam: {fileID: 2703883792179000713}
   _ufoMesh: {fileID: 5067544224362815180}
   _arcade: {fileID: 0}
@@ -505,9 +506,7 @@ MonoBehaviour:
   energyThreshold: 0.1
   cooldownDuration: 2
   gameManager: {fileID: 0}
-  shakeDuration: 0.25
-  shakeMagnitude: 100
-  decreaseFactor: 1
+  shakeMagnitude: 1
 --- !u!114 &7745365906999166378
 MonoBehaviour:
   m_ObjectHideFlags: 0
