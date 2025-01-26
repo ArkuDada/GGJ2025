@@ -129,7 +129,15 @@ public class UFOController : MonoBehaviour
 		{
 			alienSpriteRenderer.sprite = neutralSprite;
 		}
+
+		if(IsGoAway)
+		{
+			_ufoMesh.transform.position += Vector3.up * GoAwaySpeed * Time.deltaTime;
+		}
 	}
+
+	public bool IsGoAway = false;
+	public float GoAwaySpeed = 5.0f;
 
 	public void ActivateSkill(InputAction.CallbackContext context)
 	{
