@@ -37,7 +37,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Outline_Width: 62.63
+    - _Outline_Width: 33
     - _Use_1stAs2nd: 0
     m_Colors:
     - _1st_ShadeColor: {r: 0.41037738, g: 0.52545935, b: 1, a: 1}
