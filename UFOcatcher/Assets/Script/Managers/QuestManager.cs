@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -19,6 +20,9 @@ public class QuestManager : MonoBehaviour
 	public int ObjectsLeftToCollect { get; private set; } // Number of items left to collect
 
 	public Arcade arcade;
+
+	public GameObject correctObjectParticles;
+	public Material bubbleMaterial;
 
 	[SerializeField]
 	ScoreManager scoreManager;
@@ -132,6 +136,41 @@ public class QuestManager : MonoBehaviour
 				SoundManager.instance.PlaySFX("CollectCorrect");
 				scoreManager.IncrementScore(points);
 
+				GameObject newCorrectObjectParticles = Instantiate(correctObjectParticles);
+				Vector3 worldToMainCameraPos = GameObject.FindWithTag("Player").transform.position - GameObject.Find("Main Camera").transform.position;
+				Vector3 mainCameraPosToArcadeCameraPos = GameObject.Find("Arcade Camera").transform.position + worldToMainCameraPos;
+				objectCollected.transform.position = mainCameraPosToArcadeCameraPos;
+				var positionalLerp = objectCollected.AddComponent<PositionalLerp>();
+				positionalLerp.destination = arcade.mesh[i].IconMesh.transform.position;
+				positionalLerp.lerp = 0.03f;
+				positionalLerp.doneThreshold = 0.5f;
+				positionalLerp.scaleDestroy = true;
+				Rigidbody objectRig = objectCollected.GetComponent<Rigidbody>();
+				objectRig.isKinematic = false;
+				objectRig.constraints = RigidbodyConstraints.FreezePosition;
+				objectRig.angularVelocity = Vector3.one * -5f;
+				newCorrectObjectParticles.transform.parent = objectCollected.transform;
+				newCorrectObjectParticles.transform.localPosition = Vector3.zero;
+				var meshRenderers = objectCollected.transform.GetComponentsInChildren<MeshRenderer>();
+				if (objectCollected.TryGetComponent(out MeshRenderer objectMeshRenderer)) {
+					meshRenderers.Append(objectMeshRenderer);
+				}
+				foreach (var meshRenderer in meshRenderers)
+				{
+					meshRenderer.renderingLayerMask = 2;
+					meshRenderer.material = bubbleMaterial;
+				}
+				var colliders = objectCollected.transform.GetComponentsInChildren<Collider>();
+				if (objectCollected.TryGetComponent(out Collider objectCollider))
+				{
+					colliders.Append(objectCollider);
+				}
+				foreach (var collider in colliders)
+				{
+					collider.enabled = false;
+				}
+				objectCollected._bubble.SetActive(false);
+
 				return;
 			}
 		}
@@ -139,5 +178,6 @@ public class QuestManager : MonoBehaviour
 		// This object wasn't correct; Decrease score!
 		SoundManager.instance.PlaySFX("CollectWrong");
 		scoreManager.DecrementScore(points);
+		objectCollected.DespawnObject();
 	}
 }
