@@ -13,7 +13,8 @@ public enum GameState
     Prepare,
     Play,
     Pause,
-    GameOver
+    GameOver,
+    Credits,
 }
 
 public class GameManager : MonoBehaviour
@@ -21,6 +22,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     private GameState state;
+    public GameState State => state;
 
     // Add your game-related variables
     [SerializeField]
@@ -115,6 +117,7 @@ public class GameManager : MonoBehaviour
         {
             StartCoroutine(EndSequence());
         }
+       
     }
 
     private IEnumerator EndSequence()
