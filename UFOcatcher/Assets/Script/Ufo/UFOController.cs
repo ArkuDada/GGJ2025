@@ -25,8 +25,8 @@ public class UFOController : MonoBehaviour
 
     void Update()
     {
-        float y = Input.GetAxis("Vertical");
-        float x = Input.GetAxis("Horizontal");
+        float y = Input.GetAxisRaw("Vertical");
+        float x = Input.GetAxisRaw("Horizontal");
         _inputVec = new Vector2(x, y);
 
         transform.position += new Vector3(_inputVec.x, 0, _inputVec.y) * Time.deltaTime * _speed;

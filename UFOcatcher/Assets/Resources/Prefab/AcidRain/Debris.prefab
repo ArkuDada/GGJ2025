@@ -238,7 +238,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d19f33b7aaf0f21459466e83afe6449d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fallSpeed: 20
+  fallSpeed: 5
+  rotateSpeed: 30
   decreaseScore: 10
   crosshair: {fileID: 2463113351042056654, guid: c5f81ecfb9b49684f92cdaf79523678a, type: 3}
   currentDebrisState: 0

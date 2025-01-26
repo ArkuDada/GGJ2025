@@ -1,109 +1,145 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using Utility;
+using Random = UnityEngine.Random;
 
 public class QuestManager : MonoBehaviour
 {
-	public List<RecipeObject> availableRecipes; // Quests that could be chosen as currentQuest
-	public RecipeObject CurrentQuest { get; private set; } // The current quest, containing a list of objects for the player to collect
-	public List<int> ObjectsCollected { get; private set; } // Acts like a checklist for the current quest's items
-	public int ObjectsLeftToCollect { get; private set; } // Number of items left to collect
+    public List<RecipeObject> availableRecipes; // Quests that could be chosen as currentQuest
 
-	public Arcade arcade;
+    public RecipeObject
+        CurrentQuest { get; private set; } // The current quest, containing a list of objects for the player to collect
 
-	public void Start()
-	{
-		if (arcade == null)
-		{
-			GameObject arcadeGameObject = GameObject.Find("Arcade");
-			if (!arcadeGameObject)
-				Debug.LogError("Arcade not found!");
+    public List<int> ObjectsCollected { get; private set; } // Acts like a checklist for the current quest's items
+    public int ObjectsLeftToCollect { get; private set; } // Number of items left to collect
 
-			arcade = arcadeGameObject.GetComponent<Arcade>();
-			if (!arcade)
-				Debug.Log("Arcade has no Arcade script!");
-		}
+    public Arcade arcade;
 
-		InitQuest();
-	}
+    public void Start()
+    {
+        if(arcade == null)
+        {
+            GameObject arcadeGameObject = GameObject.Find("Arcade");
+            if(!arcadeGameObject)
+                Debug.LogError("Arcade not found!");
 
-	// Choose a new random quest for the player to complete
-	private void InitQuest()
-	{
-		CurrentQuest = availableRecipes[Random.Range(0, availableRecipes.Count)];
+            arcade = arcadeGameObject.GetComponent<Arcade>();
+            if(!arcade)
+                Debug.Log("Arcade has no Arcade script!");
+        }
 
-		ObjectsLeftToCollect = 0;
-		ObjectsCollected = new(CurrentQuest.objects.Count);
-		for (int i = 0; i < ObjectsCollected.Capacity; i++)
-		{
-			ObjectsLeftToCollect += CurrentQuest.quantities[i];
-			ObjectsCollected.Add(0);
-		}
+        StartCoroutine(InitQuest());
 
-		for (int i = 0; i < ObjectsCollected.Count; i++)
-		{
-			arcade.SetButtonIcon(i, CurrentQuest.objects[i]);
-			arcade.SetBorderFill(i, 0);
-		}
+    }
 
-		UpdateQuestUI();
-	}
+    // Choose a new random quest for the player to complete
+    private IEnumerator InitQuest()
+    {
+        CurrentQuest = availableRecipes[Random.Range(0, availableRecipes.Count)];
 
-	private void UpdateQuestUI()
-	{
-		for (int i = 0; i < ObjectsCollected.Count; i++)
-		{
-			arcade.SetBorderFill(i, (float)ObjectsCollected[i] / (float)CurrentQuest.quantities[i]);
-		}
-	}
+        ObjectsLeftToCollect = 0;
+        ObjectsCollected = new(CurrentQuest.objects.Count);
+        for(int i = 0; i < ObjectsCollected.Capacity; i++)
+        {
+            ObjectsLeftToCollect += CurrentQuest.quantities[i];
+            ObjectsCollected.Add(0);
+        }
 
-	// Handler for when currentQuest is completed
-	private void QuestCompleted()
-	{
-		ScoreManager scoreManager = GameManager.Instance.ScoreManager;
-		scoreManager.IncrementScore(1000); // Magic number: I asked designers for this number, and they said 1000 :)
+        for(int i = 0; i < ObjectsCollected.Count; i++)
+        {
+            yield return new WaitForSeconds(plopTime);
+            arcade.SetButtonIcon(i, CurrentQuest.objects[i]);
+            arcade.SetBorderFill(i, 0);
+        }
 
-		InitQuest();
-	}
+        UpdateQuestUI();
+    }
 
-	// Mark an object as collected if it's on the current quest's list.
-	public void CollectedObject(BaseObject objectCollected)
-	{
-		ScoreManager scoreManager = GameManager.Instance.ScoreManager;
-		int points = objectCollected.GetScore();
+    private void UpdateQuestUI()
+    {
+        for(int i = 0; i < ObjectsCollected.Count; i++)
+        {
+            arcade.SetBorderFill(i, (float)ObjectsCollected[i] / (float)CurrentQuest.quantities[i]);
+        }
+    }
 
-		for (int i = 0; i < CurrentQuest.objects.Count; ++i)
-		{
-			// Find the object we're supposed to be collecting (order matters in recipes)
-			if (ObjectsCollected[i] >= CurrentQuest.quantities[i])
-				continue;
+    // Handler for when currentQuest is completed
+    private IEnumerator QuestCompleted()
+    {
+        ScoreManager scoreManager = GameManager.Instance.ScoreManager;
+        scoreManager.IncrementScore(1000); // Magic number: I asked designers for this number, and they said 1000 :)
+        
+        yield return new WaitForSeconds(blinkTime);
 
-			if (CurrentQuest.objects[i] == objectCollected.Type)
-			{
-				// Collected the correct object
-				++ObjectsCollected[i];
-				--ObjectsLeftToCollect;
+        for(int j = 0; j < 3; j++)
+        {
+            for(int i = 0; i < 4; i++)
+            {
+                arcade.SetBorderFill(i, 1);
+            }
 
-				if (ObjectsLeftToCollect <= 0)
-				{
-					QuestCompleted();
-				}
-				else
-				{
-					UpdateQuestUI();
-				}
+            yield return new WaitForSeconds(blinkTime);
+            for(int i = 0; i < 4; i++)
+            {
+                arcade.SetBorderFill(i, 0);
+            }
 
-				scoreManager.IncrementScore(points);
+            yield return new WaitForSeconds(blinkTime);
+        }
 
-				return;
-			}
+        for(int i = 0; i < 4; i++)
+        {
+            arcade.SetButtonIcon(i, Objects.ObjectType.End);
+            yield return new WaitForSeconds(plopTime);
 
-			// We didn't collect the correct object
-			break;
-		}
+        }
 
-		// Wrong object; Decrease score!
-		scoreManager.DecrementScore(points);
-	}
+        StartCoroutine(InitQuest());
+    }
+    
+    [SerializeField] private float blinkTime = 0.25f;
+    [SerializeField] private float plopTime = 0.15f;
+    // Mark an object as collected if it's on the current quest's list.
+    public void CollectedObject(BaseObject objectCollected)
+    {
+        ScoreManager scoreManager = GameManager.Instance.ScoreManager;
+        int points = objectCollected.GetScore();
+
+        for(int i = 0; i < CurrentQuest.objects.Count; ++i)
+        {
+            // Find the object we're supposed to be collecting (order matters in recipes)
+            if(ObjectsCollected[i] >= CurrentQuest.quantities[i])
+                continue;
+
+            if(CurrentQuest.objects[i] == objectCollected.Type)
+            {
+                // Collected the correct object
+                ++ObjectsCollected[i];
+                --ObjectsLeftToCollect;
+
+                if(ObjectsLeftToCollect <= 0)
+                {
+                    StartCoroutine(QuestCompleted());
+                }
+                else
+                {
+                    UpdateQuestUI();
+                }
+
+                scoreManager.IncrementScore(points);
+
+                return;
+            }
+
+            // We didn't collect the correct object
+            break;
+        }
+
+        // Wrong object; Decrease score!
+        scoreManager.DecrementScore(points);
+    }
 }

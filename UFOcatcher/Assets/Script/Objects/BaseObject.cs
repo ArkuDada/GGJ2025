@@ -75,6 +75,8 @@ public class BaseObject : MonoBehaviour
 			{
 				moveableObject.enabled = true;
 			}
+
+			
 		}
 	}
 
@@ -115,10 +117,13 @@ public class BaseObject : MonoBehaviour
 	{
 		if (other.CompareTag("FallPlane"))
 		{
+			GameManager.Instance.FeverMeterManager.IncreaseFever(3.0f);
 			_bubble.SetActive(false);
 			_rigidbody.useGravity = true;
 			_rigidbody.linearVelocity = Vector3.zero;
 			State = ObjectState.Down;
+			
+			DespawnObject();
 		}
 	}
 
