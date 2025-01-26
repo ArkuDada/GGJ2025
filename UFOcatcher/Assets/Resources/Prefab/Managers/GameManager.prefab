@@ -356,7 +356,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 6e8d0f46bc17eb546aa8e71d585c346f, type: 2}
   - {fileID: 2100000, guid: 8a336090df9468248aa6c49b90ad4e85, type: 2}
   - {fileID: 2100000, guid: f35a470b12ba8084f96055da69463374, type: 2}
-  feverIncreaseRate: 10
+  feverIncreaseRate: 2
   feverDecreaseRate: 10
   currentFeverValue: 0
   arcade: {fileID: 0}
