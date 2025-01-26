@@ -128,7 +128,8 @@ public class BaseObject : MonoBehaviour
 		switch (Type)
 		{
 			case Objects.ObjectType.Box:
-				GameObject boxParticles = Instantiate(GameObject.FindGameObjectWithTag("FloorPlane").transform.Find("BoxExplosionParticle").gameObject);
+                SoundManager.instance.PlaySFX("Wood Crush");
+                GameObject boxParticles = Instantiate(GameObject.FindGameObjectWithTag("FloorPlane").transform.Find("BoxExplosionParticle").gameObject);
 				boxParticles.transform.position = transform.position;
 				boxParticles.SetActive(true);
 				Destroy(boxParticles, 5);
