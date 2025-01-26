@@ -154,7 +154,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3832283967183250958
 RectTransform:
   m_ObjectHideFlags: 0
@@ -311,8 +311,8 @@ MonoBehaviour:
     - Greatest designer of all time\r\nPrima Foosiripong\r\nTanik Sriwattana - Sound
     Designer\r\n\r\nFonts\r\nhttps://fonts.google.com/specimen/Sixtyfour+Convergence\r\nhttps://fonts.google.com/specimen/Jersey+10\r\n"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 456ce91ae780b4c30bd018fcdeaddd48, type: 2}
-  m_sharedMaterial: {fileID: 8147545141495440510, guid: 456ce91ae780b4c30bd018fcdeaddd48, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5723e50fb9d294356a33d61a2c26996d, type: 2}
+  m_sharedMaterial: {fileID: -1593862661580959227, guid: 5723e50fb9d294356a33d61a2c26996d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
