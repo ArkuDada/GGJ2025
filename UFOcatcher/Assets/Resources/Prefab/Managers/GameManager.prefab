@@ -200,7 +200,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 8a336090df9468248aa6c49b90ad4e85, type: 2}
   - {fileID: 2100000, guid: f35a470b12ba8084f96055da69463374, type: 2}
   feverIncreaseRate: 2
-  feverDecreaseRate: 10
+  feverDecreaseRate: 20
   currentFeverValue: 0
   arcade: {fileID: 0}
 --- !u!1 &7818875838503858121
@@ -256,6 +256,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5259536363909703010}
     m_Modifications:
+    - target: {fileID: 3039055358285555249, guid: c60c07e27969f444c800f68a61ca98bf, type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3524871918168218887, guid: c60c07e27969f444c800f68a61ca98bf, type: 3}
       propertyPath: m_Name
       value: EndUICanvas
@@ -340,6 +344,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7375583102412275409, guid: c60c07e27969f444c800f68a61ca98bf, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1280
+      objectReference: {fileID: 0}
+    - target: {fileID: 7375583102412275409, guid: c60c07e27969f444c800f68a61ca98bf, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 720
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -417,7 +429,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8140929495501860442, guid: 0597cbbb9f5e0904e9f155bc25411fad, type: 3}
       propertyPath: m_SortingOrder
-      value: 2
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9206087225623181674, guid: 0597cbbb9f5e0904e9f155bc25411fad, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9206087225623181674, guid: 0597cbbb9f5e0904e9f155bc25411fad, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1280
+      objectReference: {fileID: 0}
+    - target: {fileID: 9206087225623181674, guid: 0597cbbb9f5e0904e9f155bc25411fad, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 720
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -528,9 +552,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5608119213930710322, guid: 8703dd9e379590e4b8cdf917cfccb60b, type: 3}
+      propertyPath: m_SortingOrder
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6040746719632481854, guid: 8703dd9e379590e4b8cdf917cfccb60b, type: 3}
       propertyPath: m_Name
       value: StartUICanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6367119008565172806, guid: 8703dd9e379590e4b8cdf917cfccb60b, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1280
+      objectReference: {fileID: 0}
+    - target: {fileID: 6367119008565172806, guid: 8703dd9e379590e4b8cdf917cfccb60b, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 720
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
