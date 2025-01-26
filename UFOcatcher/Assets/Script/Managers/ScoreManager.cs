@@ -24,11 +24,12 @@ public class ScoreManager : MonoBehaviour
     // Function to increment the score
     public void IncrementScore(int points)
     {
-        Debug.Log("in points: " + points);
+
         if (points == 0) 
         {
             return;
         }
+
         score += points;
         OnScoreChanged?.Invoke(points);
         DisplayScore();

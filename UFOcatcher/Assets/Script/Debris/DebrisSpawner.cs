@@ -43,7 +43,7 @@ public class DebrisSpawner : MonoBehaviour
     // Start the spawning process
     public void StartSpawning()
     {
-        InvokeRepeating(nameof(SpawnAcidRain), 0f, spawnRate);
+        InvokeRepeating(nameof(SpawnAcidRain), 5f, spawnRate);
     }
 
     // Stop the spawning process
