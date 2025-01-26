@@ -83,7 +83,6 @@ public class BaseObject : MonoBehaviour
 	// Encapsulate in a bubble
 	public virtual void BubbleLift()
 	{
-		Debug.Log(Type);
 		switch (Type)
 		{
 			case Objects.ObjectType.Wheat:

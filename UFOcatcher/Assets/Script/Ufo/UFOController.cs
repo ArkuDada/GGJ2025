@@ -24,47 +24,47 @@ public class UFOController : MonoBehaviour
 
 	public GameObject confetti;
 
-	private const float HURT_VISUALS_DURATION = 1f;
-	private const float HAPPY_VISUALS_DURATION = 3f;
+	private const float HURT_VISUALS_DURATION = 0.5f;
+	private const float HAPPY_VISUALS_DURATION = 2f;
 
 	private float timeUntilResetToNeutral = 0;
 
-    [SerializeField]
-    private AudioSource _source;
+	[SerializeField]
+	private AudioSource _source;
 
-    [SerializeField]
-    private Image energyBar;
+	[SerializeField]
+	private Image energyBar;
 
-    [SerializeField]
-    private float currentEnergy = 1.0f; // Initial energy set to 100%
+	[SerializeField]
+	private float currentEnergy = 1.0f; // Initial energy set to 100%
 
-    [SerializeField]
-    private float energyDepletionRate = 0.1f; // Energy depletion per second when beam is active
+	[SerializeField]
+	private float energyDepletionRate = 0.1f; // Energy depletion per second when beam is active
 
-    [SerializeField]
-    private float energyRegenerationRate = 0.05f; // Energy regeneration per second when beam is inactive
+	[SerializeField]
+	private float energyRegenerationRate = 0.05f; // Energy regeneration per second when beam is inactive
 
-    [SerializeField]
-    private float energyThreshold = 0.1f; // Minimum energy required to activate the beam
+	[SerializeField]
+	private float energyThreshold = 0.1f; // Minimum energy required to activate the beam
 
-    [SerializeField]
-    private float cooldownDuration = 2.0f; // Cooldown duration after energy is depleted
+	[SerializeField]
+	private float cooldownDuration = 2.0f; // Cooldown duration after energy is depleted
 
-    private bool isCooldown = false;
-    private float cooldownTimer = 0.0f;
+	private bool isCooldown = false;
+	private float cooldownTimer = 0.0f;
 
-    [SerializeField]
-    GameManager gameManager;
+	[SerializeField]
+	GameManager gameManager;
 
 	void Start()
 	{
 		_screenBoundsMin = new Vector2(-_screenBounds, -_screenBounds);
 		_screenBoundsMax = new Vector2(_screenBounds, _screenBounds);
-        UpdateEnergyBar();
-        if (gameManager == null)
-        {
-            gameManager = GameManager.Instance;
-        }
+		UpdateEnergyBar();
+		if (gameManager == null)
+		{
+			gameManager = GameManager.Instance;
+		}
 	}
 
 	void Update()
@@ -77,9 +77,9 @@ public class UFOController : MonoBehaviour
 		transform.position = new Vector3(Mathf.Clamp(transform.position.x, _screenBoundsMin.x, _screenBoundsMax.x),
 			transform.position.y,
 			Mathf.Clamp(transform.position.z, _screenBoundsMin.y, _screenBoundsMax.y));
-            
-        // Handle energy depletion, regeneration, and cooldown
-        HandleEnergy();
+
+		// Handle energy depletion, regeneration, and cooldown
+		HandleEnergy();
 
 		if (_beamActive && Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 999,
 			   Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore))
@@ -111,76 +111,76 @@ public class UFOController : MonoBehaviour
 		}
 	}
 
-    public void ActivateSkill(InputAction.CallbackContext context)
-    {
-        if (context.performed && currentEnergy > energyThreshold && !isCooldown)
-        {
-            _beamActive = true;
-            _source.Play();
-        }
-        else if (context.canceled)
-        {
-            _beamActive = false;
-            _source.Stop();
-        }
-        _beam.SetActive(_beamActive);
-    }
+	public void ActivateSkill(InputAction.CallbackContext context)
+	{
+		if (context.performed && currentEnergy > energyThreshold && !isCooldown)
+		{
+			_beamActive = true;
+			_source.Play();
+		}
+		else if (context.canceled)
+		{
+			_beamActive = false;
+			_source.Stop();
+		}
+		_beam.SetActive(_beamActive);
+	}
 
-    private void HandleEnergy()
-    {
-        if (isCooldown)
-        {
-            cooldownTimer -= Time.deltaTime;
-            if (cooldownTimer <= 0.0f)
-            {
-                isCooldown = false;
-            }
-        }
-        else if (_beamActive)
-        {
-            currentEnergy -= energyDepletionRate * Time.deltaTime;
-            currentEnergy = Mathf.Clamp01(currentEnergy);
+	private void HandleEnergy()
+	{
+		if (isCooldown)
+		{
+			cooldownTimer -= Time.deltaTime;
+			if (cooldownTimer <= 0.0f)
+			{
+				isCooldown = false;
+			}
+		}
+		else if (_beamActive)
+		{
+			currentEnergy -= energyDepletionRate * Time.deltaTime;
+			currentEnergy = Mathf.Clamp01(currentEnergy);
 
-            // Trigger cooldown if energy is depleted
-            if (currentEnergy <= 0f)
-            {
-                _beamActive = false;
-                _beam.SetActive(false);
-                _source.Stop();
-                isCooldown = true;
-                cooldownTimer = cooldownDuration;
-            }
-        }
-        else
-        {
-            currentEnergy += energyRegenerationRate * Time.deltaTime;
-            currentEnergy = Mathf.Clamp01(currentEnergy);
-        }
+			// Trigger cooldown if energy is depleted
+			if (currentEnergy <= 0f)
+			{
+				_beamActive = false;
+				_beam.SetActive(false);
+				_source.Stop();
+				isCooldown = true;
+				cooldownTimer = cooldownDuration;
+			}
+		}
+		else
+		{
+			currentEnergy += energyRegenerationRate * Time.deltaTime;
+			currentEnergy = Mathf.Clamp01(currentEnergy);
+		}
 
-        UpdateEnergyBar();
-    }
+		UpdateEnergyBar();
+	}
 
-    private void UpdateEnergyBar()
-    {
-        if (energyBar != null)
-        {
-            if (isCooldown)
-            {
-                energyBar.color = Color.gray;
-                energyBar.fillAmount = Mathf.Clamp01(1 - (cooldownTimer / cooldownDuration));
-            }
-            else 
-            {
-                energyBar.color = Color.yellow;
-                energyBar.fillAmount = currentEnergy;
-            }
+	private void UpdateEnergyBar()
+	{
+		if (energyBar != null)
+		{
+			if (isCooldown)
+			{
+				energyBar.color = Color.gray;
+				energyBar.fillAmount = Mathf.Clamp01(1 - (cooldownTimer / cooldownDuration));
+			}
+			else
+			{
+				energyBar.color = Color.yellow;
+				energyBar.fillAmount = currentEnergy;
+			}
 
-        }
-    }
+		}
+	}
 
 	private void OnCollisionEnter(Collision other)
 	{
-		if  (other.gameObject.TryGetComponent<BaseObject>(out var baseObject))
+		if (other.gameObject.TryGetComponent<BaseObject>(out var baseObject))
 		{
 			gameManager.QuestManager.CollectedObject(baseObject);
 
@@ -191,6 +191,10 @@ public class UFOController : MonoBehaviour
 	// Trigger hurt visuals
 	public void TriggerSad()
 	{
+		// Happy overrides sad
+		if (timeUntilResetToNeutral > 0)
+			return;
+
 		alienSpriteRenderer.sprite = sadSprite;
 		timeUntilResetToNeutral = HURT_VISUALS_DURATION;
 	}
@@ -198,7 +202,7 @@ public class UFOController : MonoBehaviour
 	// Trigger happy visuals
 	public void TriggerHappy()
 	{
-		alienSpriteRenderer.sprite = sadSprite;
+		alienSpriteRenderer.sprite = happySprite;
 		timeUntilResetToNeutral = HAPPY_VISUALS_DURATION;
 	}
 
@@ -209,6 +213,7 @@ public class UFOController : MonoBehaviour
 		GameObject newConfetti = Instantiate(confetti);
 		newConfetti.transform.parent = transform;
 		newConfetti.transform.localPosition = Vector3.zero;
+		newConfetti.SetActive(true);
 		Destroy(newConfetti, 5);
 	}
 }

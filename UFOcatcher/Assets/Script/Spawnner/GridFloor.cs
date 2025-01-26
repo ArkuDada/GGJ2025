@@ -21,7 +21,7 @@ public class GridFloor : MonoBehaviour
         _meshFilter = GetComponent<MeshFilter>();
         minBound = _meshFilter.mesh.bounds.min + new Vector3(padding, 0, padding);
         maxBound = _meshFilter.mesh.bounds.max - new Vector3(padding, 0, padding);
-        Debug.Log(this.maxBound);
+        // Debug.Log(this.maxBound);
         
         distanceBetweenGrids = maxBound.x / (float)((int)gridSize/2);
         GenerateGrid();
@@ -44,7 +44,7 @@ public class GridFloor : MonoBehaviour
                 _grid[i][j].row = i;
                 _grid[i][j].col = j;
                 
-                Debug.Log($"{i} {j} {_grid[i][j].center}");
+                // Debug.Log($"{i} {j} {_grid[i][j].center}");
                 
                 if(doDebugBox)Instantiate(box, _grid[i][j].center + Vector3.up, Quaternion.identity);
             }
