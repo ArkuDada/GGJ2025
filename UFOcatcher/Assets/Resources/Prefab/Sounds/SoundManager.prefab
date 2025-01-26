@@ -85,6 +85,10 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: d026df714d2aa574e9173e0fd2f953f2, type: 3}
   - name: Cow Eat Wheat
     clip: {fileID: 8300000, guid: 9b74cddfa21b2d84bb044cd04401ba94, type: 3}
+  - name: CollectCorrect
+    clip: {fileID: 8300000, guid: c8bddbcbf0708ca4881f8dcbad4e0bdf, type: 3}
+  - name: CollectWrong
+    clip: {fileID: 8300000, guid: 65d3309e908d1df49857f7dabc32b24b, type: 3}
   backgroundMusic: {fileID: 0}
   backgroundGameplayMusic: {fileID: 0}
   backgroundMenu: {fileID: 0}
