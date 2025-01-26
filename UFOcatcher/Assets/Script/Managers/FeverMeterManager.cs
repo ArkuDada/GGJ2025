@@ -13,6 +13,15 @@ public class FeverMeterManager : MonoBehaviour
 	public float feverIncreaseRate = 10.0f;
 	public float feverDecreaseRate = 10.0f;
 
+    [SerializeField]
+    float earlierSpawnRate = 2.0f;
+
+    [SerializeField]
+    float lateGameSpawnRate = 2.0f;
+
+    [SerializeField]
+	float apocalypseSpawnRate = 0.1f;
+
 	[SerializeField]
 	[Range(0.0f, MAX_FEVER)]
 	private float currentFeverValue;
@@ -26,13 +35,8 @@ public class FeverMeterManager : MonoBehaviour
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
 	void Start()
 	{
-		currentFeverValue = 0;
-		if (arcade == null)
-			arcade = GameObject.Find("Arcade").GetComponent<Arcade>();
-		barStartingLocalPosition = arcade.FeverMeter.transform.localPosition;
-		barStartingLocalScale = arcade.FeverMeter.transform.localScale;
-		feverBarMeshRenderer = arcade.FeverMeter.GetComponent<MeshRenderer>();
-	}
+		Init();
+    }
 
 	// Update is called once per frame
 	void Update()
@@ -40,7 +44,17 @@ public class FeverMeterManager : MonoBehaviour
 		UpdateFeverPercentage(Time.deltaTime);
 	}
 
-	public void IncreaseFever(float increaseAmount)
+    public void Init()
+    {
+        currentFeverValue = 0;
+        if (arcade == null)
+            arcade = GameObject.Find("Arcade").GetComponent<Arcade>();
+        barStartingLocalPosition = arcade.FeverMeter.transform.localPosition;
+        barStartingLocalScale = arcade.FeverMeter.transform.localScale;
+        feverBarMeshRenderer = arcade.FeverMeter.GetComponent<MeshRenderer>();
+    }
+
+    public void IncreaseFever(float increaseAmount)
 	{
 		currentFeverValue += increaseAmount;
 	}
@@ -87,12 +101,21 @@ public class FeverMeterManager : MonoBehaviour
 		}
 		else if (currentFeverPercentage >= 0.99f)
 		{
-			GameManager.Instance.DebrisSpawner.SpawnRate = 0.1f;
-			inFever = true;
+			GameManager.Instance.DebrisSpawner.SpawnRate = apocalypseSpawnRate;
 		}
+        else if (currentFeverPercentage >= 2f / 3f)
+        {
+            GameManager.Instance.DebrisSpawner.SpawnRate = lateGameSpawnRate;
+            inFever = true;
+        }
+        else if (currentFeverPercentage >= 1f / 3f)
+        {
+            GameManager.Instance.DebrisSpawner.SpawnRate = earlierSpawnRate;
+            inFever = true;
+        }
 
-		// Update arcade visuals
-		Vector3 newScale = barStartingLocalScale;
+        // Update arcade visuals
+        Vector3 newScale = barStartingLocalScale;
 		newScale.y *= currentFeverPercentage;
 		arcade.FeverMeter.localScale = newScale;
 	}

@@ -33,7 +33,7 @@ namespace Dan.Demo
         public void AddPlayerScore()
         {
             _playerScore = PlayerPrefs.GetInt("HighScore", 0);
-            _playerScoreText.text = $"Your score: {_playerScore}";
+            _playerScoreText.text = _playerScore.ToString();
         }
         
         public void Load()
