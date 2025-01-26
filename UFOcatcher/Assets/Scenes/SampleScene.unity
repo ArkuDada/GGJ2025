@@ -658,7 +658,8 @@ MonoBehaviour:
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
-  m_Cameras: []
+  m_Cameras:
+  - {fileID: 1476651505}
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
@@ -1104,6 +1105,22 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6977384483961464241, guid: c02108206593a9347b5b78568bef5669, type: 3}
+      propertyPath: m_CameraType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544876355494940763, guid: c02108206593a9347b5b78568bef5669, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544876355494940763, guid: c02108206593a9347b5b78568bef5669, type: 3}
+      propertyPath: m_ClearFlags
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544876355494940763, guid: c02108206593a9347b5b78568bef5669, type: 3}
+      propertyPath: m_TargetTexture
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 9181779858726290829, guid: c02108206593a9347b5b78568bef5669, type: 3}
       propertyPath: m_Name
       value: Arcade
@@ -1406,6 +1423,11 @@ CanvasRenderer:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8315280387686906062, guid: 649acd1005fcd9b40bd200ca333fbdfd, type: 3}
   m_PrefabInstance: {fileID: 5528429089436920851}
+  m_PrefabAsset: {fileID: 0}
+--- !u!20 &1476651505 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 7544876355494940763, guid: c02108206593a9347b5b78568bef5669, type: 3}
+  m_PrefabInstance: {fileID: 979994121}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1720157712
 PrefabInstance:
