@@ -113,7 +113,7 @@ public class UFOController : MonoBehaviour
 			}
 			else
 			{
-				var sphereHit = Physics.SphereCastAll(hit.point, beamRadius, Vector3.down, 999);
+				var sphereHit = Physics.SphereCastAll(hit.point, BeamRadius, Vector3.down, 999);
 				hit = sphereHit.OrderBy(o => Vector3.Distance(hit.point, o.transform.position)).First();
 				if (hit.transform.TryGetComponent<BaseObject>(out objectHit) &&
 				   objectHit.State == BaseObject.ObjectState.Grounded)
