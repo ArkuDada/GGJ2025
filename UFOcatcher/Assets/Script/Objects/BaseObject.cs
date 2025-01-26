@@ -27,9 +27,6 @@ public class BaseObject : MonoBehaviour
     [SerializeField]
     private float _BaseScore = 1;
 
-    public Material _upMaterial;
-    public Material _downMaterial;
-
     int _score = 0;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -82,7 +79,7 @@ public class BaseObject : MonoBehaviour
         
         if(State != ObjectState.Grounded && other.gameObject.CompareTag("FloorPlane"))
         {
-            _meshRenderer.material = _upMaterial;
+            // _meshRenderer.material = _upMaterial;
             State = ObjectState.Grounded;
 
             if(TryGetComponent<MoveableObject>(out var moveableObject))
@@ -111,7 +108,7 @@ public class BaseObject : MonoBehaviour
         if(other.CompareTag("FallPlane"))
         {
             _bubble.SetActive(false);
-            _meshRenderer.material = _downMaterial;
+            // _meshRenderer.material = _downMaterial;
             _rigidbody.useGravity = true;
             _rigidbody.linearVelocity = Vector3.zero;
             State = ObjectState.Down;

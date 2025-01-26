@@ -396,7 +396,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 50
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -832,30 +832,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2516319465192891578, guid: c02108206593a9347b5b78568bef5669, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2516319465192891578, guid: c02108206593a9347b5b78568bef5669, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2516319465192891578, guid: c02108206593a9347b5b78568bef5669, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2516319465192891578, guid: c02108206593a9347b5b78568bef5669, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2516319465192891578, guid: c02108206593a9347b5b78568bef5669, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5521825811582994737, guid: c02108206593a9347b5b78568bef5669, type: 3}
-      propertyPath: m_BoundingSphereOverride.y
-      value: 7.4e-43
-      objectReference: {fileID: 0}
     - target: {fileID: 6051445141014579762, guid: c02108206593a9347b5b78568bef5669, type: 3}
       propertyPath: m_LocalPosition.x
       value: -202.17
@@ -894,26 +870,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6051445141014579762, guid: c02108206593a9347b5b78568bef5669, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7544876355494940763, guid: c02108206593a9347b5b78568bef5669, type: 3}
-      propertyPath: m_ClearFlags
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7544876355494940763, guid: c02108206593a9347b5b78568bef5669, type: 3}
-      propertyPath: m_TargetTexture
-      value: 
-      objectReference: {fileID: 8400000, guid: 9e038d38d5f61e849ae3e18915f48e30, type: 2}
-    - target: {fileID: 7544876355494940763, guid: c02108206593a9347b5b78568bef5669, type: 3}
-      propertyPath: m_BackGroundColor.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7544876355494940763, guid: c02108206593a9347b5b78568bef5669, type: 3}
-      propertyPath: m_BackGroundColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7544876355494940763, guid: c02108206593a9347b5b78568bef5669, type: 3}
-      propertyPath: m_BackGroundColor.r
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9181779858726290829, guid: c02108206593a9347b5b78568bef5669, type: 3}
@@ -1161,6 +1117,10 @@ PrefabInstance:
     - target: {fileID: 6362501516946846125, guid: 2ecfe325524964a44aa225efcb59d6e4, type: 3}
       propertyPath: m_Name
       value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7851686365631652613, guid: 2ecfe325524964a44aa225efcb59d6e4, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
