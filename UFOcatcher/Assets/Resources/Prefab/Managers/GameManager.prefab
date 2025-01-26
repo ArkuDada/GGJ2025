@@ -201,6 +201,9 @@ MonoBehaviour:
   - {fileID: 2100000, guid: f35a470b12ba8084f96055da69463374, type: 2}
   feverIncreaseRate: 2
   feverDecreaseRate: 20
+  earlierSpawnRate: 2
+  lateGameSpawnRate: 2
+  apocalypseSpawnRate: 0.1
   currentFeverValue: 0
   arcade: {fileID: 0}
 --- !u!1 &7818875838503858121
@@ -263,6 +266,10 @@ PrefabInstance:
     - target: {fileID: 3524871918168218887, guid: c60c07e27969f444c800f68a61ca98bf, type: 3}
       propertyPath: m_Name
       value: EndUICanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 3524871918168218887, guid: c60c07e27969f444c800f68a61ca98bf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6746880155755325514, guid: c60c07e27969f444c800f68a61ca98bf, type: 3}
       propertyPath: m_Pivot.x
