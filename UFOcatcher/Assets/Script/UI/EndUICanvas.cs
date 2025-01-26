@@ -68,6 +68,7 @@ public class EndUICanvas : MonoBehaviour
 
     private void ShowEnterNameScreen()
     {
+        SoundManager.instance.PlaySFX("GameEnd");
         HideAllScreens();
         enterNameScreen.SetActive(true);
         currentScreen = ScreenState.EnterName;
