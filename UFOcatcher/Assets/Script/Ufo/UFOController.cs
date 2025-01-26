@@ -15,6 +15,8 @@ public class UFOController : MonoBehaviour
 	private Vector2 _screenBoundsMax;
 
 	private bool _beamActive = false;
+	
+	public float BeamRadius = 1f;
 	public GameObject _beam;
 	public GameObject _ufoMesh;
 
@@ -111,7 +113,7 @@ public class UFOController : MonoBehaviour
 			}
 			else
 			{
-				var sphereHit = Physics.SphereCastAll(hit.point, 1f, Vector3.down, 999);
+				var sphereHit = Physics.SphereCastAll(hit.point, beamRadius, Vector3.down, 999);
 				hit = sphereHit.OrderBy(o => Vector3.Distance(hit.point, o.transform.position)).First();
 				if (hit.transform.TryGetComponent<BaseObject>(out objectHit) &&
 				   objectHit.State == BaseObject.ObjectState.Grounded)
@@ -154,7 +156,9 @@ public class UFOController : MonoBehaviour
 			if (cooldownTimer <= 0.0f)
 			{
 				isCooldown = false;
-			}
+				currentEnergy = 1.0f;
+
+            }
 		}
 		else if (_beamActive)
 		{
