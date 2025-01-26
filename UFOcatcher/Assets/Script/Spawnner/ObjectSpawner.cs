@@ -85,9 +85,13 @@ public class ObjectSpawner : MonoBehaviour
 
         var spawnType = GetRandomObjectType();
 
-        if(!IsLimitReach(spawnType))
+        if(IsLimitReach(spawnType))
         {
-            var obj = _objectPrefabs.Find(x => x.GetComponent<BaseObject>()?.Type == spawnType);
+            StartCoroutine(SpawnObject());
+            yield break;
+        }
+
+        var obj = _objectPrefabs.Find(x => x.GetComponent<BaseObject>()?.Type == spawnType);
 
             switch(spawnType)
             {
@@ -124,7 +128,6 @@ public class ObjectSpawner : MonoBehaviour
             yield return new WaitForEndOfFrame();
 
             if(!containWheat) Instantiate(obj, grid, Quaternion.identity);
-        }
 
         _spawnInterval = _spawnRateCurve.Evaluate(time: ObjectCount / (float)maxObjectCount);
     }

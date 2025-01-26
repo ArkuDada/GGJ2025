@@ -1,5 +1,4 @@
 using UnityEngine;
-using static UnityEditor.Rendering.ShadowCascadeGUI;
 
 public class FeverMeterManager : MonoBehaviour
 {
