@@ -76,7 +76,7 @@ public class DebrisSpawner : MonoBehaviour
         float randomZ = Random.Range(minBound.z, maxBound.z);
         // Debug.Log($"{randomX} {randomZ}");
         Vector3 spawnPosition = new Vector3(randomX, _spawnMesh.transform.position.y, randomZ);
-        SoundManager.instance.PlaySFX("MeteorLaunch");
+        SoundManager.instance.PlaySFX("Meteor Launch");
         // Instantiate the AcidRain prefab at the spawn position
         Instantiate(acidRainPrefab, spawnPosition, Quaternion.identity);
     }
