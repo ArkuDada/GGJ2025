@@ -39,7 +39,7 @@ namespace Juve
 
             if (scoreUI != null)
             {
-                scoreUI.text = GameManager.Instance.ScoreManager.GetScore().ToString("00000000");
+                scoreUI.text = GameManager.Instance.ScoreManager.GetScore().ToString("000000");
             }
         }
     }
