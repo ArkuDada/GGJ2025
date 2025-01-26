@@ -136,21 +136,24 @@ public class QuestManager : MonoBehaviour
 				SoundManager.instance.PlaySFX("CollectCorrect");
 				scoreManager.IncrementScore(points);
 
-				GameObject newCorrectObjectParticles = Instantiate(correctObjectParticles);
+				GameObject newParticles = Instantiate(correctObjectParticles);
 				Vector3 worldToMainCameraPos = GameObject.FindWithTag("Player").transform.position - GameObject.Find("Main Camera").transform.position;
 				Vector3 mainCameraPosToArcadeCameraPos = GameObject.Find("Arcade Camera").transform.position + worldToMainCameraPos;
+				newParticles.transform.position = objectCollected.transform.position;
+				newParticles.GetComponent<ParentTransform>().following = objectCollected.transform;
+
 				objectCollected.transform.position = mainCameraPosToArcadeCameraPos;
 				var positionalLerp = objectCollected.AddComponent<PositionalLerp>();
 				positionalLerp.destination = arcade.mesh[i].IconMesh.transform.position;
 				positionalLerp.lerp = 0.03f;
 				positionalLerp.doneThreshold = 0.5f;
 				positionalLerp.scaleDestroy = true;
+				
 				Rigidbody objectRig = objectCollected.GetComponent<Rigidbody>();
 				objectRig.isKinematic = false;
 				objectRig.constraints = RigidbodyConstraints.FreezePosition;
 				objectRig.angularVelocity = Vector3.one * -5f;
-				newCorrectObjectParticles.transform.parent = objectCollected.transform;
-				newCorrectObjectParticles.transform.localPosition = Vector3.zero;
+
 				var meshRenderers = objectCollected.transform.GetComponentsInChildren<MeshRenderer>();
 				if (objectCollected.TryGetComponent(out MeshRenderer objectMeshRenderer)) {
 					meshRenderers.Append(objectMeshRenderer);
@@ -160,6 +163,7 @@ public class QuestManager : MonoBehaviour
 					meshRenderer.renderingLayerMask = 2;
 					meshRenderer.material = bubbleMaterial;
 				}
+
 				var colliders = objectCollected.transform.GetComponentsInChildren<Collider>();
 				if (objectCollected.TryGetComponent(out Collider objectCollider))
 				{

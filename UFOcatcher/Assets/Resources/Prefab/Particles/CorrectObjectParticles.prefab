@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 661049336194620487}
   - component: {fileID: 8513163216702343647}
   - component: {fileID: 7064247602388501727}
-  - component: {fileID: 1169492301989040335}
+  - component: {fileID: 5800822196900138243}
   m_Layer: 0
   m_Name: CorrectObjectParticles
   m_TagString: Untagged
@@ -43,14 +43,14 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1231737767803462873}
   serializedVersion: 8
-  lengthInSec: 0.2
-  simulationSpeed: 2
+  lengthInSec: 1.5
+  simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
@@ -108,7 +108,7 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 0
+  moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
   randomSeed: 0
@@ -118,7 +118,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.5
+      scalar: 1
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -171,8 +171,8 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 2
-      minScalar: 1
+      scalar: 5
+      minScalar: 3
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -289,7 +289,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 1
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -4837,22 +4837,20 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &1169492301989040335
+--- !u!114 &5800822196900138243
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1231737767803462873}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b437173867f26b24bb149dc6f875bb68, type: 3}
+  m_Script: {fileID: 11500000, guid: 1511ed641fbe1dc45b34f2cfbf51bb82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lerp: 0.5
-  destination: {x: 0, y: 0, z: 0}
-  destroyWhenDone: 1
-  doneThreshold: 0.2
+  following: {fileID: 0}
+  destroyIfParentDestroyed: 1
 --- !u!1 &2337612380712599141
 GameObject:
   m_ObjectHideFlags: 0
