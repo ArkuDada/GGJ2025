@@ -552,21 +552,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5608119213930710322, guid: 8703dd9e379590e4b8cdf917cfccb60b, type: 3}
-      propertyPath: m_SortingOrder
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 6040746719632481854, guid: 8703dd9e379590e4b8cdf917cfccb60b, type: 3}
       propertyPath: m_Name
       value: StartUICanvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 6367119008565172806, guid: 8703dd9e379590e4b8cdf917cfccb60b, type: 3}
-      propertyPath: m_ReferenceResolution.x
-      value: 1280
-      objectReference: {fileID: 0}
-    - target: {fileID: 6367119008565172806, guid: 8703dd9e379590e4b8cdf917cfccb60b, type: 3}
-      propertyPath: m_ReferenceResolution.y
-      value: 720
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
