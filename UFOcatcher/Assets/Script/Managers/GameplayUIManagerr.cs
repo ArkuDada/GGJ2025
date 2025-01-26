@@ -14,6 +14,9 @@ namespace Juve
 
         [SerializeField]
         Slider feverMeterUI;
+
+        [SerializeField]
+        PauseMenu pauseUI;
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
@@ -30,7 +33,7 @@ namespace Juve
 
             if (scoreUI != null)
             {
-                scoreUI.text = "Score: " +  GameManager.Instance.ScoreManager.GetScore().ToString();
+                scoreUI.text = GameManager.Instance.ScoreManager.GetScore().ToString("00000000");
             }
         }
     }

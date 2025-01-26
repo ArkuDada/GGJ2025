@@ -1,10 +1,12 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.Serialization;
 using Utility;
 
 public enum GameState
 {
+    Start,
     Prepare,
     Play,
     Pause,
@@ -37,23 +39,72 @@ public class GameManager : MonoSingleton<GameManager>
 	QuestManager questManager;
 	public QuestManager QuestManager => questManager;
 
-	// Initialize the game manager
-	protected override void Init()
+    [SerializeField]
+    GameObject startUI;
+
+    // Initialize the game manager
+    protected override void Init()
     {
         // Set initial values for your game manager
-        ChangeGameplayState(GameState.Play);
+        ChangeGameplayState(GameState.Start);
     }
 
     // Might Refactor Later
-    private void ChangeGameplayState(GameState newState)
+    public void ChangeGameplayState(GameState newState)
     {
         state = newState;
 
-        if (state == GameState.Play) 
+        if (state == GameState.Start)
+        {
+            startUI.SetActive(true);
+            Time.timeScale = 0;
+        }
+        else if(state == GameState.Prepare)
+        {
+            startUI.SetActive(false);
+            Time.timeScale = 1;
+        }
+        else if(state == GameState.Play) 
         {
             timeManager.ResumeTimer();
+        }
+        else if (state == GameState.Pause)
+        {
+            timeManager.StopTimer();
+        }
+    }
+
+    private void Update()
+    {
+        if (state == GameState.Start)
+        {
+            if (Input.anyKeyDown)
+            {
+                ChangeGameplayState(GameState.Prepare);
+            }
+        } 
+        else if (state == GameState.Prepare) 
+        {
+            ChangeGameplayState(GameState.Play);
+        }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                if (state == GameState.Play)
+                {
+                    ChangeGameplayState(GameState.Pause);
+                }
+                else if (state == GameState.Pause)
+                {
+                    ChangeGameplayState(GameState.Play);
+                }
+            }
+
         }
     }
 
     // You can add more game logic and features as needed
+
+
 }

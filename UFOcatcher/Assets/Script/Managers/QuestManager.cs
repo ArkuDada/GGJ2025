@@ -5,47 +5,57 @@ using UnityEngine;
 
 public class QuestManager : MonoBehaviour
 {
-	public List<ObjectList> availableQuests; // Quests that could be chosen as currentQuest
-	public ObjectList CurrentQuest { get; private set; } // The current quest, containing a list of objects for the player to collect
-	public List<bool> ObjectsCollected { get; private set; } // Acts like a checklist for the current quest's items
+	public List<RecipeObject> availableRecipes; // Quests that could be chosen as currentQuest
+	public RecipeObject CurrentQuest { get; private set; } // The current quest, containing a list of objects for the player to collect
+	public List<int> ObjectsCollected { get; private set; } // Acts like a checklist for the current quest's items
 	public int ObjectsLeftToCollect { get; private set; } // Number of items left to collect
-	public TextMeshProUGUI tempQuestText; // temp for debug until UI is finalized
-	
+
 	public Arcade arcade;
-	
+
 	public void Start()
 	{
+		if (arcade == null)
+		{
+			GameObject arcadeGameObject = GameObject.Find("Arcade");
+			if (!arcadeGameObject)
+				Debug.LogError("Arcade not found!");
+
+			arcade = arcadeGameObject.GetComponent<Arcade>();
+			if (!arcade)
+				Debug.Log("Arcade has no Arcade script!");
+		}
+
 		InitQuest();
 	}
 
 	// Choose a new random quest for the player to complete
 	private void InitQuest()
 	{
-		CurrentQuest = availableQuests[Random.Range(0, availableQuests.Count)];
+		CurrentQuest = availableRecipes[Random.Range(0, availableRecipes.Count)];
 
+		ObjectsLeftToCollect = 0;
 		ObjectsCollected = new(CurrentQuest.objects.Count);
 		for (int i = 0; i < ObjectsCollected.Capacity; i++)
 		{
-			ObjectsCollected.Add(false);
+			ObjectsLeftToCollect += CurrentQuest.quantities[i];
+			ObjectsCollected.Add(0);
 		}
 
-		ObjectsLeftToCollect = ObjectsCollected.Count;
-
-		TempUpdateQuestUI();
-	}
-
-	// Temp until UI is finalized
-	private void TempUpdateQuestUI()
-	{
-		string text = CurrentQuest.questName + ':';
 		for (int i = 0; i < ObjectsCollected.Count; i++)
 		{
-			if (!ObjectsCollected[i])
-			{
-				text += '\n' + Utility.Objects.GetObjectName(CurrentQuest.objects[i]);
-			}
+			arcade.SetButtonIcon(i, CurrentQuest.objects[i]);
+			arcade.SetBorderFill(i, 0);
 		}
-		tempQuestText.text = text;
+
+		UpdateQuestUI();
+	}
+
+	private void UpdateQuestUI()
+	{
+		for (int i = 0; i < ObjectsCollected.Count; i++)
+		{
+			arcade.SetBorderFill(i, (float)ObjectsCollected[i] / (float)CurrentQuest.quantities[i]);
+		}
 	}
 
 	// Handler for when currentQuest is completed
@@ -65,12 +75,15 @@ public class QuestManager : MonoBehaviour
 
 		for (int i = 0; i < CurrentQuest.objects.Count; ++i)
 		{
-			if (CurrentQuest.objects[i] == objectCollected.Type && !ObjectsCollected[i])
+			// Find the object we're supposed to be collecting (order matters in recipes)
+			if (ObjectsCollected[i] >= CurrentQuest.quantities[i])
+				continue;
+
+			if (CurrentQuest.objects[i] == objectCollected.Type)
 			{
-				// Collected an uncollected object on our list
-				ObjectsCollected[i] = true;
+				// Collected the correct object
+				++ObjectsCollected[i];
 				--ObjectsLeftToCollect;
-				Debug.Log("collected");
 
 				if (ObjectsLeftToCollect <= 0)
 				{
@@ -78,16 +91,19 @@ public class QuestManager : MonoBehaviour
 				}
 				else
 				{
-					TempUpdateQuestUI();
+					UpdateQuestUI();
 				}
 
 				scoreManager.IncrementScore(points);
 
 				return;
 			}
+
+			// We didn't collect the correct object
+			break;
 		}
 
-		// Object wasn't on the quest list
+		// Wrong object; Decrease score!
 		scoreManager.DecrementScore(points);
 	}
 }

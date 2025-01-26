@@ -23,14 +23,14 @@ public class Arcade : MonoBehaviour
         }
     }
     
-    private void SetButtonIcon(int index,Objects.ObjectType objectType)
+    public void SetButtonIcon(int index,Objects.ObjectType objectType)
     {
         mesh[index].IconMesh.material = new Material(iconMats[(int)objectType]);
     }
     
     
     //fill 0 - 1.f
-    private void SetBorderFill(int index,float fill)
+    public void SetBorderFill(int index,float fill)
     {
         fill = (1.0f - Mathf.Clamp(fill, 0.0f, 1.0f)) * 360.0f;
         mesh[index].BorderMesh.material.SetFloat("_Arc2", fill);

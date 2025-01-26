@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4567573889462836248}
   - component: {fileID: 4030037838825662969}
   - component: {fileID: 6649087045217578966}
+  - component: {fileID: 5049280743249635974}
   m_Layer: 0
   m_Name: GroundPlane
   m_TagString: FloorPlane
@@ -32,8 +33,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4339322396128498157}
   - {fileID: 5009691677998570732}
@@ -144,7 +145,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 8c7893fdcbc21154894f12478f98334e, type: 2}
   m_BuildHeightMesh: 0
 --- !u!114 &4030037838825662969
 MonoBehaviour:
@@ -182,6 +183,7 @@ MonoBehaviour:
   - {fileID: 2997598876189070964, guid: 4718f40c117ca974a96f61c4f83486ff, type: 3}
   - {fileID: 2135810059554754284, guid: fb557c56aa8f2c445b50dad80fa999ae, type: 3}
   - {fileID: 616203856976430369, guid: 3ba7a4290ff3459439834ff7a6321e62, type: 3}
+  - {fileID: 2997598876189070964, guid: 778d18a17f93a774b817276d04a82e4e, type: 3}
   _spawnInterval: 1
   _spawnRateCurve:
     serializedVersion: 2
@@ -218,6 +220,25 @@ MonoBehaviour:
     m_RotationOrder: 4
   maxObjectCount: 25
   explodeForce: 1000
+--- !u!114 &5049280743249635974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8887287632678279453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ee2d3129f0abc5408592d6b8ca1c836, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minBound: {x: -4, y: 0, z: -4}
+  maxBound: {x: 4, y: 0, z: 4}
+  padding: 1
+  gridSize: 7
+  distanceBetweenGrids: 1.333333
+  box: {fileID: 2135810059554754284, guid: fb557c56aa8f2c445b50dad80fa999ae, type: 3}
+  doDebugBox: 0
 --- !u!1001 &8080377953361076584
 PrefabInstance:
   m_ObjectHideFlags: 0
