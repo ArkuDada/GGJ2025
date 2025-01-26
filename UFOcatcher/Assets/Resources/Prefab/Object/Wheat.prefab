@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3849073633603118471}
   - component: {fileID: 3021868557453075775}
   - component: {fileID: 2640155572636614351}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 3927518734642520271}
   - component: {fileID: 1271671515675010646}
   - component: {fileID: 4520617852041900988}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -183,7 +183,7 @@ GameObject:
   - component: {fileID: 1730378364142061939}
   - component: {fileID: 5233409768595514475}
   - component: {fileID: 7636306238080450125}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -269,7 +269,7 @@ GameObject:
   - component: {fileID: 6529702609094202843}
   - component: {fileID: 261413594732929928}
   - component: {fileID: 3348746920591693069}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -355,7 +355,7 @@ GameObject:
   - component: {fileID: 8111762233531504047}
   - component: {fileID: 5664114654010797329}
   - component: {fileID: 8734659802351886891}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -441,7 +441,7 @@ GameObject:
   - component: {fileID: 234799797423810154}
   - component: {fileID: 8282062572320154377}
   - component: {fileID: 7821119235328130444}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -527,7 +527,7 @@ GameObject:
   - component: {fileID: 1407416514314025870}
   - component: {fileID: 4204703071972359891}
   - component: {fileID: 5481881398781686993}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -614,6 +614,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wheat
       objectReference: {fileID: 0}
+    - target: {fileID: 2135810059554754284, guid: fb557c56aa8f2c445b50dad80fa999ae, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4989856079516220156, guid: fb557c56aa8f2c445b50dad80fa999ae, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -662,6 +666,10 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 112
       objectReference: {fileID: 0}
+    - target: {fileID: 5683648070908338548, guid: fb557c56aa8f2c445b50dad80fa999ae, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6331483679017536262, guid: fb557c56aa8f2c445b50dad80fa999ae, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -702,6 +710,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2135810059554754284, guid: fb557c56aa8f2c445b50dad80fa999ae, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4528333006316498099}
+    - targetCorrespondingSourceObject: {fileID: 2135810059554754284, guid: fb557c56aa8f2c445b50dad80fa999ae, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3000456824117098038}
   m_SourcePrefab: {fileID: 100100000, guid: fb557c56aa8f2c445b50dad80fa999ae, type: 3}
 --- !u!1 &616203856976430369 stripped
 GameObject:
@@ -755,6 +766,19 @@ MonoBehaviour:
     m_RotationOrder: 4
   _startScale: {x: 0.2, y: 0.2, z: 0.2}
   _endScale: {x: 1, y: 1, z: 1}
+--- !u!114 &3000456824117098038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 616203856976430369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e302fdfb21421d4ead308128c882221, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cowEating: {fileID: 0}
 --- !u!4 &5769496368290394417 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4989856079516220156, guid: fb557c56aa8f2c445b50dad80fa999ae, type: 3}
