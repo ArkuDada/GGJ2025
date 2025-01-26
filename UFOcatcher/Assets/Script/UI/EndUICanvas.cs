@@ -49,7 +49,7 @@ public class EndUICanvas : MonoBehaviour
                 ShowCongratsScreen();
                 break;
             case ScreenState.Congrats:
-                Debug.Log("End of flow. Add any additional functionality here.");
+                SceneManager.LoadScene("SampleScene");
                 break;
         }
     }

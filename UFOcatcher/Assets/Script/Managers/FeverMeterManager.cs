@@ -35,13 +35,8 @@ public class FeverMeterManager : MonoBehaviour
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
 	void Start()
 	{
-		currentFeverValue = 0;
-		if (arcade == null)
-			arcade = GameObject.Find("Arcade").GetComponent<Arcade>();
-		barStartingLocalPosition = arcade.FeverMeter.transform.localPosition;
-		barStartingLocalScale = arcade.FeverMeter.transform.localScale;
-		feverBarMeshRenderer = arcade.FeverMeter.GetComponent<MeshRenderer>();
-	}
+		Init();
+    }
 
 	// Update is called once per frame
 	void Update()
@@ -49,7 +44,17 @@ public class FeverMeterManager : MonoBehaviour
 		UpdateFeverPercentage(Time.deltaTime);
 	}
 
-	public void IncreaseFever(float increaseAmount)
+    public void Init()
+    {
+        currentFeverValue = 0;
+        if (arcade == null)
+            arcade = GameObject.Find("Arcade").GetComponent<Arcade>();
+        barStartingLocalPosition = arcade.FeverMeter.transform.localPosition;
+        barStartingLocalScale = arcade.FeverMeter.transform.localScale;
+        feverBarMeshRenderer = arcade.FeverMeter.GetComponent<MeshRenderer>();
+    }
+
+    public void IncreaseFever(float increaseAmount)
 	{
 		currentFeverValue += increaseAmount;
 	}
