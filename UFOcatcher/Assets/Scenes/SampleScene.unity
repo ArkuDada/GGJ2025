@@ -1065,7 +1065,7 @@ PrefabInstance:
     - target: {fileID: 4422183353615636990, guid: c02108206593a9347b5b78568bef5669, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 9db36ecd53ee54519ada0b9588f5fffa, type: 2}
+      objectReference: {fileID: 2100000, guid: a526fb29dc3804b9f936c52ec05ef966, type: 2}
     - target: {fileID: 5521825811582994737, guid: c02108206593a9347b5b78568bef5669, type: 3}
       propertyPath: m_BoundingSphereOverride.w
       value: 9.264843
@@ -1909,6 +1909,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3733890136502451139, guid: 8703dd9e379590e4b8cdf917cfccb60b, type: 3}
+      propertyPath: m_text
+      value: 'THIS
+
+        WORLD
+
+        IS MINE'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3733890136502451139, guid: 8703dd9e379590e4b8cdf917cfccb60b, type: 3}
+      propertyPath: m_fontSize
+      value: 58.95
+      objectReference: {fileID: 0}
     - target: {fileID: 5608119213930710322, guid: 8703dd9e379590e4b8cdf917cfccb60b, type: 3}
       propertyPath: m_Camera
       value: 
@@ -2242,6 +2254,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 330585546}
+  - {fileID: 1441587714}
   - {fileID: 410087041}
   - {fileID: 832575519}
   - {fileID: 1057063772}
@@ -2257,4 +2270,3 @@ SceneRoots:
   - {fileID: 2024966172}
   - {fileID: 117845326}
   - {fileID: 52084942}
-  - {fileID: 1441587714}
