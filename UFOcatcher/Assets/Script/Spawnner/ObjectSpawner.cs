@@ -21,7 +21,13 @@ public class ObjectSpawner : MonoBehaviour
 
     private float _timer = 0.0f;
 
-    [SerializeField] private int maxObjectCount = 50;
+    [SerializeField]
+    private int maxObjectCount = 25;
+
+
+    public float explodeForce = 1000.0f;
+    int ObjectCount => GameObject.FindObjectsByType<BaseObject>(FindObjectsSortMode.InstanceID).Length;
+
 
     private void Update()
     {
@@ -29,11 +35,9 @@ public class ObjectSpawner : MonoBehaviour
         if(_timer >= _spawnInterval)
         {
             _timer = 0.0f;
-            StartCoroutine(SpawnObject());
+            if(ObjectCount < maxObjectCount) StartCoroutine(SpawnObject());
         }
     }
-
-    public float explodeForce = 1000.0f;
 
     private IEnumerator SpawnObject()
     {
@@ -44,7 +48,7 @@ public class ObjectSpawner : MonoBehaviour
         var spawnType = GetRandomObjectType();
         var obj = _objectPrefabs.Find(x => x.GetComponent<BaseObject>()?.Type == spawnType);
 
-        switch (spawnType) 
+        switch(spawnType)
         {
             case Objects.ObjectType.Cow:
                 SoundManager.instance.PlaySFX("Cow Spawn");
@@ -74,8 +78,7 @@ public class ObjectSpawner : MonoBehaviour
 
         if(!containWheat) Instantiate(obj, grid, Quaternion.identity);
 
-        int objectCount = GameObject.FindObjectsByType<BaseObject>(FindObjectsSortMode.InstanceID).Length;
-        _spawnInterval = _spawnRateCurve.Evaluate(time: objectCount / (float)maxObjectCount);
+        _spawnInterval = _spawnRateCurve.Evaluate(time: ObjectCount / (float)maxObjectCount);
     }
 
     private Objects.ObjectType GetRandomObjectType()
