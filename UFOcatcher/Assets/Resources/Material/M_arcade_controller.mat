@@ -60,7 +60,7 @@ Material:
     - _Is_OutlineTex: 0
     - _LightDirection_MaskOn: 0
     - _OUTLINE: 0
-    - _Outline_Width: 48.38
+    - _Outline_Width: 31.22
     - _RimLight: 0
     - _RimLight_FeatherOff: 0
     - _RimLight_InsideMask: 0.38
@@ -72,7 +72,7 @@ Material:
     - _BaseColor: {r: 0.6488056, g: 0.6000801, b: 0.8773585, a: 1}
     - _Color: {r: 0.6488056, g: 0.6000801, b: 0.8773585, a: 1}
     - _Emissive_Color: {r: 0, g: 0.89049053, b: 1, a: 1}
-    - _Outline_Color: {r: 0, g: 0, b: 0, a: 1}
+    - _Outline_Color: {r: 0.07058824, g: 0.16078432, b: 0.7176471, a: 1}
     - _RimLightColor: {r: 0, g: 0.7945037, b: 1, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
