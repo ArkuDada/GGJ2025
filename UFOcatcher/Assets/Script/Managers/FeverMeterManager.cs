@@ -18,7 +18,8 @@ public class FeverMeterManager : MonoBehaviour
 	public float CurrentFeverValue => currentFeverValue;
 
 	public Arcade arcade;
-	private Vector3 localBarStartingPosition;
+	private Vector3 barStartingLocalPosition;
+	private Vector3 barStartingLocalScale;
 	private MeshRenderer feverBarMeshRenderer;
 
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -27,7 +28,8 @@ public class FeverMeterManager : MonoBehaviour
 		currentFeverValue = 0;
 		if (arcade == null)
 			arcade = GameObject.Find("Arcade").GetComponent<Arcade>();
-		localBarStartingPosition = arcade.FeverMeter.transform.localPosition;
+		barStartingLocalPosition = arcade.FeverMeter.transform.localPosition;
+		barStartingLocalScale = arcade.FeverMeter.transform.localScale;
 		feverBarMeshRenderer = arcade.FeverMeter.GetComponent<MeshRenderer>();
 	}
 
@@ -78,7 +80,7 @@ public class FeverMeterManager : MonoBehaviour
 		{
 			if (currentFeverPercentage <= 0)
 			{
-				GameManager.Instance.DebrisSpawner.SpawnRate = 0;
+				GameManager.Instance.DebrisSpawner.SpawnRate = DebrisSpawner.DEFAULT_SPAWN_RATE;
 				inFever = false;
 			}
 		}
@@ -89,6 +91,8 @@ public class FeverMeterManager : MonoBehaviour
 		}
 
 		// Update arcade visuals
-		arcade.FeverMeter.localScale = new Vector3(1, currentFeverPercentage, 1);
+		Vector3 newScale = barStartingLocalScale;
+		newScale.y *= currentFeverPercentage;
+		arcade.FeverMeter.localScale = newScale;
 	}
 }
