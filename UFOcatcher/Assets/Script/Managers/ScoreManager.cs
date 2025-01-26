@@ -14,7 +14,7 @@ public class ScoreManager : MonoBehaviour
 
 	public UFOController ufo;
 
-	private const int RECIPE_COMPLETE_SCORE_INCREASE = 1000;
+	private const int RECIPE_COMPLETE_SCORE_INCREASE = 30000;
 
 	// Start is called before the first frame update
 	void Start()

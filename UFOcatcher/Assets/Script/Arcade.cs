@@ -10,6 +10,7 @@ public class Arcade : MonoBehaviour
 	public List<QuestButtonMesh> mesh;
 
 	public List<Material> iconMats;
+	public Material iconDefault;
 
 	private const float JOYSTICK_MAX_ROT = 15f;
 	private const float BUTTON_MAX_DEPRESS = 0.6f;
@@ -54,6 +55,11 @@ public class Arcade : MonoBehaviour
 	public void SetButtonIcon(int index, Objects.ObjectType objectType)
 	{
 		mesh[index].IconMesh.material = new Material(iconMats[(int)objectType]);
+	}
+
+	public void UnsetButtonIcon(int index)
+	{ 
+		mesh[index].IconMesh.material = iconDefault;
 	}
 
 

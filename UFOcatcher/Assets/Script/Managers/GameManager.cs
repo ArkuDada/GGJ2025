@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem.LowLevel;
@@ -119,6 +120,20 @@ public class GameManager : MonoBehaviour
         {
             timeManager.PauseTimer();
         }
+    }
+    
+    private IEnumerator EndSequence()
+    {
+        debrisSpawner.StopSpawning();
+        scoreManager.SaveHighScore();
+
+        var ufo = GameObject.FindGameObjectWithTag("Player").GetComponent<UFOController>();
+        ufo.IsGoAway = true;
+        
+        yield return new WaitForSeconds(3);
+
+        Time.timeScale = 0;
+        endUI.SetActive(true);
     }
 
     private void Update()

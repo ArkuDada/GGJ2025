@@ -666,6 +666,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 817ad5d6eba6e6741a2d94e3fe35cf13, type: 2}
   - {fileID: 2100000, guid: 0f2e3ea7814d88042985ef1bce6d1277, type: 2}
   - {fileID: 2100000, guid: f4f19bd79d5d56f49a6f563c3d72a701, type: 2}
+  iconDefault: {fileID: 2100000, guid: f4f19bd79d5d56f49a6f563c3d72a701, type: 2}
   joystick: {fileID: 351953410335927441}
   button: {fileID: 4980526086710161073}
 --- !u!1001 &954693604265415929
@@ -920,7 +921,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 35c6656fd74b74483abb4dac053d7ba3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 771656755786461970}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: -6326568378401398211, guid: 35c6656fd74b74483abb4dac053d7ba3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2221025174186086134}
   m_SourcePrefab: {fileID: 100100000, guid: 35c6656fd74b74483abb4dac053d7ba3, type: 3}
 --- !u!4 &351953410335927441 stripped
 Transform:
@@ -937,6 +941,23 @@ MeshRenderer:
   m_CorrespondingSourceObject: {fileID: -4892636496999325329, guid: 35c6656fd74b74483abb4dac053d7ba3, type: 3}
   m_PrefabInstance: {fileID: 1260827086506637871}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4128912565650675730 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -6326568378401398211, guid: 35c6656fd74b74483abb4dac053d7ba3, type: 3}
+  m_PrefabInstance: {fileID: 1260827086506637871}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2221025174186086134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4128912565650675730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87f29fdcad9034b44bf0512fb10341d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4980526086710161073 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -3143167737404599138, guid: 35c6656fd74b74483abb4dac053d7ba3, type: 3}
