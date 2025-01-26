@@ -7,7 +7,7 @@
 		{
 			switch (objectType)
 			{
-				case ObjectType.Amongus:
+				case ObjectType.End:
 					return "Amogus";
 				default:
 					return objectType.ToString();
@@ -19,7 +19,8 @@
 			Box,
 			Wheat,
 			Cow,
-			Amongus
+			Chicken,
+			End
 		}
 	}
 }
