@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: M_ArcadeScreenMaskGameDone
-  m_Shader: {fileID: -6465566751694194690, guid: a544757593f6a2541a9c54c6de3a0550, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: ea46e71d28f12b246912682b986cb574, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -95,7 +95,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _AddPrecomputedVelocity: 0
-    - _AdditiveLayerAlpha: 0.5
+    - _AdditiveLayerAlpha: 0.011578891
     - _AlphaClip: 0
     - _AlphaToMask: 0
     - _Blend: 0
@@ -117,7 +117,7 @@ Material:
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
-    - _Progress: 1
+    - _Progress: -1
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1

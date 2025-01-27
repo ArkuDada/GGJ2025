@@ -134,6 +134,11 @@ public class UFOController : MonoBehaviour
 		if (IsGoAway)
 		{
 			transform.position += Vector3.up * GoAwaySpeed * Time.unscaledDeltaTime;
+
+			if (transform.position.y > 10.0f)
+			{
+				transform.position = new Vector3(0, -100, 0);
+			}
 		}
 
 		remainingDebrisShakeDuration = Math.Max(0, remainingDebrisShakeDuration - Time.deltaTime);

@@ -5,6 +5,7 @@ using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.Serialization;
 using Utility;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public enum GameState
 {
@@ -119,24 +120,27 @@ public class GameManager : MonoBehaviour
         }
         else if(state == GameState.GameOver)
         {
-            StartCoroutine(EndSequence());
+            if(endCour == null) endCour = StartCoroutine(EndSequence());
         }
        
     }
 
+    Coroutine endCour = null;
     private IEnumerator EndSequence()
     {
         debrisSpawner.StopSpawning();
         scoreManager.SaveHighScore();
         Time.timeScale = 0;
-        
+
         var ufo = GameObject.FindGameObjectWithTag("Player").GetComponent<UFOController>();
         ufo.IsGoAway = true;
 
         yield return new WaitForSecondsRealtime(2.5f);
+
         var screen = GameObject.Find("MainArcadeScreen").GetComponent<ArcadeScreenMask>();
         screen.ChangeEndMat();
-        screen.PlayReflectionAnimation();
+        screen.PlayReflectionAnimation(false);
+
         yield return new WaitForSecondsRealtime(2.5f);
 
         endUI.SetActive(true);
