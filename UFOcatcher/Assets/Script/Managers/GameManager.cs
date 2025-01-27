@@ -129,7 +129,11 @@ public class GameManager : MonoBehaviour
         var ufo = GameObject.FindGameObjectWithTag("Player").GetComponent<UFOController>();
         ufo.IsGoAway = true;
 
-        yield return new WaitForSecondsRealtime(3);
+        yield return new WaitForSecondsRealtime(2.5f);
+        var screen = GameObject.Find("MainArcadeScreen").GetComponent<ArcadeScreenMask>();
+        screen.ChangeAnimationMat();
+        screen.PlayReflectionAnimation();
+        yield return new WaitForSecondsRealtime(2.5f);
 
         endUI.SetActive(true);
     }
