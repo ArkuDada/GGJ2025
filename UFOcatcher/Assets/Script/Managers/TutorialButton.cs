@@ -25,6 +25,11 @@ public class TutorialButton : MonoBehaviour
 
     public void PauseGame()
     {
+        if (GameManager.Instance.State == GameState.Pause)
+        {
+            return;
+        }
+
         isPaused = true;
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f; // Freeze game time
@@ -46,7 +51,7 @@ public class TutorialButton : MonoBehaviour
     {
         isPaused = false;
         pauseMenuUI.SetActive(false);
-        Time.timeScale = 1f; // Resume game time
+        //Time.timeScale = 1f; // Resume game time
 
         foreach (var gameObj in Objects)
         {
@@ -61,6 +66,11 @@ public class TutorialButton : MonoBehaviour
 
     public void OnClick()
     {
+        if (GameManager.Instance.State == GameState.Pause)
+        {
+            return;
+        }
+
         if (isPaused)
         {
             ResumeGame();

@@ -6,7 +6,7 @@ using UnityEngine.InputSystem.LowLevel;
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private GameObject pauseMenuUI;
-
+    GameState lastgameState;
     private bool isPaused = false;
 
     void Start()
@@ -17,6 +17,11 @@ public class PauseMenu : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.Instance.State == GameState.Tutorial || GameManager.Instance.State == GameState.Credits) 
+        {
+            return;
+        }
+
         // Toggle pause menu when pressing Escape
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -29,6 +34,7 @@ public class PauseMenu : MonoBehaviour
                 PauseGame();
             }
         }
+
     }
 
     public void PauseGame()
@@ -38,9 +44,10 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 0f; // Freeze game time
 
 
-        if (GameUtility.GameManagerExists()) 
+        if (GameUtility.GameManagerExists())
         {
-            //GameManager.Instance.ChangeGameplayState(GameState.Pause);
+            lastgameState = GameManager.Instance.State;
+            GameManager.Instance.ChangeGameplayState(GameState.Pause);
         }
     }
 
@@ -48,11 +55,18 @@ public class PauseMenu : MonoBehaviour
     {
         isPaused = false;
         pauseMenuUI.SetActive(false);
-        Time.timeScale = 1f; // Resume game time
 
         if (GameUtility.GameManagerExists())
         {
-            //GameManager.Instance.ChangeGameplayState(GameState.Play);
+            if (lastgameState == GameState.Pause)
+            {
+                GameManager.Instance.ChangeGameplayState(GameState.Play);
+            }
+            else 
+            {
+                GameManager.Instance.ChangeGameplayState(lastgameState);
+            }
+
         }
     }
 
