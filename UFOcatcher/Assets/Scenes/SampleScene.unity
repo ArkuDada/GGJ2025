@@ -218,6 +218,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1432245909830652582, guid: 4762b48625c143145b6535442cc71860, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1432245909830652582, guid: 4762b48625c143145b6535442cc71860, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1432245909830652582, guid: 4762b48625c143145b6535442cc71860, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1432245909830652582, guid: 4762b48625c143145b6535442cc71860, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1484937075507135628, guid: 4762b48625c143145b6535442cc71860, type: 3}
       propertyPath: m_Name
       value: GameplayUICanvas
@@ -302,6 +318,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3487351449330360632, guid: 4762b48625c143145b6535442cc71860, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3487351449330360632, guid: 4762b48625c143145b6535442cc71860, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3487351449330360632, guid: 4762b48625c143145b6535442cc71860, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3487351449330360632, guid: 4762b48625c143145b6535442cc71860, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3533540748518371230, guid: 4762b48625c143145b6535442cc71860, type: 3}
       propertyPath: pauseMenuUI
       value: 
@@ -330,6 +362,22 @@ PrefabInstance:
       propertyPath: 'Objects.Array.data[2]'
       value: 
       objectReference: {fileID: 1889142967}
+    - target: {fileID: 6058998763723951839, guid: 4762b48625c143145b6535442cc71860, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6058998763723951839, guid: 4762b48625c143145b6535442cc71860, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6058998763723951839, guid: 4762b48625c143145b6535442cc71860, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6058998763723951839, guid: 4762b48625c143145b6535442cc71860, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8578671473736975237, guid: 4762b48625c143145b6535442cc71860, type: 3}
       propertyPath: pauseMenuUI
       value: 

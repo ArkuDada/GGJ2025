@@ -418,11 +418,57 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Programmers:\r\nLeon Milewski\r\nPada Cherdchoothai\r\nSiravich Sereepong\r\nJu-ve
-    Chankasemporn\r\nKamchai Loketkrawee\r\n\r\nArtists:\r\nNon Juthapat\r\nAnanya
-    Saengram\r\nNarissa Bumrungkhet \r\n\r\nDesigners:\r\nNatapatr Lorsathian\r\nYeen
-    Samarnkatiwat - Greatest designer of all time\r\nPrima Foosiripong\r\nTanik Sriwattana
-    - Sound Designer\r\n\r\nFonts:\r\nhttps://fonts.google.com/specimen/Sixtyfour+Convergence\r\nhttps://fonts.google.com/specimen/Jersey+10\r\n\r\nSounds:\r\nhttps://pixabay.com/\r\nhttps://sonniss.com/gameaudiogdc"
+  m_text: 'Programmers:
+
+    Leon Milewski - The GOAT
+
+    Pada Cherdchoothai - Leading
+    the way
+
+    Siravich Sereepong -  Tech Art Magician
+
+    Ju-ve Chankasemporn
+    - Game Developer
+
+    Kamchai Loketkrawee - CG Advisor
+
+
+    Artists:
+
+    Non
+    Juthapat - Art Director, The MSG
+
+    Ananya Saengram - 2D Artist
+
+    Narissa
+    Bumrungkhet - 3D Artist
+
+
+    Designers:
+
+    Yeen Samarnkatiwat - Greatest designer
+    of all time
+
+    Natapatr Lorsathian - Greatest designer in history
+
+    Prima
+    Foosiripong - Greatest designer of today
+
+    Tanik Sriwattana - Sound Designer
+
+
+    Fonts:
+
+    https://fonts.google.com/specimen/Sixtyfour+Convergence
+
+    https://fonts.google.com/specimen/Jersey+10
+
+
+    Sounds:
+
+    https://pixabay.com/
+
+    https://sonniss.com/gameaudiogdc'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5723e50fb9d294356a33d61a2c26996d, type: 2}
   m_sharedMaterial: {fileID: -1593862661580959227, guid: 5723e50fb9d294356a33d61a2c26996d, type: 2}
