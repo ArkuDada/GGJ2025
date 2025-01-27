@@ -169,7 +169,8 @@ public class DebrisObject : MonoBehaviour
                 GameManager.Instance.ScoreManager.DecrementScore(DECREASE_SCORE); 
             }
             SoundManager.instance.PlaySFX("UFO Hit");
-            OnExplode();
+			ufoController.TriggerDebrisShake();
+			OnExplode();
         }
         else if (other.gameObject.CompareTag("FloorPlane"))
         {
