@@ -6855,7 +6855,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Your Score
+  m_text: 'High Score
 
 '
   m_isRightToLeft: 0
