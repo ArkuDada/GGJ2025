@@ -88,17 +88,28 @@ public class QuestManager : MonoBehaviour
 		scoreManager.CompletedQuest();
 		GameObject.Find("MainArcadeScreen").GetComponent<ArcadeScreenMask>().PlayReflectionAnimation();
 
+		for (int i = 0; i < 4; i++)
+		{
+			arcade.SetBorderFill(i, 0);
+		}
+
 		yield return new WaitForSeconds(blinkTime);
+
+		for (int i = 0; i < CurrentQuest.objects.Count; i++)
+		{
+			arcade.ConfettiAtIcon(i);
+			arcade.SetBorderFill(i, 1);
+		}
 
 		for (int j = 0; j < 3; j++)
 		{
-			for (int i = 0; i < 4; i++)
+			for (int i = 0; i < CurrentQuest.objects.Count; i++)
 			{
 				arcade.SetBorderFill(i, 1);
 			}
 
 			yield return new WaitForSeconds(blinkTime);
-			for (int i = 0; i < 4; i++)
+			for (int i = 0; i < CurrentQuest.objects.Count; i++)
 			{
 				arcade.SetBorderFill(i, 0);
 			}
@@ -109,8 +120,8 @@ public class QuestManager : MonoBehaviour
 		for (int i = 0; i < 4; i++)
 		{
 			arcade.SetButtonIcon(i, Objects.ObjectType.End);
+			arcade.SetBorderFill(i, 0);
 			yield return new WaitForSeconds(plopTime);
-
 		}
 
 		StartCoroutine(InitQuest());
@@ -152,14 +163,15 @@ public class QuestManager : MonoBehaviour
 				positionalLerp.lerp = 0.03f;
 				positionalLerp.doneThreshold = 0.5f;
 				positionalLerp.scaleDestroy = true;
-				
+
 				Rigidbody objectRig = objectCollected.GetComponent<Rigidbody>();
 				objectRig.isKinematic = false;
 				objectRig.constraints = RigidbodyConstraints.FreezePosition;
 				objectRig.angularVelocity = Vector3.one * -5f;
 
 				var meshRenderers = objectCollected.transform.GetComponentsInChildren<MeshRenderer>();
-				if (objectCollected.TryGetComponent(out MeshRenderer objectMeshRenderer)) {
+				if (objectCollected.TryGetComponent(out MeshRenderer objectMeshRenderer))
+				{
 					meshRenderers.Append(objectMeshRenderer);
 				}
 				foreach (var meshRenderer in meshRenderers)

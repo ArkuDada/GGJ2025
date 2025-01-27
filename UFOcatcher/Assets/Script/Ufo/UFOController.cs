@@ -15,7 +15,7 @@ public class UFOController : MonoBehaviour
 	private Vector2 _screenBoundsMax;
 
 	private bool _beamActive = false;
-	
+
 	public float BeamRadius = 1f;
 	public GameObject _beam;
 	public GameObject _ufoMesh;
@@ -61,11 +61,11 @@ public class UFOController : MonoBehaviour
 	[SerializeField]
 	GameManager gameManager;
 
+	private const float SHAKE_MAGNITUDE_DEBRIS = 5;
+	private const float SHAKE_MAGNITUDE_BEAM = 1;
 
-	public float shakeMagnitude = 1f;
-	private bool _isShaking = false;
-	private Quaternion initialUFORotation;
-	private Quaternion IHateRotation;
+	private const float DEBRIS_SHAKE_DURATION = 2;
+	private float remainingDebrisShakeDuration = 0;
 
 	void Start()
 	{
@@ -81,8 +81,6 @@ public class UFOController : MonoBehaviour
 		_screenBoundsMin = new Vector2(-_screenBounds, -_screenBounds);
 		_screenBoundsMax = new Vector2(_screenBounds, _screenBounds);
 		UpdateEnergyBar();
-
-		initialUFORotation = _ufoMesh.transform.localRotation;
 	}
 
 	void Update()
@@ -100,6 +98,9 @@ public class UFOController : MonoBehaviour
 
 		// Handle energy depletion, regeneration, and cooldown
 		HandleEnergy();
+
+		// Rotation, shaking
+		UpdateRotation(_inputVec);
 
 		if (_beamActive && Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 999,
 			   Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore))
@@ -130,10 +131,17 @@ public class UFOController : MonoBehaviour
 			alienSpriteRenderer.sprite = neutralSprite;
 		}
 
-		if(IsGoAway)
+		if (IsGoAway)
 		{
 			transform.position += Vector3.up * GoAwaySpeed * Time.unscaledDeltaTime;
 		}
+
+		remainingDebrisShakeDuration = Math.Max(0, remainingDebrisShakeDuration - Time.deltaTime);
+	}
+
+	public void TriggerDebrisShake()
+	{
+		remainingDebrisShakeDuration = DEBRIS_SHAKE_DURATION;
 	}
 
 	public bool IsGoAway = false;
@@ -144,13 +152,11 @@ public class UFOController : MonoBehaviour
 		if (context.performed && currentEnergy > energyThreshold && !isCooldown)
 		{
 			_beamActive = true;
-			_isShaking = true;
 			_source.Play();
 		}
 		else if (context.canceled)
 		{
 			_beamActive = false;
-			_isShaking = false;
 			_source.Stop();
 		}
 		_beam.SetActive(_beamActive);
@@ -166,7 +172,7 @@ public class UFOController : MonoBehaviour
 				isCooldown = false;
 				currentEnergy = 1.0f;
 
-            }
+			}
 		}
 		else if (_beamActive)
 		{
@@ -190,8 +196,6 @@ public class UFOController : MonoBehaviour
 		}
 
 		UpdateEnergyBar();
-		UpdateRotation(_inputVec);
-		UpdateShake(_inputVec);
 	}
 
 	private void UpdateEnergyBar()
@@ -212,30 +216,18 @@ public class UFOController : MonoBehaviour
 		}
 	}
 
-	private void UpdateShake(Vector2 _input)
-    {
-		if (_isShaking)
-		{
-			// Generate random offsets for each axis (rotation in degrees)
-			float xx = UnityEngine.Random.Range(-shakeMagnitude, shakeMagnitude);
-			float yy = UnityEngine.Random.Range(-shakeMagnitude, shakeMagnitude);
-			float zz = UnityEngine.Random.Range(-shakeMagnitude, shakeMagnitude);
-
-			// Apply the shake effect
-			_ufoMesh.transform.localRotation = Quaternion.Euler(new Vector3(xx, yy, zz)) * IHateRotation;
-		}
-		else if (_input.magnitude < 0.05f)
-		{
-			// Reset rotation after shaking
-			_ufoMesh.transform.localRotation = initialUFORotation;
-		}
-	}
-
 	void UpdateRotation(Vector2 _input)
 	{
-		Quaternion joystickWantAngle_Euler = Quaternion.Euler(new Vector3(_input.y, 0, -_input.x) * 10.0f) * initialUFORotation;
-		_ufoMesh.transform.localRotation = Quaternion.Lerp(_ufoMesh.transform.localRotation, joystickWantAngle_Euler, Time.deltaTime * 5.0f);
-		IHateRotation = _ufoMesh.transform.localRotation;
+		Vector3 joystickWantAngle_Euler = _arcade.joystick.localEulerAngles;
+		joystickWantAngle_Euler *= -1;
+
+		// Generate random offsets for each axis (rotation in degrees)
+		float xx = UnityEngine.Random.Range(-1, 1);
+		float yy = UnityEngine.Random.Range(-1, 1);
+		float zz = UnityEngine.Random.Range(-1, 1);
+
+		float cumulativeShakeMangitude = (SHAKE_MAGNITUDE_BEAM * (_beamActive ? 1 : 0)) + (SHAKE_MAGNITUDE_DEBRIS * (remainingDebrisShakeDuration > 0 ? 1 : 0));
+		_ufoMesh.transform.localRotation = Quaternion.Euler(joystickWantAngle_Euler + new Vector3(xx, yy, zz) * cumulativeShakeMangitude);
 	}
 
 
