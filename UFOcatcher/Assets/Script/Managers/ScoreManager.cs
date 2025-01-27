@@ -46,7 +46,8 @@ public class ScoreManager : MonoBehaviour
 
 		ufo.TriggerHappy();
 		score += points;
-		OnScoreChanged?.Invoke(points);
+        PlayerPrefs.SetInt("CurrentScore", score);
+        OnScoreChanged?.Invoke(points);
 		DisplayScore();
 	}
 
@@ -65,7 +66,8 @@ public class ScoreManager : MonoBehaviour
 
 		ufo.TriggerSad();
 		score -= points;
-		OnScoreChanged?.Invoke(-points);
+        PlayerPrefs.SetInt("CurrentScore", score);
+        OnScoreChanged?.Invoke(-points);
 		DisplayScore();
 	}
 

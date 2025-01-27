@@ -3,6 +3,7 @@ using Dan.Main;
 using Dan.Models;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 namespace Dan.Demo
 {
@@ -32,7 +33,7 @@ namespace Dan.Demo
 
         public void AddPlayerScore()
         {
-            _playerScore = PlayerPrefs.GetInt("HighScore", 0);
+            _playerScore = PlayerPrefs.GetInt("CurrentScore");
             _playerScoreText.text = _playerScore.ToString();
         }
         
