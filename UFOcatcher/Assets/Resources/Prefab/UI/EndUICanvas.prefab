@@ -3039,7 +3039,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12696615b7625f04baae0bf7809c049d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerScoreText: {fileID: 5350216320117747565}
+  _playerScoreText: {fileID: 6570337186679383363}
   _playerUsernameInput: {fileID: 117934453795218028}
   _entryDisplayParent: {fileID: 8062160553798522015}
   _entryDisplayPrefab: {fileID: -295299235028769080, guid: 188bdb8a837f74c4087c00cbf810b79c, type: 3}
