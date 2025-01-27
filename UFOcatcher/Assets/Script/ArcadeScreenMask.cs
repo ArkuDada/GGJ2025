@@ -6,10 +6,16 @@ public class ArcadeScreenMask : MonoBehaviour
     public float duration = 1.0f;  // Duration of the animation
     private float _progress = 0.0f;
 
+    public Material DefaultMat;
     public Material EndScreenMat;
-    public void ChangeAnimationMat()
+    public void ChangeEndMat()
     {
         GetComponent<MeshRenderer>().material = EndScreenMat;
+    }
+    
+    public void ChangeDefaultMat()
+    {
+        GetComponent<MeshRenderer>().material = DefaultMat;
     }
 
     public void PlayReflectionAnimation() {

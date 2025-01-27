@@ -818,7 +818,7 @@ PrefabInstance:
     - target: {fileID: -6043377862108716079, guid: 35c6656fd74b74483abb4dac053d7ba3, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: ac38630a00e7d224290fb162b6f3d085, type: 2}
+      objectReference: {fileID: 2100000, guid: 027c19ab02952e34cac162f1f2d05f25, type: 2}
     - target: {fileID: -5606004090323214479, guid: 35c6656fd74b74483abb4dac053d7ba3, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -967,6 +967,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 2.25
+  DefaultMat: {fileID: 2100000, guid: ac38630a00e7d224290fb162b6f3d085, type: 2}
   EndScreenMat: {fileID: 2100000, guid: 63996c0a37ebd374395a8ef05f2cc915, type: 2}
 --- !u!4 &4980526086710161073 stripped
 Transform:
