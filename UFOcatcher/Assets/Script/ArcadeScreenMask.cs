@@ -3,6 +3,7 @@ using System.Collections;
 
 public class ArcadeScreenMask : MonoBehaviour
 {
+    public float duration = 1.0f;  // Duration of the animation
     private float _progress = 0.0f;
 
     public Material EndScreenMat;
@@ -17,7 +18,6 @@ public class ArcadeScreenMask : MonoBehaviour
     // Coroutine to animate progress from current value to target value
     public IEnumerator AnimateProgress()
     {
-        float duration = 1.0f;  // Duration of the animation
         float timeElapsed = 0f;
 
         while (timeElapsed < duration)
