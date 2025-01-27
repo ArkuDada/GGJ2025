@@ -100,6 +100,8 @@ public class GameManager : MonoBehaviour
         }
         else if(state == GameState.Prepare)
         {
+            var screen = GameObject.Find("MainArcadeScreen").GetComponent<ArcadeScreenMask>();
+            screen.ChangeDefaultMat();
             tutorialUI.SetActive(false);
             startUI.SetActive(false);
             Time.timeScale = 1;
@@ -132,7 +134,7 @@ public class GameManager : MonoBehaviour
 
         yield return new WaitForSecondsRealtime(2.5f);
         var screen = GameObject.Find("MainArcadeScreen").GetComponent<ArcadeScreenMask>();
-        screen.ChangeAnimationMat();
+        screen.ChangeEndMat();
         screen.PlayReflectionAnimation();
         yield return new WaitForSecondsRealtime(2.5f);
 
