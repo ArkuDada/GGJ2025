@@ -62,6 +62,13 @@ public class Arcade : MonoBehaviour
 		mesh[index].IconMesh.material = iconDefault;
 	}
 
+	public void ConfettiAtIcon(int index)
+	{
+		GameObject newConfetti = Instantiate(GameObject.FindWithTag("Player").GetComponent<UFOController>().confetti);
+		newConfetti.transform.position = mesh[index].IconMesh.transform.position;
+		newConfetti.SetActive(true);
+		Destroy(newConfetti, 5);
+	}
 
 	//fill 0 - 1.f
 	public void SetBorderFill(int index, float fill)
