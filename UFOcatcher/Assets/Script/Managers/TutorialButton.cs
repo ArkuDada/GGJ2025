@@ -25,7 +25,9 @@ public class TutorialButton : MonoBehaviour
 
     public void PauseGame()
     {
-        if (GameManager.Instance.State == GameState.Pause)
+        if (GameManager.Instance.State == GameState.Pause ||
+           GameManager.Instance.State == GameState.GameOver ||
+           GameManager.Instance.State == GameState.Credits)
         {
             return;
         }

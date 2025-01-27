@@ -68,7 +68,9 @@ public class CreditUI : MonoBehaviour
 
     public void OnClick()
     {
-        if (GameManager.Instance.State == GameState.Pause)
+        if (GameManager.Instance.State == GameState.Pause ||
+           GameManager.Instance.State == GameState.GameOver ||
+           GameManager.Instance.State == GameState.Tutorial)
         {
             return;
         }
