@@ -302,6 +302,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3533540748518371230, guid: 4762b48625c143145b6535442cc71860, type: 3}
+      propertyPath: pauseMenuUI
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3991773834995696875, guid: 4762b48625c143145b6535442cc71860, type: 3}
       propertyPath: gameManager
       value: 
@@ -326,6 +330,10 @@ PrefabInstance:
       propertyPath: 'Objects.Array.data[2]'
       value: 
       objectReference: {fileID: 1889142967}
+    - target: {fileID: 8578671473736975237, guid: 4762b48625c143145b6535442cc71860, type: 3}
+      propertyPath: pauseMenuUI
+      value: 
+      objectReference: {fileID: 2102389821}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 5665127966077152263, guid: 4762b48625c143145b6535442cc71860, type: 3}
