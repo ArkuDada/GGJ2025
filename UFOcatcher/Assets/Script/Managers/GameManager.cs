@@ -106,6 +106,7 @@ public class GameManager : MonoBehaviour
         }
         else if(state == GameState.Play)
         {
+            Time.timeScale = 1f;
             debrisSpawner.StartSpawning();
             timeManager.ResumeTimer();
         }
@@ -160,17 +161,17 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            if(Input.GetKeyDown(KeyCode.Escape))
-            {
-                if(state == GameState.Play)
-                {
-                    ChangeGameplayState(GameState.Pause);
-                }
-                else if(state == GameState.Pause)
-                {
-                    ChangeGameplayState(GameState.Play);
-                }
-            }
+            //if(Input.GetKeyDown(KeyCode.Escape))
+            //{
+            //    if(state == GameState.Play)
+            //    {
+            //        ChangeGameplayState(GameState.Pause);
+            //    }
+            //    else if(state == GameState.Pause)
+            //    {
+            //        ChangeGameplayState(GameState.Play);
+            //    }
+            //}
         }
     }
 
