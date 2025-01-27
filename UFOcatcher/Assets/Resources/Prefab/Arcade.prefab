@@ -966,6 +966,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87f29fdcad9034b44bf0512fb10341d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EndScreenMat: {fileID: 2100000, guid: 63996c0a37ebd374395a8ef05f2cc915, type: 2}
 --- !u!4 &4980526086710161073 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -3143167737404599138, guid: 35c6656fd74b74483abb4dac053d7ba3, type: 3}

@@ -981,14 +981,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4128912565650675730, guid: c02108206593a9347b5b78568bef5669, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4422183353615636990, guid: c02108206593a9347b5b78568bef5669, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: a526fb29dc3804b9f936c52ec05ef966, type: 2}
     - target: {fileID: 5521825811582994737, guid: c02108206593a9347b5b78568bef5669, type: 3}
       propertyPath: m_BoundingSphereOverride.w
       value: 9.264843
