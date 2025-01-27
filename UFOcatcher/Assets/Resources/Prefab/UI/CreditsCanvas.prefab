@@ -177,7 +177,7 @@ MonoBehaviour:
   m_text: 'Made by
 
 
-    Team BYTE.bat'
+    Team BYTE.bak'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 456ce91ae780b4c30bd018fcdeaddd48, type: 2}
   m_sharedMaterial: {fileID: 8147545141495440510, guid: 456ce91ae780b4c30bd018fcdeaddd48, type: 2}
