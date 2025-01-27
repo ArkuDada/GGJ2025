@@ -102,6 +102,7 @@ public class GameManager : MonoBehaviour
         {
             var screen = GameObject.Find("MainArcadeScreen").GetComponent<ArcadeScreenMask>();
             screen.ChangeDefaultMat();
+            screen.PlayReflectionAnimation();
             tutorialUI.SetActive(false);
             startUI.SetActive(false);
             Time.timeScale = 1;
