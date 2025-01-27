@@ -1,9 +1,7 @@
-using NUnit.Framework;
-using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
-public class CreditUI : MonoBehaviour
+public class TutorialButton : MonoBehaviour
 {
     [SerializeField] private GameObject pauseMenuUI;
 
@@ -40,7 +38,7 @@ public class CreditUI : MonoBehaviour
         if (GameUtility.GameManagerExists())
         {
             lastgameState = GameManager.Instance.State;
-            GameManager.Instance.ChangeGameplayState(GameState.Credits);
+            GameManager.Instance.ChangeGameplayState(GameState.Tutorial);
         }
     }
 
@@ -49,7 +47,7 @@ public class CreditUI : MonoBehaviour
         isPaused = false;
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f; // Resume game time
-        
+
         foreach (var gameObj in Objects)
         {
             gameObj.SetActive(true);
@@ -67,7 +65,7 @@ public class CreditUI : MonoBehaviour
         {
             ResumeGame();
         }
-        else 
+        else
         {
             PauseGame();
         }

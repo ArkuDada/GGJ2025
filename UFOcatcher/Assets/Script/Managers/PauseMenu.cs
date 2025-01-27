@@ -40,7 +40,7 @@ public class PauseMenu : MonoBehaviour
 
         if (GameUtility.GameManagerExists()) 
         {
-            GameManager.Instance.ChangeGameplayState(GameState.Pause);
+            //GameManager.Instance.ChangeGameplayState(GameState.Pause);
         }
     }
 
@@ -52,7 +52,7 @@ public class PauseMenu : MonoBehaviour
 
         if (GameUtility.GameManagerExists())
         {
-            GameManager.Instance.ChangeGameplayState(GameState.Play);
+            //GameManager.Instance.ChangeGameplayState(GameState.Play);
         }
     }
 

@@ -47,7 +47,7 @@ using UnityEngine.UI;
 
             if (scoreUI != null)
             {
-                scoreUI.text = gameManager.ScoreManager.GetScore().ToString("00000");
+                scoreUI.text = gameManager.ScoreManager.GetScore().ToString("0000000");
             }
         }
 
