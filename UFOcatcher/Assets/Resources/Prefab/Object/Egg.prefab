@@ -125,6 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chickPrefab: {fileID: 2997598876189070964, guid: 778d18a17f93a774b817276d04a82e4e, type: 3}
+  hatchChance: 0.33
 --- !u!1001 &2585476229503292944
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -135,15 +136,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 885705302892623522, guid: 2c970a4f606c8bf43add71d2613f5efa, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.2
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 885705302892623522, guid: 2c970a4f606c8bf43add71d2613f5efa, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.2
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 885705302892623522, guid: 2c970a4f606c8bf43add71d2613f5efa, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.2
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 885705302892623522, guid: 2c970a4f606c8bf43add71d2613f5efa, type: 3}
       propertyPath: m_LocalPosition.x
@@ -151,7 +152,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 885705302892623522, guid: 2c970a4f606c8bf43add71d2613f5efa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.08
       objectReference: {fileID: 0}
     - target: {fileID: 885705302892623522, guid: 2c970a4f606c8bf43add71d2613f5efa, type: 3}
       propertyPath: m_LocalPosition.z
